@@ -8,16 +8,23 @@ namespace JapaneseTeacher
 {
     internal static class Program
     {
-        private static GlobalData _globalData;
+        private static GlobalData _globalData = new GlobalData();
 
         [STAThread]
         static void Main()
         {
-            _globalData.LoadData();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+
+            try
+            {
+                _globalData.LoadData();
+                Application.Run(new FormMain());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
