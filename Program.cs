@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 
 using JapaneseTeacher.Data;
+using JapaneseTeacher.GUI;
 
 namespace JapaneseTeacher
 {
@@ -16,7 +17,7 @@ namespace JapaneseTeacher
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormMain());
         }
     }
 }
