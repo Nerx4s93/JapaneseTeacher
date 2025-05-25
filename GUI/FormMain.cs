@@ -8,15 +8,5 @@ namespace JapaneseTeacher.GUI
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, System.EventArgs e)
-        {
-            CurrentSceneId = 1;
-        }
-
-        private void button2_Click(object sender, System.EventArgs e)
-        {
-            CurrentSceneId = 0;
-        }
     }
 }
