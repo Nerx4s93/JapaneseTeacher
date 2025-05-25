@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace JapaneseTeacher.GUI.Presenters
@@ -15,17 +16,17 @@ namespace JapaneseTeacher.GUI.Presenters
             get => _currentSceneId;
             set
             {
-                if (_currentSceneId == value || !_isInitialized)
-                {
+                InitializeScenes();
+
+                if (_currentSceneId == value || !_isInitialized || !_sceneControls.ContainsKey(value))
                     return;
-                }
+
                 SwitchScene(value);
             }
         }
 
-        protected override void OnLoad(EventArgs e)
+        public SceneForm() : base()
         {
-            base.OnLoad(e);
             InitializeScenes();
             _isInitialized = true;
             ApplyScene(_currentSceneId);
@@ -33,65 +34,73 @@ namespace JapaneseTeacher.GUI.Presenters
 
         private void SwitchScene(int newSceneId)
         {
-            // Скрываем элементы текущей сцены
-            if (_sceneControls.TryGetValue(_currentSceneId, out var currentControls))
-            {
-                foreach (var control in currentControls)
-                {
-                    control.Visible = false;
-                }
-            }
+            // Удаляем элементы текущей сцены
+            RemoveCurrentSceneControls();
 
-            // Показываем элементы новой сцены
+            // Добавляем элементы новой сцены
             ApplyScene(newSceneId);
 
             _currentSceneId = newSceneId;
+        }
+
+        private void RemoveCurrentSceneControls()
+        {
+            if (_sceneControls.TryGetValue(_currentSceneId, out var currentControls))
+            {
+                foreach (var control in currentControls.Where(c => c != null && Controls.Contains(c)))
+                {
+                    Controls.Remove(control);
+                }
+            }
         }
 
         private void ApplyScene(int sceneId)
         {
             if (_sceneControls.TryGetValue(sceneId, out var sceneControls))
             {
-                foreach (var control in sceneControls)
+                foreach (var control in sceneControls.Where(c => c != null && !Controls.Contains(c)))
                 {
-                    control.Visible = true;
+                    Controls.Add(control);
                 }
             }
         }
 
         private void InitializeScenes()
         {
-            var controls = GetAllControls(this);
+            // Сначала собираем все элементы формы
+            var allControls = GetAllControls(this).ToList();
 
-            foreach (var control in controls)
+            // Очищаем форму (оставляем только не помеченные элементы)
+            foreach (var control in allControls)
             {
                 if (control.Tag != null && int.TryParse(control.Tag.ToString(), out int sceneId))
                 {
+                    Controls.Remove(control);
+
                     if (!_sceneControls.ContainsKey(sceneId))
                     {
                         _sceneControls[sceneId] = new List<Control>();
                     }
                     _sceneControls[sceneId].Add(control);
-                    control.Visible = (sceneId == _currentSceneId);
                 }
                 else
                 {
-                    control.Visible = true;
+                    // Элементы без Tag остаются на форме постоянно
                 }
             }
         }
 
-        private IEnumerable<Control> GetAllControls(Control control)
+        private IEnumerable<Control> GetAllControls(Control parent)
         {
-            var controls = new List<Control>();
-
-            foreach (Control child in control.Controls)
+            foreach (Control child in parent.Controls)
             {
-                controls.Add(child);
-                controls.AddRange(GetAllControls(child));
-            }
+                yield return child;
 
-            return controls;
+                foreach (var descendant in GetAllControls(child))
+                {
+                    yield return descendant;
+                }
+            }
         }
     }
 }
