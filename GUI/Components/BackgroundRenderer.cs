@@ -39,9 +39,9 @@ namespace JapaneseTeacher.GUI.Components
         private volatile bool _isRunning = true;
 
         private PointF _backgroundLocation = new PointF(0, 0);
-        private Point _maxLocation = new Point(0, 0);
-        private Point _direction = new Point(-1, -1);
-        private PointF _speed = new PointF(0.1f, 0.1f);
+        private Size _maxOffset = new Size(0, 0);
+        private Point _direction = new Point(1, 1);
+        private PointF _speed = new PointF(0.4f, 0.4f);
 
         private void Form_Shown(object sender, EventArgs e)
         {
@@ -81,15 +81,18 @@ namespace JapaneseTeacher.GUI.Components
             }
 
             _imageDraw = new Bitmap(_image, newWidth, newHeight);
+            _maxOffset = new Size(_imageDraw.Width - _form.ClientSize.Width, _imageDraw.Height - _form.ClientSize.Height);
             _backgroundLocation = new PointF(0, 0);
-            _maxLocation = new Point(newWidth, newHeight);
             _form.Invalidate();
         }
 
         private void Form_Paint(object sender, PaintEventArgs e)
         {
             var graphics = e.Graphics;
-            graphics.DrawImage(_imageDraw, _backgroundLocation);
+            
+            var x = _backgroundLocation.X - _maxOffset.Width;
+            var y = _backgroundLocation.Y - _maxOffset.Height;
+            graphics.DrawImage(_imageDraw, x, y);
         }
 
         private void StartBackgroundTask()
@@ -101,22 +104,26 @@ namespace JapaneseTeacher.GUI.Components
                     _backgroundLocation.X += _speed.X * _direction.X;
                     _backgroundLocation.Y += _speed.Y * _direction.Y;
 
-                    if (_backgroundLocation.X < 0)
+                    if (_backgroundLocation.X <= 0)
                     {
-                        _direction.X *= -1;
+                        _backgroundLocation.X = 0;
+                        _direction.X = 1;
                     }
-                    if (_backgroundLocation.Y < 0)
+                    else if (_backgroundLocation.X >= _maxOffset.Width)
                     {
-                        _direction.Y *= -1;
+                        _backgroundLocation.X = _maxOffset.Width;
+                        _direction.X = -1;
                     }
 
-                    if (_backgroundLocation.X > _maxLocation.X)
+                    if (_backgroundLocation.Y <= 0)
                     {
-                        _direction.X *= -1;
+                        _backgroundLocation.Y = 0;
+                        _direction.Y = 1;
                     }
-                    if (_backgroundLocation.Y > _maxLocation.Y)
+                    else if (_backgroundLocation.Y >= _maxOffset.Height)
                     {
-                        _direction.Y *= -1;
+                        _backgroundLocation.Y = _maxOffset.Height;
+                        _direction.Y = -1;
                     }
 
                     if (_isRunning && !_form.IsDisposed)
