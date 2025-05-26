@@ -10,6 +10,8 @@ namespace JapaneseTeacher.GUI.Components
         private readonly Form _form;
         private readonly Image _image;
 
+        private readonly int _updateIntervalMs = 16;
+
         public BackgroundRenderer(Form form, Image image)
         {
             if (form == null)
@@ -33,7 +35,11 @@ namespace JapaneseTeacher.GUI.Components
 
         private Image _imageDraw;
 
-        
+        private volatile bool _isRunning = true;
+
+        private Point _backgroundLocation = new Point(0, 0);
+        private Point _deltaLocation = new Point(0, 0);
+
         private void Form_Shown(object sender, EventArgs e)
         {
             StartBackgroundTask();
@@ -41,7 +47,7 @@ namespace JapaneseTeacher.GUI.Components
 
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            isRunning = false;
+            _isRunning = false;
         }
 
         private void Form_ResizeEnd(object sender, EventArgs e)
@@ -72,18 +78,39 @@ namespace JapaneseTeacher.GUI.Components
             }
 
             _imageDraw = new Bitmap(_image, newWidth, newHeight);
+            _deltaLocation = new Point(newWidth - _form.Width, newHeight - _form.Height);
             _form.Invalidate();
         }
 
         private void Form_Paint(object sender, PaintEventArgs e)
         {
             var graphics = e.Graphics;
-            graphics.DrawImage(_imageDraw, backgroundX, backgroundY);
+            graphics.DrawImage(_imageDraw, _backgroundLocation);
         }
 
         private void StartBackgroundTask()
         {
+            Task.Run(async () =>
+            {
+                while (_isRunning)
+                {
+                    // Обработка
 
+                    if (_isRunning && !_form.IsDisposed)
+                    {
+                        try
+                        {
+                            _form.BeginInvoke((Action)(() => _form.Invalidate()));
+                        }
+                        catch (ObjectDisposedException)
+                        {
+                            _isRunning = false;
+                        }
+                    }
+
+                    await Task.Delay(_updateIntervalMs);
+                }
+            });
         }
     }
 }
