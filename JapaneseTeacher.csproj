@@ -50,6 +50,7 @@
     <Compile Include="Data\GlobalData.cs" />
     <Compile Include="Data\Word.cs" />
     <Compile Include="Data\VocabularySet.cs" />
+    <Compile Include="GUI\Components\BackgroundRenderer.cs" />
     <Compile Include="GUI\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
