@@ -37,5 +37,10 @@
         /// Количество раз, когда слово не попадалось
         /// </summary>
         public int TimesNotSeen { get; set; }
+
+        /// <summary>
+        /// Уровень, к которому отностится слово
+        /// </summary>
+        public string Leve;
     }
 }
