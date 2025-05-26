@@ -61,12 +61,11 @@ namespace JapaneseTeacher.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
+        ///   Ищет локализованную строку, похожую на [{&quot;Level&quot;:&quot;1&quot;,&quot;Text&quot;:&quot;あ&quot;,&quot;Translation&quot;:&quot;a&quot;,&quot;Encounters&quot;:0,&quot;Mistakes&quot;:0,&quot;StreakForMistakes&quot;:0,&quot;Streak&quot;:0,&quot;TimesNotSeen&quot;:0},{&quot;Level&quot;:&quot;1&quot;,&quot;Text&quot;:&quot;か&quot;,&quot;Translation&quot;:&quot;ka&quot;,&quot;Encounters&quot;:0,&quot;Mistakes&quot;:0,&quot;StreakForMistakes&quot;:0,&quot;Streak&quot;:0,&quot;TimesNotSeen&quot;:0},{&quot;Level&quot;:&quot;1&quot;,&quot;Text&quot;:&quot;し&quot;,&quot;Translation&quot;:&quot;shi&quot;,&quot;Encounters&quot;:0,&quot;Mistakes&quot;:0,&quot;StreakForMistakes&quot;:0,&quot;Streak&quot;:0,&quot;TimesNotSeen&quot;:0},{&quot;Level&quot;:&quot;1&quot;,&quot;Text&quot;:&quot;つ&quot;,&quot;Translation&quot;:&quot;tsu&quot;,&quot;Encounters&quot;:0,&quot;Mistakes&quot;:0,&quot;StreakForMistakes&quot;:0,&quot;Streak&quot;:0,&quot;TimesNotSeen&quot;:0},{&quot;Level&quot;:&quot;1&quot;,&quot;Text&quot;:&quot;ね [остаток строки не уместился]&quot;;.
         /// </summary>
-        internal static byte[] Hiragana {
+        internal static string Hiragana {
             get {
-                object obj = ResourceManager.GetObject("Hiragana", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("Hiragana", resourceCulture);
             }
         }
     }

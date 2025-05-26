@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+using JapaneseTeacher.Properties;
+
 using Newtonsoft.Json;
 
 namespace JapaneseTeacher.Data
@@ -17,20 +19,21 @@ namespace JapaneseTeacher.Data
             LoadData();
         }
 
+        [JsonProperty("Name")]
         private string _name;
+        [JsonProperty("Words")]
         private List<Word> _words;
 
         public void LoadData()
         {
-            var path = $"Theme\\{_name}.json";
+            var path = $"Themes\\{_name}.json";
 
             if (!File.Exists(path))
             {
-                _words = new List<Word>();
-                
-                using (StreamWriter streamWriter = new StreamWriter(path))
+                if (Resources.ResourceManager.GetObject(_name) is string defaultJson)
                 {
-                    streamWriter.WriteLine("[]");
+                    File.WriteAllText(path, defaultJson);
+                    _words = JsonConvert.DeserializeObject<List<Word>>(defaultJson);
                 }
             }
             else
