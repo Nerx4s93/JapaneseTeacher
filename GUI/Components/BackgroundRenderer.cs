@@ -108,22 +108,26 @@ namespace JapaneseTeacher.GUI.Components
                     {
                         _backgroundLocation.X = 0;
                         _direction.X = 1;
+                        _speed.X = Convert.ToSingle(1 + _random.NextDouble()) / 3;
                     }
                     else if (_backgroundLocation.X >= _maxOffset.Width)
                     {
                         _backgroundLocation.X = _maxOffset.Width;
                         _direction.X = -1;
+                        _speed.X = Convert.ToSingle(1 + _random.NextDouble()) / 3;
                     }
 
                     if (_backgroundLocation.Y <= 0)
                     {
                         _backgroundLocation.Y = 0;
                         _direction.Y = 1;
+                        _speed.Y = Convert.ToSingle(1 + _random.NextDouble()) / 3;
                     }
                     else if (_backgroundLocation.Y >= _maxOffset.Height)
                     {
                         _backgroundLocation.Y = _maxOffset.Height;
                         _direction.Y = -1;
+                        _speed.Y = Convert.ToSingle(1 + _random.NextDouble()) / 3;
                     }
 
                     if (_isRunning && !_form.IsDisposed)
