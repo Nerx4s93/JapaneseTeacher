@@ -1,12 +1,16 @@
-﻿using JapaneseTeacher.GUI.Presenters;
+﻿using JapaneseTeacher.Data;
+using JapaneseTeacher.GUI.Presenters;
 
 namespace JapaneseTeacher.GUI
 {
-    public partial class FormMain : SceneForm
+    internal partial class FormMain : SceneForm
     {
-        public FormMain()
+        private readonly GlobalData _globeData;
+
+        public FormMain(GlobalData globalData)
         {
             InitializeComponent();
+            _globeData = globalData;
         }
     }
 }

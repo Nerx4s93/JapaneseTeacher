@@ -19,7 +19,7 @@ namespace JapaneseTeacher
             try
             {
                 _globalData.LoadData();
-                Application.Run(new FormMain());
+                Application.Run(new FormMain(_globalData));
             }
             catch (Exception ex)
             {
