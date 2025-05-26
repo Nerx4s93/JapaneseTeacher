@@ -38,7 +38,6 @@
             this.DoubleBuffered = true;
             this.Name = "FormMain";
             this.Text = "FormMain";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
