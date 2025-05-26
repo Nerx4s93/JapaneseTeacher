@@ -10,6 +10,7 @@ namespace JapaneseTeacher.GUI.Components
         private readonly Form _form;
         private readonly Image _image;
 
+        private readonly Random _random = new Random();
         private readonly int _updateIntervalMs = 16;
 
         public BackgroundRenderer(Form form, Image image)
@@ -37,8 +38,10 @@ namespace JapaneseTeacher.GUI.Components
 
         private volatile bool _isRunning = true;
 
-        private Point _backgroundLocation = new Point(0, 0);
-        private Point _deltaLocation = new Point(0, 0);
+        private PointF _backgroundLocation = new PointF(0, 0);
+        private Point _maxLocation = new Point(0, 0);
+        private Point _direction = new Point(-1, -1);
+        private PointF _speed = new PointF(0.1f, 0.1f);
 
         private void Form_Shown(object sender, EventArgs e)
         {
@@ -58,8 +61,8 @@ namespace JapaneseTeacher.GUI.Components
                 _imageDraw = null;
             }
 
-            int targetWidth = (int)(_form.Width * 1.3);
-            int targetHeight = (int)(_form.Height * 1.3);
+            int targetWidth = (int)(_form.ClientSize.Width * 1.2);
+            int targetHeight = (int)(_form.ClientSize.Height * 1.2);
 
             float imageRatio = (float)_image.Width / _image.Height;
             float targetRatio = (float)targetWidth / targetHeight;
@@ -78,7 +81,7 @@ namespace JapaneseTeacher.GUI.Components
             }
 
             _imageDraw = new Bitmap(_image, newWidth, newHeight);
-            _deltaLocation = new Point(newWidth - _form.Width, newHeight - _form.Height);
+            _maxLocation = new Point(newWidth, newHeight);
             _form.Invalidate();
         }
 
@@ -94,7 +97,26 @@ namespace JapaneseTeacher.GUI.Components
             {
                 while (_isRunning)
                 {
-                    // Обработка
+                    _backgroundLocation.X += _speed.X * _direction.X;
+                    _backgroundLocation.Y += _speed.Y * _direction.Y;
+
+                    if (_backgroundLocation.X < 0)
+                    {
+                        _direction.X *= -1;
+                    }
+                    if (_backgroundLocation.Y < 0)
+                    {
+                        _direction.Y *= -1;
+                    }
+
+                    if (_backgroundLocation.X > _maxLocation.X)
+                    {
+                        _direction.X *= -1;
+                    }
+                    if (_backgroundLocation.Y > _maxLocation.Y)
+                    {
+                        _direction.Y *= -1;
+                    }
 
                     if (_isRunning && !_form.IsDisposed)
                     {
