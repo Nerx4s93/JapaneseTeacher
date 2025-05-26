@@ -68,5 +68,15 @@ namespace JapaneseTeacher.Properties {
                 return ResourceManager.GetString("Hiragana", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MainFon {
+            get {
+                object obj = ResourceManager.GetObject("MainFon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
