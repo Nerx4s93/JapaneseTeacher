@@ -81,6 +81,7 @@ namespace JapaneseTeacher.GUI.Components
             }
 
             _imageDraw = new Bitmap(_image, newWidth, newHeight);
+            _backgroundLocation = new PointF(0, 0);
             _maxLocation = new Point(newWidth, newHeight);
             _form.Invalidate();
         }
