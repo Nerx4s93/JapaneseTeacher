@@ -63,6 +63,7 @@
     <Compile Include="GUI\Presenters\SceneForm.Designer.cs">
       <DependentUpon>SceneForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lessons\Lesson.cs" />
     <Compile Include="Lessons\Theme.cs" />
     <Compile Include="Tools\RoundedRectanglePathCreator.cs" />
     <Compile Include="Program.cs" />
