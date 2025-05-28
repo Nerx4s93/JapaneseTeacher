@@ -90,22 +90,23 @@ namespace JapaneseTeacher.UI
         protected override void OnPaint(PaintEventArgs e)
         {
             var graphics = e.Graphics;
-           
-            // Отрисовка области
-            var rectangle = RoundedRectanglePathCreator.GetRecrangleWithSize(Size);
-            var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, Radius, Radius);
-
-            var brush = new SolidBrush(_currentColor);
-            graphics.FillPath(brush, path);
-
-            // Отрисовка текста
+            DrawBackGround(graphics);
             if (DrawText)
             {
                 DefaultDrawText(graphics);
             }
         }
 
-        protected void DefaultDrawText(Graphics graphics)
+        private void DrawBackGround(Graphics graphics)
+        {
+            var rectangle = RoundedRectanglePathCreator.GetRecrangleWithSize(Size);
+            var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, Radius, Radius);
+
+            var brush = new SolidBrush(_currentColor);
+            graphics.FillPath(brush, path);
+        }
+
+        private void DefaultDrawText(Graphics graphics)
         {
             var textSize = graphics.MeasureString(Text, Font);
             var textPosition = new PointF(
