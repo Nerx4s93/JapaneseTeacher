@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace JapaneseTeacher.GUI.Presenters
@@ -24,6 +25,12 @@ namespace JapaneseTeacher.GUI.Presenters
             }
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            SwitchScene(_currentSceneId);
+        }
+
         private void SwitchScene(int newSceneId)
         {
             RemoveCurrentSceneControls();
@@ -38,7 +45,7 @@ namespace JapaneseTeacher.GUI.Presenters
 
             foreach (var control in controls)
             {
-                if (control.Tag != null && int.Parse(control.Tag.ToString()) == _currentSceneId)
+                if (control.Tag != null && int.Parse(control.Tag.ToString()) != _currentSceneId)
                 {
                     control.Visible = false;
                 }
