@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.DoubleBuffered = true;
             this.Name = "FormMain";
-            this.Text = "FormMain";
+            this.Text = "Изучение японского";
             this.ResumeLayout(false);
 
         }
