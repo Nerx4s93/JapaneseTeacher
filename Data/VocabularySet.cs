@@ -15,22 +15,22 @@ namespace JapaneseTeacher.Data
                 
         public VocabularySet(string name)
         {
-            _name = name;
+            Name = name;
             LoadData();
         }
 
         [JsonProperty("Name")]
-        private string _name;
+        public readonly string Name;
         [JsonProperty("Words")]
         private List<Word> _words;
 
         public void LoadData()
         {
-            var path = $"Themes\\{_name}.json";
+            var path = $"Themes\\{Name}.json";
 
             if (!File.Exists(path))
             {
-                if (Resources.ResourceManager.GetObject(_name) is string defaultJson)
+                if (Resources.ResourceManager.GetObject(Name) is string defaultJson)
                 {
                     File.WriteAllText(path, defaultJson);
                     _words = JsonConvert.DeserializeObject<List<Word>>(defaultJson);
@@ -48,7 +48,7 @@ namespace JapaneseTeacher.Data
 
         public void SaveData()
         {
-            var path = $"Theme\\{_name}.json";
+            var path = $"Theme\\{Name}.json";
             File.WriteAllText(path, JsonConvert.SerializeObject(_words));
         }
 
