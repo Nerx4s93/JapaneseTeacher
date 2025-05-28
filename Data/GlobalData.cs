@@ -5,8 +5,6 @@ namespace JapaneseTeacher.Data
 {
     internal class GlobalData
     {
-        private readonly string[] _themes = new string[1] { "Hiragana" };
-
         private List<VocabularySet> vocabularySets;
         
         public void LoadData()
@@ -20,10 +18,14 @@ namespace JapaneseTeacher.Data
 
             vocabularySets = new List<VocabularySet>();
 
-            foreach (string theme in _themes)
+            var files = Directory.GetFiles("Themes");
+            foreach (string file in files)
             {
+                var theme = Path.GetFileNameWithoutExtension(file);
+
                 var hiragana = new VocabularySet(theme);
                 hiragana.LoadData();
+
                 vocabularySets.Add(hiragana);
             }
 
