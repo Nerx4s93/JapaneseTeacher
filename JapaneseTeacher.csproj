@@ -69,7 +69,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\DrawingTool.cs" />
-    <Compile Include="Tools\ThemeBuilder.cs" />
+    <Compile Include="GUI\Components\ThemeBuilder.cs" />
     <Compile Include="UI\ButtonLevel.cs">
       <SubType>Component</SubType>
     </Compile>

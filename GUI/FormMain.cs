@@ -1,8 +1,8 @@
 ﻿using System;
 
+using JapaneseTeacher.Components;
 using JapaneseTeacher.Data;
 using JapaneseTeacher.GUI.Presenters;
-using JapaneseTeacher.Tools;
 
 namespace JapaneseTeacher.GUI
 {

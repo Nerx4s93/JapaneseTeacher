@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using JapaneseTeacher.Data;
 using JapaneseTeacher.UI;
 
-namespace JapaneseTeacher.Tools
+namespace JapaneseTeacher.Components
 {
     internal class ThemeBuilder
     {
