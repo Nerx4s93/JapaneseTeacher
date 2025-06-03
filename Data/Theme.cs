@@ -4,6 +4,7 @@ using System.IO;
 using Newtonsoft.Json;
 
 using JapaneseTeacher.Properties;
+using System.Collections.Generic;
 
 namespace JapaneseTeacher.Data
 {
@@ -13,6 +14,7 @@ namespace JapaneseTeacher.Data
         public string Description;
         public Color Color;
 
+        private List<Level> Levels;
         private VocabularySet VocabularySet;
 
         public Theme(string name)

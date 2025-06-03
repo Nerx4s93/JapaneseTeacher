@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\GlobalData.cs" />
+    <Compile Include="Data\Level.cs" />
     <Compile Include="Data\Theme.cs" />
     <Compile Include="Data\Word.cs" />
     <Compile Include="Data\VocabularySet.cs" />
