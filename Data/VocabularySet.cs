@@ -19,7 +19,7 @@ namespace JapaneseTeacher.Data
             LoadData();
         }
 
-        [JsonProperty("_name")]
+        [JsonProperty("Name")]
         private string _name;
         [JsonProperty("Words")]
         private List<Word> _words;

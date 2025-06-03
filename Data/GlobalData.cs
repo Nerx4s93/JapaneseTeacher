@@ -5,7 +5,7 @@ namespace JapaneseTeacher.Data
 {
     internal class GlobalData
     {
-        private List<VocabularySet> vocabularySets;
+        private List<Theme> themes;
         
         public void LoadData()
         {
@@ -16,17 +16,17 @@ namespace JapaneseTeacher.Data
 
             #region Загрузка тем
 
-            vocabularySets = new List<VocabularySet>();
+            themes = new List<Theme>();
 
             var files = Directory.GetFiles("Themes");
             foreach (string file in files)
             {
-                var theme = Path.GetFileNameWithoutExtension(file);
+                var themeName = Path.GetFileNameWithoutExtension(file);
 
-                var hiragana = new VocabularySet(theme);
-                hiragana.LoadData();
+                var theme = new Theme(themeName);
+                theme.LoadData();
 
-                vocabularySets.Add(hiragana);
+                themes.Add(theme);
             }
 
             #endregion
