@@ -45,23 +45,41 @@ namespace JapaneseTeacher.Data
 
         public Word GetNextWord()
         {
+            return GetNextWord(null);
+        }
+
+        public Word GetNextWord(string level)
+        {
             if (_words == null || !_words.Any())
             {
-                return null;
+                throw new InvalidOperationException("В словоре отсутствуют слова");
             }
 
+            #region Фильтрация слов
+
+            var filteredWords = string.IsNullOrEmpty(level)
+                ? _words
+                : _words.Where(w => w.Level == level).ToList();
+
+            if (!filteredWords.Any())
+            {
+                throw new InvalidOperationException("Нет слов с указанным уровнем");
+            }
+
+            #endregion
+
             // Обновляем счетчики времени, когда слова не показывались
-            foreach (var word in _words)
+            foreach (var word in filteredWords)
             {
                 word.TimesNotSeen++;
             }
 
-            var totalEncounters = _words.Sum(w => w.Encounters);
+            var totalEncounters = filteredWords.Sum(w => w.Encounters);
             var wordWeights = new Dictionary<Word, double>();
             double totalWeight = 0;
 
             // Предварительно вычисляем веса для всех слов
-            foreach (var word in _words)
+            foreach (var word in filteredWords)
             {
                 var weight = GetWeight(word, totalEncounters);
                 wordWeights[word] = weight;
@@ -89,7 +107,7 @@ namespace JapaneseTeacher.Data
                 }
             }
 
-            return _words.Last();
+            return filteredWords.Last();
         }
 
         public double GetWeight(Word word, int totalEncounters)
