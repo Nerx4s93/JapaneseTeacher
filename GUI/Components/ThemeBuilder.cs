@@ -68,8 +68,8 @@ namespace JapaneseTeacher.Components
 
             var bodyStartX = startX + _moduleHeader.Size.Width / 2 - 200;
             var bodyStartY = 150;
-            var dx = 90;
-            var dy = 150;
+            var dx = 50;
+            var dy = 110;
             
             for (int i = 0; i < _buttonLevels.Count; i++)
             {
