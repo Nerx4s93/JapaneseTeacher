@@ -9,6 +9,13 @@ namespace JapaneseTeacher.UI
     {
         private const int _radius = 8;
 
+        public Color BackgroundColor { get; set; }
+
+        public string Theme { get; set; }
+        public Color ThemeColor { get; set; }
+        public string Description { get; set; }
+        public Color DescriptionColor { get; set; }
+
         public ModuleHeader()
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -24,13 +31,6 @@ namespace JapaneseTeacher.UI
             Description = "Описание";
             DescriptionColor = Color.FromArgb(255, 255, 255);
         }
-
-        public Color BackgroundColor {  get; set; }
-
-        public string Theme { get; set; }
-        public Color ThemeColor { get; set; }
-        public string Description { get; set; }
-        public Color DescriptionColor { get; set; }
 
         protected override void OnPaint(PaintEventArgs e)
         {
