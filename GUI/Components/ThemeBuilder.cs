@@ -50,9 +50,17 @@ namespace JapaneseTeacher.Components
             _moduleHeader.Description = theme.Description;
 
             var levels = theme.GetLevels();
+            bool active = true;
             foreach (var level in levels)
             {
                 var button = new ButtonLevel();
+                button.Active = active;
+
+                if (level.CompletedSublevels != level.TotalSublevels)
+                {
+                    active = false;
+                }
+
                 _buttonLevels.Add(button);
                 _form.Controls.Add(button);
             }
