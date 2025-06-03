@@ -6,6 +6,7 @@ using System.Linq;
 using Newtonsoft.Json;
 
 using JapaneseTeacher.Properties;
+using System;
 
 namespace JapaneseTeacher.Data
 {
@@ -53,5 +54,9 @@ namespace JapaneseTeacher.Data
         {
             return _levels.ToList();
         }
+
+        public Word GetNextWord() => _vocabularySet.GetNextWord();
+        public Word GetNextWord(string level) => _vocabularySet.GetNextWord(level);
+        public void UpdateWordStats(Word word, bool wasCorrect) => _vocabularySet.UpdateWordStats(word, wasCorrect);
     }
 }
