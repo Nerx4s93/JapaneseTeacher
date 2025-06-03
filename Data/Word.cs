@@ -41,6 +41,6 @@
         /// <summary>
         /// Уровень, к которому отностится слово
         /// </summary>
-        public string Leve;
+        public string Level;
     }
 }
