@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-
-using JapaneseTeacher.Properties;
 
 using Newtonsoft.Json;
 
@@ -16,41 +13,12 @@ namespace JapaneseTeacher.Data
         public VocabularySet(string name)
         {
             _name = name;
-            LoadData();
         }
 
         [JsonProperty("Name")]
         private string _name;
         [JsonProperty("Words")]
         private List<Word> _words;
-
-        public void LoadData()
-        {
-            var path = $"Themes\\{_name}.json";
-
-            if (!File.Exists(path))
-            {
-                if (Resources.ResourceManager.GetObject(_name) is string defaultJson)
-                {
-                    File.WriteAllText(path, defaultJson);
-                    _words = JsonConvert.DeserializeObject<List<Word>>(defaultJson);
-                }
-            }
-            else
-            {
-                using (StreamReader streamReader = new StreamReader(path))
-                {
-                    var stringJson = streamReader.ReadToEnd();
-                    _words = JsonConvert.DeserializeObject<List<Word>>(stringJson);
-                }
-            }
-        }
-
-        public void SaveData()
-        {
-            var path = $"Theme\\{_name}.json";
-            File.WriteAllText(path, JsonConvert.SerializeObject(_words));
-        }
 
         public bool AddWord(Word word)
         {
@@ -60,7 +28,6 @@ namespace JapaneseTeacher.Data
             }
 
             _words.Add(word);
-            SaveData();
             return true;
         }
 
@@ -73,7 +40,6 @@ namespace JapaneseTeacher.Data
             }
 
             _words.Remove(wordToRemove);
-            SaveData();
             return true;
         }
 
@@ -169,8 +135,6 @@ namespace JapaneseTeacher.Data
                 word.StreakForMistakes = 0;
                 word.Mistakes++;
             }
-
-            SaveData();
         }
 
         public List<Word> GetAllWords()

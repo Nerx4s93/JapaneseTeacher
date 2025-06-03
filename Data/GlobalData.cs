@@ -22,9 +22,7 @@ namespace JapaneseTeacher.Data
             foreach (string file in files)
             {
                 var themeName = Path.GetFileNameWithoutExtension(file);
-
-                var theme = new Theme(themeName);
-                theme.LoadData();
+                var theme = Theme.LoadFromFile(themeName);
 
                 themes.Add(theme);
             }
