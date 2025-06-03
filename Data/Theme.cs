@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 using JapaneseTeacher.Properties;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace JapaneseTeacher.Data
 {
@@ -44,6 +45,11 @@ namespace JapaneseTeacher.Data
         {
             var path = Path.Combine("Themes", $"{Name}.json");
             File.WriteAllText(path, JsonConvert.SerializeObject(this, Formatting.Indented));
+        }
+
+        public List<Level> GetLevels()
+        {
+            return Levels.ToList();
         }
     }
 }
