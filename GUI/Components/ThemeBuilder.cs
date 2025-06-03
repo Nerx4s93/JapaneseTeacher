@@ -93,7 +93,10 @@ namespace JapaneseTeacher.Components
 
         private void Form_Resize(object sender, EventArgs e)
         {
-            MoveControls();
+            if (_update)
+            {
+                MoveControls();
+            }
         }
     }
 }
