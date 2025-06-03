@@ -7,6 +7,10 @@ namespace JapaneseTeacher.UI
 {
     internal class ButtonLevel : Control
     {
+        private readonly Brush _noActiveBodyColor = new SolidBrush(Color.FromArgb(229, 229, 229));
+        private readonly Brush _noActiveBottomBodyColor = new SolidBrush(Color.FromArgb(183, 183, 183));
+        private readonly Brush _noActiveIconBodyColor = new SolidBrush(Color.FromArgb(175, 175, 175));
+
         private Pen _pen1;
         private Pen _pen2;
         private Brush _brush1;
@@ -62,6 +66,8 @@ namespace JapaneseTeacher.UI
 
         public float ComplitePercent { get; set; }
 
+        public bool Active { get; set; }
+
         public ButtonLevel()
         {
             DoubleBuffered = true;
@@ -77,29 +83,37 @@ namespace JapaneseTeacher.UI
             var graphics = e.Graphics;
 
             int x = PercentToPixels(3);
-            graphics.DrawEllipse(_pen2, x, x, Width - 2 * x, Height - 2 * x);
-            graphics.DrawPie(_pen1, x, x, Width - 2 * x, Height - 2 * x, 0, 360f * ComplitePercent / 100f);
+            if (Active)
+            {
+                graphics.DrawEllipse(_pen2, x, x, Width - 2 * x, Height - 2 * x);
+                graphics.DrawPie(_pen1, x, x, Width - 2 * x, Height - 2 * x, 0, 360f * ComplitePercent / 100f);
+            }
+
+            var brush1 = Active ? _brush1 : _noActiveBodyColor;
+            var brush2 = Active ? _brush2 : _noActiveBottomBodyColor;
 
             x = PercentToPixels(20);
             if (_mouseDown)
             {
-                graphics.FillEllipse(_brush1, x, x + x / 6, Width - 2 * x, Width - 2 * x);
+                graphics.FillEllipse(brush1, x, x + x / 6, Width - 2 * x, Width - 2 * x);
                 DrawStar(graphics, + x / 6);
             }
             else
             {
-                graphics.FillEllipse(_brush2, x, x + x / 6, Width - 2 * x, Width - 2 * x);
-                graphics.FillEllipse(_brush1, x, x - x / 6, Width - 2 * x, Width - 2 * x);
+                graphics.FillEllipse(brush2, x, x + x / 6, Width - 2 * x, Width - 2 * x);
+                graphics.FillEllipse(brush1, x, x - x / 6, Width - 2 * x, Width - 2 * x);
                 DrawStar(graphics, 0);
             }
         }
 
         private void DrawStar(Graphics graphics, int deltaY)
         {
+            var brush = Active ? _starBrush : _noActiveIconBodyColor;
+
             int x = PercentToPixels(30);
             var point = new PointF(x, x + deltaY);
             var size = new Size(Width - 2 * x, Width - 2 * x);
-            DrawingTool.FillStar(graphics, point, size, _starBrush);
+            DrawingTool.FillStar(graphics, point, size, brush);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
