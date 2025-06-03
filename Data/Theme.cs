@@ -4,7 +4,6 @@ using System.IO;
 using Newtonsoft.Json;
 
 using JapaneseTeacher.Properties;
-using System.Windows.Forms;
 
 namespace JapaneseTeacher.Data
 {
