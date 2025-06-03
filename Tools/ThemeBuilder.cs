@@ -63,8 +63,39 @@ namespace JapaneseTeacher.Tools
 
         private void MoveControls()
         {
-            var x = (_form.Size.Width - _moduleHeader.Size.Width) / 2;
-            _moduleHeader.Location = new Point(x, 10);
+            var startX = (_form.Size.Width - _moduleHeader.Size.Width) / 2;
+            _moduleHeader.Location = new Point(startX, 10);
+
+            var bodyStartX = startX + _moduleHeader.Size.Width / 2 - 200;
+            var bodyStartY = 150;
+            var dx = 90;
+            var dy = 150;
+            
+            for (int i = 0; i < _buttonLevels.Count; i++)
+            {
+                var button = _buttonLevels[i];
+
+                int x = bodyStartX;
+                int y = bodyStartY + dy * i;
+
+                int t = i % 4;
+                switch(t)
+                {
+                    case 1:
+                    case 3:
+                        {
+                            x += dx;
+                            break;
+                        }
+                    case 2:
+                        {
+                            x += dx * 2;
+                            break;
+                        }
+                }
+
+                button.Location = new Point(x, y);
+            }
         }
 
         private void Form_Resize(object sender, EventArgs e)
