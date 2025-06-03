@@ -15,7 +15,8 @@ namespace JapaneseTeacher.Data
         public string Description;
         public Color Color;
 
-        private List<Level> Levels;
+        [JsonProperty("_levels")]
+        private List<Level> _levels;
         private VocabularySet VocabularySet;
 
         public Theme(string name)
@@ -49,7 +50,7 @@ namespace JapaneseTeacher.Data
 
         public List<Level> GetLevels()
         {
-            return Levels.ToList();
+            return _levels.ToList();
         }
     }
 }
