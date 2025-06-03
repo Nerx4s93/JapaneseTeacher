@@ -10,13 +10,6 @@ namespace JapaneseTeacher.Data
     {
         private readonly Random _random = new Random();
                 
-        public VocabularySet(string name)
-        {
-            _name = name;
-        }
-
-        [JsonProperty("Name")]
-        private string _name;
         [JsonProperty("Words")]
         private List<Word> _words;
 
