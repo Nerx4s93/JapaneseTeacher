@@ -15,7 +15,7 @@ namespace JapaneseTeacher.UI
 
         private Color _defaultColor;
         private Color _defaultBottomColor;
-        private Color _starColor;
+        private Color _iconColor;
 
         private bool _mouseDown;
 
@@ -51,12 +51,12 @@ namespace JapaneseTeacher.UI
         {
             get
             {
-                return _starColor;
+                return _iconColor;
             }
             set
             {
-                _starColor = value;
-                _starBrush = new SolidBrush(_starColor);
+                _iconColor = value;
+                _starBrush = new SolidBrush(_iconColor);
             }
         }
 
