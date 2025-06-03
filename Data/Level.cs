@@ -3,7 +3,7 @@
     internal class Level
     {
         public string LevelId;
-        public int CumpletedSublevels;
+        public int CompletedSublevels;
         public int TotalSublevels;
     }
 }
