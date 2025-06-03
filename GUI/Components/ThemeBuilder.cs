@@ -79,30 +79,14 @@ namespace JapaneseTeacher.Components
             var bodyStartY = 150;
             var dx = 50;
             var dy = 110;
-            
+
+            int[] xOffsets = { 0, dx, 2 * dx, dx };
+
             for (int i = 0; i < _buttonLevels.Count; i++)
             {
                 var button = _buttonLevels[i];
-
-                int x = bodyStartX;
-                int y = bodyStartY + dy * i;
-
-                int t = i % 4;
-                switch(t)
-                {
-                    case 1:
-                    case 3:
-                        {
-                            x += dx;
-                            break;
-                        }
-                    case 2:
-                        {
-                            x += dx * 2;
-                            break;
-                        }
-                }
-
+                var x = bodyStartX + xOffsets[i % 4];
+                var y = bodyStartY + dy * i;
                 button.Location = new Point(x, y);
             }
         }
