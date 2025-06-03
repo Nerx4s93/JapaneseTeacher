@@ -15,7 +15,7 @@ namespace JapaneseTeacher.Data
         public string Description;
         public Color Color;
 
-        [JsonProperty("_levels")]
+        [JsonProperty("Levels")]
         private List<Level> _levels;
         private VocabularySet VocabularySet;
 
