@@ -23,6 +23,7 @@ namespace JapaneseTeacher.GUI.Components
         private string _levelId;
 
         private FlatProgressBar _flatProgressBar;
+        private Label _labelTask;
 
         public void LoadLevel(Theme theme, string levelId)
         {
@@ -40,10 +41,17 @@ namespace JapaneseTeacher.GUI.Components
         private void AdjustControls()
         {
             _flatProgressBar = new FlatProgressBar();
-            _flatProgressBar.MaxValue = 30;
             _flatProgressBar.Tag = 2;
+            _flatProgressBar.MaxValue = 30;
+
+            _labelTask = new Label();
+            _labelTask.Tag = 2;
+            _labelTask.Font = new Font("Microsoft Sans Serif", 28f);
+            _labelTask.AutoSize = true;
+            _labelTask.Text = "Task";
 
             _form.Controls.Add(_flatProgressBar);
+            _form.Controls.Add(_labelTask);
             Form_Resize(null, null);
         }
 
@@ -51,6 +59,16 @@ namespace JapaneseTeacher.GUI.Components
         {
             _flatProgressBar.Size = new Size(_form.Width * 8 / 10, 20);
             _flatProgressBar.Location = new Point((_form.Size.Width - _flatProgressBar.Width) / 2, 20);
+
+            using (Graphics graphics = _form.CreateGraphics())
+            {
+                var textSize = graphics.MeasureString(_labelTask.Text, _labelTask.Font);
+
+                int x = (_form.Width - (int)textSize.Width) / 2;
+                int y = (_form.Height / 2) - 100;
+
+                _labelTask.Location = new Point(x, y);
+            }
         }
 
         private void Form_Resize(object sender, EventArgs e)
