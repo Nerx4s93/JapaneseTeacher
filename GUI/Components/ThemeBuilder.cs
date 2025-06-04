@@ -19,7 +19,6 @@ namespace JapaneseTeacher.Components
         private ModuleHeader _moduleHeader = new ModuleHeader();
         private List<ButtonLevel> _buttonLevels = new List<ButtonLevel>();
 
-        private bool _update;
         private int _scrollPosition = 0;
         private int _maxScrollPosition = 0;
 
@@ -30,7 +29,6 @@ namespace JapaneseTeacher.Components
 
         public void Build(Theme theme)
         {
-            _update = true;
             AdjustControls(theme);
             _form.Resize += Form_Resize;
             _form.MouseWheel += Form_MouseWheel;
@@ -38,7 +36,6 @@ namespace JapaneseTeacher.Components
 
         public void StopHandle()
         {
-            _update = false;
             _moduleHeader.Dispose();
             foreach (var buttonLevel in _buttonLevels)
             {
@@ -119,18 +116,15 @@ namespace JapaneseTeacher.Components
 
         private void Form_Resize(object sender, EventArgs e)
         {
-            if (_update)
-            {
-                CalculateMaxScrollPosition();
-                _scrollPosition = Math.Max(_maxScrollPosition, _scrollPosition);
-                _scrollPosition = Math.Min(0, _scrollPosition);
-                MoveControls();
-            }
+            CalculateMaxScrollPosition();
+            _scrollPosition = Math.Max(_maxScrollPosition, _scrollPosition);
+            _scrollPosition = Math.Min(0, _scrollPosition);
+            MoveControls();
         }
 
         private void Form_MouseWheel(object sender, MouseEventArgs e)
         {
-            if (!_update || _buttonLevels.Count == 0)
+            if (_buttonLevels.Count == 0)
             {
                 return;
             }
