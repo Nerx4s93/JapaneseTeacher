@@ -21,6 +21,7 @@ namespace JapaneseTeacher.GUI.Components
 
         private Theme _theme;
         private string _levelId;
+        private Word _currentWord;
 
         private FlatProgressBar _flatProgressBar;
         private Label _labelTask;
@@ -32,6 +33,7 @@ namespace JapaneseTeacher.GUI.Components
             _update = true;
             _theme = theme;
             _levelId = levelId;
+            _currentWord = theme.GetNextWord(levelId);
             AdjustControls();
         }
 
@@ -44,6 +46,47 @@ namespace JapaneseTeacher.GUI.Components
             _roundedButton.Dispose();
         }
 
+        #region Проверка ответа
+
+        private void RoundedButton_Click(object sender, EventArgs e)
+        {
+            CheckAnswer();
+        }
+
+        private void TextBoxAnswer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CheckAnswer();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void CheckAnswer()
+        {
+            string userAnswer = _textBoxAnswer.Text.Trim();
+
+            if (userAnswer.Equals(_currentWord.Translation, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Правильно!", "Результат");
+                _theme.UpdateWordStats(_currentWord, true);
+                _textBoxAnswer.Clear();
+                LoadNewWord();
+            }
+            else
+            {
+                MessageBox.Show($"Неверно. Правильный ответ: {_currentWord.Translation}", "Результат");
+                _theme.UpdateWordStats(_currentWord, false);
+            }
+        }
+
+        private void LoadNewWord()
+        {
+            _currentWord = _theme.GetNextWord();
+            _labelTask.Text = $"Напишите перевод. {_currentWord.Translation}";
+        }
+
+        #endregion
         #region Настройка элементов управления
 
         private void AdjustControls()
@@ -56,18 +99,20 @@ namespace JapaneseTeacher.GUI.Components
             _labelTask.Tag = 2;
             _labelTask.Font = new Font("Microsoft Sans Serif", 28f);
             _labelTask.AutoSize = true;
-            _labelTask.Text = "Task";
+            _labelTask.Text = $"Напишите перевод. {_currentWord.Translation}";
 
             _textBoxAnswer = new TextBox();
             _textBoxAnswer.Tag = 2;
             _textBoxAnswer.Font = new Font("Microsoft Sans Serif", 24f);
             _textBoxAnswer.AutoSize = true;
             _textBoxAnswer.Width = 400;
+            _textBoxAnswer.KeyDown += TextBoxAnswer_KeyDown;
 
             _roundedButton = new RoundedButton();
             _roundedButton.Tag = 2;
             _roundedButton.Font = new Font("Microsoft Sans Serif", 18f);
             _roundedButton.Text = "Проверить";
+            _roundedButton.Click += RoundedButton_Click;
 
             _form.Controls.Add(_flatProgressBar);
             _form.Controls.Add(_labelTask);
