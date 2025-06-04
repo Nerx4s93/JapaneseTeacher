@@ -14,6 +14,7 @@ namespace JapaneseTeacher.GUI.Components
         public LevelBuilder(Form form)
         {
             _form = form;
+            _form.Shown += Form_Shown;
             _form.Resize += Form_Resize;
         }
 
@@ -27,6 +28,7 @@ namespace JapaneseTeacher.GUI.Components
         private Label _labelTask;
         private TextBox _textBoxAnswer;
         private RoundedButton _roundedButton;
+        private AnswerResultPanel _answerResultPanel;
 
         public void LoadLevel(Theme theme, string levelId)
         {
@@ -44,6 +46,7 @@ namespace JapaneseTeacher.GUI.Components
             _labelTask.Dispose();
             _textBoxAnswer.Dispose();
             _roundedButton.Dispose();
+            _answerResultPanel.Dispose();
         }
 
         #region Проверка ответа
@@ -55,10 +58,16 @@ namespace JapaneseTeacher.GUI.Components
 
         private void TextBoxAnswer_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && _answerResultPanel.Visible == false)
             {
                 CheckAnswer();
                 e.SuppressKeyPress = true;
+            }
+            else if (_answerResultPanel.Visible == true)
+            {
+                _answerResultPanel.Visible = false;
+                _textBoxAnswer.Clear();
+                LoadNewWord();
             }
         }
 
@@ -69,17 +78,17 @@ namespace JapaneseTeacher.GUI.Components
             if (userAnswer.Equals(_currentWord.Translation, StringComparison.OrdinalIgnoreCase))
             {
                 _flatProgressBar.Value += 1;
-                MessageBox.Show("Правильно!", "Результат");
+                _answerResultPanel.WasCorrect = true;
                 _theme.UpdateWordStats(_currentWord, true);
-                _textBoxAnswer.Clear();
-                LoadNewWord();
             }
             else
             {
                 _flatProgressBar.MaxValue += 4;
-                MessageBox.Show($"Неверно. Правильный ответ: {_currentWord.Translation}", "Результат");
+                _answerResultPanel.WasCorrect = false;
+                _answerResultPanel.Text = $"Неверно. Правильный ответ: {_currentWord.Translation}";
                 _theme.UpdateWordStats(_currentWord, false);
             }
+            _answerResultPanel.Visible = true;
         }
 
         private void LoadNewWord()
@@ -116,10 +125,15 @@ namespace JapaneseTeacher.GUI.Components
             _roundedButton.Text = "Проверить";
             _roundedButton.Click += RoundedButton_Click;
 
+            _answerResultPanel = new AnswerResultPanel();
+            _answerResultPanel.Tag = 2;
+            _answerResultPanel.Visible = false;
+
             _form.Controls.Add(_flatProgressBar);
             _form.Controls.Add(_labelTask);
             _form.Controls.Add(_textBoxAnswer);
             _form.Controls.Add(_roundedButton);
+            _form.Controls.Add(_answerResultPanel);
             Form_Resize(null, null);
         }
 
