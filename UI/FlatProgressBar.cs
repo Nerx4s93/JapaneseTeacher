@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace JapaneseTeacher.UI
 {
-    internal class ProgressBar : Control
+    internal class FlatProgressBar : Control
     {
         private Color _filledColor;
         private Color _unfilledColor;
@@ -39,7 +39,7 @@ namespace JapaneseTeacher.UI
             }
         }
 
-        public ProgressBar()
+        public FlatProgressBar()
         {
             DoubleBuffered = true;
 

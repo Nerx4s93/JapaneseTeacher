@@ -77,7 +77,7 @@
     <Compile Include="UI\ModuleHeader.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UI\ProgressBar.cs">
+    <Compile Include="UI\FlatProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\RoundedButton.cs">
