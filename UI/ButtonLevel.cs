@@ -69,6 +69,8 @@ namespace JapaneseTeacher.UI
 
         public bool Active { get; set; }
 
+        public string Level { get; set; }
+
         public ButtonLevel()
         {
             DoubleBuffered = true;
