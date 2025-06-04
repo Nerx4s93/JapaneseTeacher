@@ -82,7 +82,7 @@ namespace JapaneseTeacher.GUI.Components
 
         private void LoadNewWord()
         {
-            _currentWord = _theme.GetNextWord();
+            _currentWord = _theme.GetNextWord(_levelId);
             _labelTask.Text = $"Напишите перевод: {_currentWord.Text}";
         }
 
