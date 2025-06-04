@@ -6,13 +6,38 @@ namespace JapaneseTeacher.UI
 {
     internal class FlatProgressBar : Control
     {
+        private int _maxValue;
+        private int _value;
+
         private Color _filledColor;
         private Color _unfilledColor;
         private Brush _filledBrush;
         private Brush _unfilledBrush;
 
-        public int MaxValue { get; set; }
-        public int Value { get; set; }
+        public int MaxValue
+        {
+            get
+            {
+                return _maxValue;
+            }
+            set
+            {
+                _maxValue = value;
+                Invalidate();
+            }
+        }
+        public int Value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                _value = value;
+                Invalidate();
+            }
+        }
 
         public Color FilledColor
         {
@@ -24,6 +49,7 @@ namespace JapaneseTeacher.UI
             {
                 _filledColor = value;
                 _filledBrush = new SolidBrush(value);
+                Invalidate();
             }
         }
         public Color UnfilledColor
@@ -36,6 +62,7 @@ namespace JapaneseTeacher.UI
             {
                 _unfilledColor = value;
                 _unfilledBrush = new SolidBrush(value);
+                Invalidate();
             }
         }
 
