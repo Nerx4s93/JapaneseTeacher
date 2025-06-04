@@ -68,6 +68,7 @@ namespace JapaneseTeacher.GUI.Components
 
             if (userAnswer.Equals(_currentWord.Translation, StringComparison.OrdinalIgnoreCase))
             {
+                _flatProgressBar.Value += 1;
                 MessageBox.Show("Правильно!", "Результат");
                 _theme.UpdateWordStats(_currentWord, true);
                 _textBoxAnswer.Clear();
@@ -75,6 +76,7 @@ namespace JapaneseTeacher.GUI.Components
             }
             else
             {
+                _flatProgressBar.MaxValue += 4;
                 MessageBox.Show($"Неверно. Правильный ответ: {_currentWord.Translation}", "Результат");
                 _theme.UpdateWordStats(_currentWord, false);
             }
