@@ -14,10 +14,7 @@ namespace JapaneseTeacher.GUI.Components
         public LevelBuilder(Form form)
         {
             _form = form;
-            _form.Resize += Form_Resize;
         }
-
-        private bool _update;
 
         private Theme _theme;
         private string _levelId;
@@ -31,21 +28,21 @@ namespace JapaneseTeacher.GUI.Components
 
         public void LoadLevel(Theme theme, string levelId)
         {
-            _update = true;
             _theme = theme;
             _levelId = levelId;
             _currentWord = theme.GetNextWord(levelId);
             AdjustControls();
+            _form.Resize += Form_Resize;
         }
 
         public void StopHandle()
         {
-            _update = false;
             _flatProgressBar.Dispose();
             _labelTask.Dispose();
             _textBoxAnswer.Dispose();
             _roundedButton.Dispose();
             _answerResultPanel.Dispose();
+            _form.Resize -= Form_Resize;
         }
 
         #region Проверка ответа
@@ -160,10 +157,7 @@ namespace JapaneseTeacher.GUI.Components
 
         private void Form_Resize(object sender, EventArgs e)
         {
-            if (_update)
-            {
-                MoveControls();
-            }
+            MoveControls();
         }
 
         #endregion
