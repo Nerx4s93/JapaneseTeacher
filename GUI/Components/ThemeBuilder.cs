@@ -26,14 +26,14 @@ namespace JapaneseTeacher.Components
         public ThemeBuilder(Form form)
         {
             _form = form;
-            _form.Resize += Form_Resize;
-            _form.MouseWheel += Form_MouseWheel;
         }
 
         public void Build(Theme theme)
         {
             _update = true;
             AdjustControls(theme);
+            _form.Resize += Form_Resize;
+            _form.MouseWheel += Form_MouseWheel;
         }
 
         public void StopHandle()
@@ -44,6 +44,7 @@ namespace JapaneseTeacher.Components
             {
                 buttonLevel.Dispose();
             }
+            _form.Resize -= Form_Resize;
             _form.MouseWheel -= Form_MouseWheel;
         }
 
