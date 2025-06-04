@@ -1,8 +1,9 @@
-﻿using JapaneseTeacher.Data;
-using JapaneseTeacher.UI;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+
+using JapaneseTeacher.Data;
+using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.GUI.Components
 {
@@ -24,6 +25,7 @@ namespace JapaneseTeacher.GUI.Components
         private FlatProgressBar _flatProgressBar;
         private Label _labelTask;
         private TextBox _textBoxAnswer;
+        private RoundedButton _roundedButton;
 
         public void LoadLevel(Theme theme, string levelId)
         {
@@ -56,9 +58,15 @@ namespace JapaneseTeacher.GUI.Components
             _textBoxAnswer.AutoSize = true;
             _textBoxAnswer.Width = 400;
 
+            _roundedButton = new RoundedButton();
+            _roundedButton.Tag = 2;
+            _roundedButton.Font = new Font("Microsoft Sans Serif", 18f);
+            _roundedButton.Text = "Проверить";
+
             _form.Controls.Add(_flatProgressBar);
             _form.Controls.Add(_labelTask);
             _form.Controls.Add(_textBoxAnswer);
+            _form.Controls.Add(_roundedButton);
             Form_Resize(null, null);
         }
 
@@ -77,6 +85,10 @@ namespace JapaneseTeacher.GUI.Components
                 int textBoxX = (_form.Width - _textBoxAnswer.Width) / 2;
                 int textBoxY = labelY + (int)labelTextSize.Height + 20;
                 _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
+
+                int buttonX = _textBoxAnswer.Right - _roundedButton.Width;
+                int buttonY = _textBoxAnswer.Bottom + 20;
+                _roundedButton.Location = new Point(buttonX, buttonY);
             }
         }
 
