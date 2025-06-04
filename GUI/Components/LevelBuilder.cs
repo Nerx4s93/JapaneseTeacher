@@ -40,6 +40,8 @@ namespace JapaneseTeacher.GUI.Components
             _update = false;
         }
 
+        #region Настройка элементов управления
+
         private void AdjustControls()
         {
             _flatProgressBar = new FlatProgressBar();
@@ -99,5 +101,7 @@ namespace JapaneseTeacher.GUI.Components
                 MoveControls();
             }
         }
+
+        #endregion
     }
 }
