@@ -28,21 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // FormMain
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.CurrentSceneId = 2;
-            this.DoubleBuffered = true;
-            this.Name = "FormMain";
-            this.Text = "Изучение японского";
-            this.Shown += new System.EventHandler(this.FormMain_Shown);
-            this.ResumeLayout(false);
-
+            this.Text = "FormMain";
         }
 
         #endregion

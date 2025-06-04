@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace JapaneseTeacher.GUI.Presenters
 {
-    public partial class SceneForm : Form
+    public partial class SceneFormBase : Form
     {
         private int _currentSceneId = 0;
 

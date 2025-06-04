@@ -1,6 +1,6 @@
 ﻿namespace JapaneseTeacher.GUI.Presenters
 {
-    partial class SceneForm
+    partial class SceneFormBase
     {
         /// <summary>
         /// Required designer variable.

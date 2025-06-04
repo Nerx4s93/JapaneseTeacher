@@ -7,7 +7,7 @@ using JapaneseTeacher.GUI.Presenters;
 
 namespace JapaneseTeacher.GUI
 {
-    internal partial class FormMain : SceneForm
+    internal partial class FormMain : SceneFormBase
     {
         private readonly GlobalData _globeData;
 

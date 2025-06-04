@@ -63,11 +63,11 @@
     <Compile Include="GUI\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Presenters\SceneForm.cs">
+    <Compile Include="GUI\Presenters\SceneFormBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Presenters\SceneForm.Designer.cs">
-      <DependentUpon>SceneForm.cs</DependentUpon>
+    <Compile Include="GUI\Presenters\SceneFormBase.Designer.cs">
+      <DependentUpon>SceneFormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\RoundedRectanglePathCreator.cs" />
     <Compile Include="Program.cs" />
@@ -89,11 +89,8 @@
     <Compile Include="UI\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="GUI\FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Presenters\SceneForm.resx">
-      <DependentUpon>SceneForm.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Presenters\SceneFormBase.resx">
+      <DependentUpon>SceneFormBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
