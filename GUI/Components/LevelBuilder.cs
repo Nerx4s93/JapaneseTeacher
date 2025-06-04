@@ -38,6 +38,10 @@ namespace JapaneseTeacher.GUI.Components
         public void StopHandle()
         {
             _update = false;
+            _flatProgressBar.Dispose();
+            _labelTask.Dispose();
+            _textBoxAnswer.Dispose();
+            _roundedButton.Dispose();
         }
 
         #region Настройка элементов управления
