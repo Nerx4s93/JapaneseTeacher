@@ -33,6 +33,11 @@ namespace JapaneseTeacher.Components
         public void StopHandle()
         {
             _update = false;
+            _moduleHeader.Dispose();
+            foreach (var buttonLevel in _buttonLevels)
+            {
+                buttonLevel.Dispose();
+            }
         }
 
         private void AdjustControls(Theme theme)
