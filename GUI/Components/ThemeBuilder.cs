@@ -68,6 +68,7 @@ namespace JapaneseTeacher.Components
                 button.Tag = 1;
                 button.Active = active;
                 button.Level = level.LevelId;
+                button.Click += Button_Click;
 
                 if (level.CompletedSublevels != level.TotalSublevels)
                 {
@@ -142,5 +143,14 @@ namespace JapaneseTeacher.Components
                 MoveControls();
             }
         }
+
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            LevelButtonClick.Invoke(sender);
+        }
+
+        public delegate void LevelButtonClickEventHandler(object sender);
+        public event LevelButtonClickEventHandler LevelButtonClick;
     }
 }
