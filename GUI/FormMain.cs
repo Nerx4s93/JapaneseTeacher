@@ -4,6 +4,7 @@ using JapaneseTeacher.Components;
 using JapaneseTeacher.Data;
 using JapaneseTeacher.GUI.Components;
 using JapaneseTeacher.GUI.Presenters;
+using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.GUI
 {
@@ -19,13 +20,23 @@ namespace JapaneseTeacher.GUI
             InitializeComponent();
             _globeData = globalData;
             _themeBuilder = new ThemeBuilder(this);
+            _themeBuilder.LevelButtonClick += ThemeBuilder_LevelButtonClick;
             _levelBuilder = new LevelBuilder(this);
         }
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
             var theme = _globeData.GetThemeByName("Hiragana");
-            _levelBuilder.LoadLevel(theme, "1");
+            _themeBuilder.Build(theme);
+        }
+
+        private void ThemeBuilder_LevelButtonClick(object sender)
+        {
+            CurrentSceneId = 2;
+            _themeBuilder.StopHandle();
+            var theme = _globeData.GetThemeByName("Hiragana");
+            var level = (sender as ButtonLevel).Level;
+            _levelBuilder.LoadLevel(theme, level);
         }
     }
 }
