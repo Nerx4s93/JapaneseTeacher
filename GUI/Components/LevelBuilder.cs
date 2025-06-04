@@ -1,9 +1,8 @@
-﻿using System;
+﻿using JapaneseTeacher.Data;
+using JapaneseTeacher.UI;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-
-using JapaneseTeacher.Data;
-using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.GUI.Components
 {
@@ -24,6 +23,7 @@ namespace JapaneseTeacher.GUI.Components
 
         private FlatProgressBar _flatProgressBar;
         private Label _labelTask;
+        private TextBox _textBoxAnswer;
 
         public void LoadLevel(Theme theme, string levelId)
         {
@@ -50,8 +50,15 @@ namespace JapaneseTeacher.GUI.Components
             _labelTask.AutoSize = true;
             _labelTask.Text = "Task";
 
+            _textBoxAnswer = new TextBox();
+            _textBoxAnswer.Tag = 2;
+            _textBoxAnswer.Font = new Font("Microsoft Sans Serif", 24f);
+            _textBoxAnswer.AutoSize = true;
+            _textBoxAnswer.Width = 400;
+
             _form.Controls.Add(_flatProgressBar);
             _form.Controls.Add(_labelTask);
+            _form.Controls.Add(_textBoxAnswer);
             Form_Resize(null, null);
         }
 
@@ -62,12 +69,14 @@ namespace JapaneseTeacher.GUI.Components
 
             using (Graphics graphics = _form.CreateGraphics())
             {
-                var textSize = graphics.MeasureString(_labelTask.Text, _labelTask.Font);
+                var labelTextSize = graphics.MeasureString(_labelTask.Text, _labelTask.Font);
+                int labelX = (_form.Width - (int)labelTextSize.Width) / 2;
+                int labelY = (_form.Height / 2) - 100;
+                _labelTask.Location = new Point(labelX, labelY);
 
-                int x = (_form.Width - (int)textSize.Width) / 2;
-                int y = (_form.Height / 2) - 100;
-
-                _labelTask.Location = new Point(x, y);
+                int textBoxX = (_form.Width - _textBoxAnswer.Width) / 2;
+                int textBoxY = labelY + (int)labelTextSize.Height + 20;
+                _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
             }
         }
 
