@@ -10,24 +10,30 @@ namespace JapaneseTeacher.Components
 {
     internal class ThemeBuilder
     {
-        private readonly Form _form;
+        private const int ScrollStep = 30;
+        private const int HeaderHeight = 150;
+        private const int ButtonSpacing = 110;
 
-        public ThemeBuilder(Form form)
-        {
-            _form = form;
-            _form.Resize += Form_Resize;
-        }
+        private readonly Form _form;
 
         private ModuleHeader _moduleHeader = new ModuleHeader();
         private List<ButtonLevel> _buttonLevels = new List<ButtonLevel>();
 
         private bool _update;
+        private int _scrollPosition = 0;
+        private int _maxScrollPosition = 0;
+
+        public ThemeBuilder(Form form)
+        {
+            _form = form;
+            _form.Resize += Form_Resize;
+            _form.MouseWheel += Form_MouseWheel;
+        }
 
         public void Build(Theme theme)
         {
             _update = true;
             AdjustControls(theme);
-
         }
 
         public void StopHandle()
@@ -38,6 +44,7 @@ namespace JapaneseTeacher.Components
             {
                 buttonLevel.Dispose();
             }
+            _form.MouseWheel -= Form_MouseWheel;
         }
 
         private void AdjustControls(Theme theme)
@@ -47,6 +54,7 @@ namespace JapaneseTeacher.Components
             {
                 buttonLevel.Dispose();
             }
+            _buttonLevels.Clear();
 
             _moduleHeader = new ModuleHeader();
             _moduleHeader.Size = new Size(700, 110);
@@ -72,7 +80,20 @@ namespace JapaneseTeacher.Components
             }
 
             _form.Controls.Add(_moduleHeader);
+            _scrollPosition = 0;
+            CalculateMaxScrollPosition();
             Form_Resize(null, null);
+        }
+
+        private void CalculateMaxScrollPosition()
+        {
+            if (_buttonLevels.Count == 0)
+            {
+                return;
+            }
+
+            int totalHeight = HeaderHeight + (_buttonLevels.Count * ButtonSpacing);
+            _maxScrollPosition = Math.Min(0, _form.ClientSize.Height - totalHeight);
         }
 
         private void MoveControls()
@@ -81,9 +102,8 @@ namespace JapaneseTeacher.Components
             _moduleHeader.Location = new Point(startX, 10);
 
             var bodyStartX = startX + _moduleHeader.Size.Width / 2 - 200;
-            var bodyStartY = 150;
+            var bodyStartY = HeaderHeight;
             var dx = 50;
-            var dy = 110;
 
             int[] xOffsets = { 0, dx, 2 * dx, dx };
 
@@ -91,7 +111,7 @@ namespace JapaneseTeacher.Components
             {
                 var button = _buttonLevels[i];
                 var x = bodyStartX + xOffsets[i % 4];
-                var y = bodyStartY + dy * i;
+                var y = bodyStartY + ButtonSpacing * i + _scrollPosition;
                 button.Location = new Point(x, y);
             }
         }
@@ -100,6 +120,29 @@ namespace JapaneseTeacher.Components
         {
             if (_update)
             {
+                CalculateMaxScrollPosition();
+                _scrollPosition = Math.Max(_maxScrollPosition, _scrollPosition);
+                _scrollPosition = Math.Min(0, _scrollPosition);
+                MoveControls();
+            }
+        }
+
+        private void Form_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (!_update || _buttonLevels.Count == 0)
+            {
+                return;
+            }
+
+            int delta = e.Delta > 0 ? ScrollStep : -ScrollStep;
+            int newPosition = _scrollPosition + delta;
+
+            newPosition = Math.Max(_maxScrollPosition, newPosition);
+            newPosition = Math.Min(0, newPosition);
+
+            if (newPosition != _scrollPosition)
+            {
+                _scrollPosition = newPosition;
                 MoveControls();
             }
         }
