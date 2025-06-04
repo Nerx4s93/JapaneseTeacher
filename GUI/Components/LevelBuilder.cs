@@ -14,7 +14,6 @@ namespace JapaneseTeacher.GUI.Components
         public LevelBuilder(Form form)
         {
             _form = form;
-            _form.Shown += Form_Shown;
             _form.Resize += Form_Resize;
         }
 
