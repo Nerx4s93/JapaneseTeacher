@@ -67,6 +67,7 @@ namespace JapaneseTeacher.Components
                 var button = new ButtonLevel();
                 button.Tag = 1;
                 button.Active = active;
+                button.Level = level.LevelId;
 
                 if (level.CompletedSublevels != level.TotalSublevels)
                 {
