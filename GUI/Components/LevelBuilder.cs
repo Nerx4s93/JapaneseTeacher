@@ -83,7 +83,7 @@ namespace JapaneseTeacher.GUI.Components
         private void LoadNewWord()
         {
             _currentWord = _theme.GetNextWord();
-            _labelTask.Text = $"Напишите перевод. {_currentWord.Translation}";
+            _labelTask.Text = $"Напишите перевод: {_currentWord.Text}";
         }
 
         #endregion
@@ -99,7 +99,7 @@ namespace JapaneseTeacher.GUI.Components
             _labelTask.Tag = 2;
             _labelTask.Font = new Font("Microsoft Sans Serif", 28f);
             _labelTask.AutoSize = true;
-            _labelTask.Text = $"Напишите перевод. {_currentWord.Translation}";
+            _labelTask.Text = $"Напишите перевод: {_currentWord.Text}";
 
             _textBoxAnswer = new TextBox();
             _textBoxAnswer.Tag = 2;
