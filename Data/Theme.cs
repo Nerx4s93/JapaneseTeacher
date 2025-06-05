@@ -55,6 +55,13 @@ namespace JapaneseTeacher.Data
             return _levels.ToList();
         }
 
+        public void CompliteLevel(string levelId)
+        {
+            var level = _levels.First(x => x.LevelId == levelId);
+            level.CompletedSublevels += 1;
+            SaveToFile();
+        }
+
         public Word GetNextWord() => _vocabularySet.GetNextWord();
         public Word GetNextWord(string level) => _vocabularySet.GetNextWord(level);
         public void UpdateWordStats(Word word, bool wasCorrect) => _vocabularySet.UpdateWordStats(word, wasCorrect);
