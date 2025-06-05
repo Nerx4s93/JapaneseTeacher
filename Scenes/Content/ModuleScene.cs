@@ -65,7 +65,7 @@ namespace JapaneseTeacher.Scenes.Content
             foreach (var level in levels)
             {
                 var button = new ButtonLevel();
-                button.ComplitePercent = (float)level.CompletedSublevels / (float)level.TotalSublevels * 90f;
+                button.ComplitePercent = (float)level.CompletedSublevels / (float)level.TotalSublevels * 100f;
                 button.Tag = 1;
                 button.Active = active;
                 button.Level = level.LevelId;
