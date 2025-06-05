@@ -8,7 +8,7 @@ using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.Scenes.Content
 {
-    internal class ThemeScene : Scene
+    internal class ModuleScene : Scene
     {
         private const int ScrollStep = 30;
         private const int HeaderHeight = 150;

@@ -76,7 +76,7 @@ namespace JapaneseTeacher.Scenes.Content
                 if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
                 {
                     _theme.CompliteLevel(_levelId);
-                    SceneManager.LoadScene(new ThemeScene(), new object[2] { _form, _theme });
+                    SceneManager.LoadScene(new ModuleScene(), new object[2] { _form, _theme });
                 }
             }
             else
