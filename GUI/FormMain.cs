@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Windows.Forms;
 
 using JapaneseTeacher.Components;
 using JapaneseTeacher.Data;
 using JapaneseTeacher.GUI.Components;
-using JapaneseTeacher.GUI.Presenters;
 using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.GUI
 {
-    internal partial class FormMain : SceneFormBase
+    internal partial class FormMain : Form
     {
         private readonly GlobalData _globeData;
 
@@ -35,7 +35,6 @@ namespace JapaneseTeacher.GUI
 
         private void ThemeBuilder_LevelButtonClick(object sender)
         {
-            CurrentSceneId = 2;
             _themeBuilder.StopHandle();
             var theme = _globeData.GetThemeByName("Hiragana");
             var level = (sender as ButtonLevel).Level;
@@ -44,7 +43,6 @@ namespace JapaneseTeacher.GUI
 
         private void LevelBuilder_CompleteLevel(Theme theme, string level)
         {
-            CurrentSceneId = 1;
             _levelBuilder.StopHandle();
             _themeBuilder.Build(theme);
         }

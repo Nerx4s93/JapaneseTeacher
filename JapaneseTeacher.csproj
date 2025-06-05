@@ -60,12 +60,6 @@
     <Compile Include="GUI\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Presenters\SceneFormBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Presenters\SceneFormBase.Designer.cs">
-      <DependentUpon>SceneFormBase.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tools\RoundedRectanglePathCreator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,9 +82,6 @@
     </Compile>
     <EmbeddedResource Include="GUI\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Presenters\SceneFormBase.resx">
-      <DependentUpon>SceneFormBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

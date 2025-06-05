@@ -36,7 +36,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.CurrentSceneId = 1;
             this.Name = "FormMain";
             this.Text = "FormMain";
             this.Shown += new System.EventHandler(this.FormMain_Shown);
