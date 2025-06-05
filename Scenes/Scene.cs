@@ -9,7 +9,7 @@
         
         public void SendMessage(object[] args)
         {
-            SceneManager.OnGetMessage?.Invoke(this, args);
+            SceneManager.SendMessage(this, args);
         }
     }
 }

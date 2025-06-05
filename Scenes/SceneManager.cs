@@ -16,7 +16,12 @@
             scene.Start(args);
         }
 
+        public void SendMessage(object sendler, object[] args)
+        {
+            OnGetMessage?.Invoke(this, args);
+        }
+
         public delegate void GetMessageEventHandler(object sendler, object[] args);
-        public GetMessageEventHandler OnGetMessage;
+        public event GetMessageEventHandler OnGetMessage;
     }
 }
