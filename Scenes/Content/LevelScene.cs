@@ -21,6 +21,9 @@ namespace JapaneseTeacher.Scenes.Content
         private RoundedButton _roundedButton;
         private AnswerResultPanel _answerResultPanel;
 
+        private int _totalAnswers;
+        private int _wrongAnswers;
+
         public override void Start(object[] args)
         {
             _mainControl = args[0] as Control;
@@ -81,11 +84,13 @@ namespace JapaneseTeacher.Scenes.Content
             }
             else
             {
+                _wrongAnswers += 1;
                 _flatProgressBar.MaxValue += 4;
                 _answerResultPanel.WasCorrect = false;
                 _answerResultPanel.Text = $"Неверно. Правильный ответ: {_currentWord.Translation}";
                 _theme.UpdateWordStats(_currentWord, false);
             }
+            _totalAnswers += 1;
             _answerResultPanel.Visible = true;
         }
 
