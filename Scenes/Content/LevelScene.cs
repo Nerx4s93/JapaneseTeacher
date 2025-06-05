@@ -9,7 +9,7 @@ namespace JapaneseTeacher.Scenes.Content
 {
     internal class LevelScene : Scene
     {
-        private Form _form;
+        private Control _mainControl;
 
         private Module _theme;
         private string _levelId;
@@ -23,12 +23,12 @@ namespace JapaneseTeacher.Scenes.Content
 
         public override void Start(object[] args)
         {
-            _form = args[0] as Form;
+            _mainControl = args[0] as Form;
             _theme = args[1] as Module;
             _levelId = args[2] as string;
             _currentWord = _theme.GetNextWord(_levelId);
             AdjustControls();
-            _form.Resize += Form_Resize;
+            _mainControl.Resize += Form_Resize;
         }
 
         public override void Stop()
@@ -38,7 +38,7 @@ namespace JapaneseTeacher.Scenes.Content
             _textBoxAnswer.Dispose();
             _roundedButton.Dispose();
             _answerResultPanel.Dispose();
-            _form.Resize -= Form_Resize;
+            _mainControl.Resize -= Form_Resize;
         }
 
         #region Проверка ответа
@@ -76,7 +76,7 @@ namespace JapaneseTeacher.Scenes.Content
                 if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
                 {
                     _theme.CompliteLevel(_levelId);
-                    SceneManager.LoadScene(new ModuleScene(), new object[2] { _form, _theme });
+                    SceneManager.LoadScene(new ModuleScene(), new object[2] { _mainControl, _theme });
                 }
             }
             else
@@ -127,27 +127,27 @@ namespace JapaneseTeacher.Scenes.Content
             _answerResultPanel.Tag = 2;
             _answerResultPanel.Visible = false;
 
-            _form.Controls.Add(_flatProgressBar);
-            _form.Controls.Add(_labelTask);
-            _form.Controls.Add(_textBoxAnswer);
-            _form.Controls.Add(_roundedButton);
-            _form.Controls.Add(_answerResultPanel);
+            _mainControl.Controls.Add(_flatProgressBar);
+            _mainControl.Controls.Add(_labelTask);
+            _mainControl.Controls.Add(_textBoxAnswer);
+            _mainControl.Controls.Add(_roundedButton);
+            _mainControl.Controls.Add(_answerResultPanel);
             Form_Resize(null, null);
         }
 
         private void MoveControls()
         {
-            _flatProgressBar.Size = new Size(_form.Width * 8 / 10, 20);
-            _flatProgressBar.Location = new Point((_form.Size.Width - _flatProgressBar.Width) / 2, 20);
+            _flatProgressBar.Size = new Size(_mainControl.Width * 8 / 10, 20);
+            _flatProgressBar.Location = new Point((_mainControl.Size.Width - _flatProgressBar.Width) / 2, 20);
 
-            using (Graphics graphics = _form.CreateGraphics())
+            using (Graphics graphics = _mainControl.CreateGraphics())
             {
                 var labelTextSize = graphics.MeasureString(_labelTask.Text, _labelTask.Font);
-                int labelX = (_form.Width - (int)labelTextSize.Width) / 2;
-                int labelY = (_form.Height / 2) - 100;
+                int labelX = (_mainControl.Width - (int)labelTextSize.Width) / 2;
+                int labelY = (_mainControl.Height / 2) - 100;
                 _labelTask.Location = new Point(labelX, labelY);
 
-                int textBoxX = (_form.Width - _textBoxAnswer.Width) / 2;
+                int textBoxX = (_mainControl.Width - _textBoxAnswer.Width) / 2;
                 int textBoxY = labelY + (int)labelTextSize.Height + 20;
                 _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
 

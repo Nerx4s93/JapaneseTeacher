@@ -14,7 +14,7 @@ namespace JapaneseTeacher.Scenes.Content
         private const int HeaderHeight = 150;
         private const int ButtonSpacing = 110;
 
-        private Form _form;
+        private Control _mainControl;
         private Module _theme;
 
         private ModuleHeader _moduleHeader = new ModuleHeader();
@@ -25,12 +25,12 @@ namespace JapaneseTeacher.Scenes.Content
 
         public override void Start(object[] args)
         {
-            _form = args[0] as Form;
+            _mainControl = args[0] as Form;
             _theme = args[1] as Module;
 
             AdjustControls(_theme);
-            _form.Resize += Form_Resize;
-            _form.MouseWheel += Form_MouseWheel;
+            _mainControl.Resize += Form_Resize;
+            _mainControl.MouseWheel += Form_MouseWheel;
         }
 
         public override void Stop()
@@ -40,8 +40,8 @@ namespace JapaneseTeacher.Scenes.Content
             {
                 buttonLevel.Dispose();
             }
-            _form.Resize -= Form_Resize;
-            _form.MouseWheel -= Form_MouseWheel;
+            _mainControl.Resize -= Form_Resize;
+            _mainControl.MouseWheel -= Form_MouseWheel;
         }
 
         private void AdjustControls(Module theme)
@@ -58,7 +58,7 @@ namespace JapaneseTeacher.Scenes.Content
             _moduleHeader.Tag = 1;
             _moduleHeader.Theme = theme.Name;
             _moduleHeader.Description = theme.Description;
-            _form.Controls.Add(_moduleHeader);
+            _mainControl.Controls.Add(_moduleHeader);
 
             var levels = theme.GetLevels();
             bool active = true;
@@ -77,7 +77,7 @@ namespace JapaneseTeacher.Scenes.Content
                 }
 
                 _buttonLevels.Add(button);
-                _form.Controls.Add(button);
+                _mainControl.Controls.Add(button);
             }
 
             _scrollPosition = 0;
@@ -93,12 +93,12 @@ namespace JapaneseTeacher.Scenes.Content
             }
 
             int totalHeight = HeaderHeight + (_buttonLevels.Count * ButtonSpacing);
-            _maxScrollPosition = Math.Min(0, _form.ClientSize.Height - totalHeight);
+            _maxScrollPosition = Math.Min(0, _mainControl.ClientSize.Height - totalHeight);
         }
 
         private void MoveControls()
         {
-            var startX = (_form.Size.Width - _moduleHeader.Size.Width) / 2;
+            var startX = (_mainControl.Size.Width - _moduleHeader.Size.Width) / 2;
             _moduleHeader.Location = new Point(startX, 10);
 
             var bodyStartX = startX + _moduleHeader.Size.Width / 2 - 200;
@@ -149,7 +149,7 @@ namespace JapaneseTeacher.Scenes.Content
         {
             var button = sender as ButtonLevel;
             var level = button.Level;
-            SceneManager.LoadScene(new LevelScene(), new object[3] { _form, _theme, level });
+            SceneManager.LoadScene(new LevelScene(), new object[3] { _mainControl, _theme, level });
         }
     }
 }
