@@ -58,6 +58,7 @@ namespace JapaneseTeacher.Scenes.Content
             _moduleHeader.Tag = 1;
             _moduleHeader.Theme = theme.Name;
             _moduleHeader.Description = theme.Description;
+            _form.Controls.Add(_moduleHeader);
 
             var levels = theme.GetLevels();
             bool active = true;
@@ -79,7 +80,6 @@ namespace JapaneseTeacher.Scenes.Content
                 _form.Controls.Add(button);
             }
 
-            _form.Controls.Add(_moduleHeader);
             _scrollPosition = 0;
             CalculateMaxScrollPosition();
             Form_Resize(null, null);
