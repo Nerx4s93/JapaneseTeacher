@@ -11,7 +11,7 @@ namespace JapaneseTeacher.Scenes.Content
     {
         private Form _form;
 
-        private Theme _theme;
+        private Module _theme;
         private string _levelId;
         private Word _currentWord;
 
@@ -24,7 +24,7 @@ namespace JapaneseTeacher.Scenes.Content
         public override void Start(object[] args)
         {
             _form = args[0] as Form;
-            _theme = args[1] as Theme;
+            _theme = args[1] as Module;
             _levelId = args[2] as string;
             _currentWord = _theme.GetNextWord(_levelId);
             AdjustControls();

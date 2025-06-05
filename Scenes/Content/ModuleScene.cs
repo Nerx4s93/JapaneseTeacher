@@ -15,7 +15,7 @@ namespace JapaneseTeacher.Scenes.Content
         private const int ButtonSpacing = 110;
 
         private Form _form;
-        private Theme _theme;
+        private Module _theme;
 
         private ModuleHeader _moduleHeader = new ModuleHeader();
         private List<ButtonLevel> _buttonLevels = new List<ButtonLevel>();
@@ -26,7 +26,7 @@ namespace JapaneseTeacher.Scenes.Content
         public override void Start(object[] args)
         {
             _form = args[0] as Form;
-            _theme = args[1] as Theme;
+            _theme = args[1] as Module;
 
             AdjustControls(_theme);
             _form.Resize += Form_Resize;
@@ -44,7 +44,7 @@ namespace JapaneseTeacher.Scenes.Content
             _form.MouseWheel -= Form_MouseWheel;
         }
 
-        private void AdjustControls(Theme theme)
+        private void AdjustControls(Module theme)
         {
             _moduleHeader.Dispose();
             foreach (var buttonLevel in _buttonLevels)
