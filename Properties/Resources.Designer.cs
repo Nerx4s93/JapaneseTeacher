@@ -61,21 +61,11 @@ namespace JapaneseTeacher.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на [{&quot;Level&quot;:&quot;1&quot;,&quot;Text&quot;:&quot;あ&quot;,&quot;Translation&quot;:&quot;a&quot;,&quot;Encounters&quot;:0,&quot;Mistakes&quot;:0,&quot;StreakForMistakes&quot;:0,&quot;Streak&quot;:0,&quot;TimesNotSeen&quot;:0},{&quot;Level&quot;:&quot;1&quot;,&quot;Text&quot;:&quot;か&quot;,&quot;Translation&quot;:&quot;ka&quot;,&quot;Encounters&quot;:0,&quot;Mistakes&quot;:0,&quot;StreakForMistakes&quot;:0,&quot;Streak&quot;:0,&quot;TimesNotSeen&quot;:0},{&quot;Level&quot;:&quot;1&quot;,&quot;Text&quot;:&quot;し&quot;,&quot;Translation&quot;:&quot;shi&quot;,&quot;Encounters&quot;:0,&quot;Mistakes&quot;:0,&quot;StreakForMistakes&quot;:0,&quot;Streak&quot;:0,&quot;TimesNotSeen&quot;:0},{&quot;Level&quot;:&quot;1&quot;,&quot;Text&quot;:&quot;つ&quot;,&quot;Translation&quot;:&quot;tsu&quot;,&quot;Encounters&quot;:0,&quot;Mistakes&quot;:0,&quot;StreakForMistakes&quot;:0,&quot;Streak&quot;:0,&quot;TimesNotSeen&quot;:0},{&quot;Level&quot;:&quot;1&quot;,&quot;Text&quot;:&quot;ね [остаток строки не уместился]&quot;;.
+        ///   Ищет локализованную строку, похожую на { &quot;Name&quot;: &quot;Hiragana&quot;, &quot;Description&quot;:  &quot;Изучение алфавита Хирагана&quot;, &quot;Color&quot;:  &quot;Orange&quot;, &quot;Levels&quot;: [ { &quot;LevelId&quot;: &quot;1&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 }, { &quot;LevelId&quot;: &quot;2&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 }, { &quot;LevelId&quot;: &quot;3&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 }, { &quot;LevelId&quot;: &quot;4&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 }, { &quot;LevelId&quot;: &quot;5&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 }, { &quot;LevelId&quot;: &quot;6&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 } ], &quot;VocabularySet [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string Hiragana {
             get {
                 return ResourceManager.GetString("Hiragana", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MainFon {
-            get {
-                object obj = ResourceManager.GetObject("MainFon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
