@@ -25,7 +25,7 @@ namespace JapaneseTeacher.Scenes.Content
 
         public override void Start(object[] args)
         {
-            _mainControl = args[0] as Form;
+            _mainControl = args[0] as Control;
             _theme = args[1] as Module;
 
             AdjustControls(_theme);

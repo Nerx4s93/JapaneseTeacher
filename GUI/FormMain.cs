@@ -23,7 +23,7 @@ namespace JapaneseTeacher.GUI
         private void FormMain_Shown(object sender, EventArgs e)
         {
             var theme = _globeData.GetThemeByName("Hiragana");
-            _sceneManager.LoadScene(new ModuleScene(), new object[2] { this, theme });
+            _sceneManager.LoadScene(new ModuleScene(), new object[2] { panelBody, theme });
         }
 
         private void SceneManager_OnGetMessage(object sendler, object[] args)

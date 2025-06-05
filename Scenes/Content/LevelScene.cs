@@ -23,7 +23,7 @@ namespace JapaneseTeacher.Scenes.Content
 
         public override void Start(object[] args)
         {
-            _mainControl = args[0] as Form;
+            _mainControl = args[0] as Control;
             _theme = args[1] as Module;
             _levelId = args[2] as string;
             _currentWord = _theme.GetNextWord(_levelId);
