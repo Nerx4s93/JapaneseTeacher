@@ -1,50 +1,28 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using JapaneseTeacher.Components;
 using JapaneseTeacher.Data;
-using JapaneseTeacher.GUI.Components;
-using JapaneseTeacher.UI;
+using JapaneseTeacher.Scenes;
+using JapaneseTeacher.Scenes.Content;
 
 namespace JapaneseTeacher.GUI
 {
     internal partial class FormMain : Form
     {
         private readonly GlobalData _globeData;
-
-        private readonly ThemeBuilder _themeBuilder;
-        private readonly LevelBuilder _levelBuilder;
+        private readonly SceneManager _sceneManager;
 
         public FormMain(GlobalData globalData)
         {
             InitializeComponent();
             _globeData = globalData;
-
-            _themeBuilder = new ThemeBuilder(this);
-            _themeBuilder.LevelButtonClick += ThemeBuilder_LevelButtonClick;
-
-            _levelBuilder = new LevelBuilder(this);
-            _levelBuilder.CompleteLevel += LevelBuilder_CompleteLevel;
+            _sceneManager = new SceneManager();
         }
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
             var theme = _globeData.GetThemeByName("Hiragana");
-            _themeBuilder.Build(theme);
-        }
-
-        private void ThemeBuilder_LevelButtonClick(object sender)
-        {
-            _themeBuilder.StopHandle();
-            var theme = _globeData.GetThemeByName("Hiragana");
-            var level = (sender as ButtonLevel).Level;
-            _levelBuilder.LoadLevel(theme, level);
-        }
-
-        private void LevelBuilder_CompleteLevel(Theme theme, string level)
-        {
-            _levelBuilder.StopHandle();
-            _themeBuilder.Build(theme);
+            _sceneManager.LoadScene(new ThemeScene(), new object[2] { this, theme });
         }
     }
 }

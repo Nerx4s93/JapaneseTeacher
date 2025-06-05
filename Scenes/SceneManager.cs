@@ -2,9 +2,17 @@
 {
     internal class SceneManager
     {
-        public void LoadScene()
-        {
+        private Scene _lastScene;
 
+        public void LoadScene(Scene scene, object[] args)
+        {
+            if (_lastScene != null)
+            {
+                _lastScene.Stop();
+            }
+
+            _lastScene = scene;
+            scene.Start(args);
         }
     }
 }
