@@ -53,13 +53,13 @@
     <Compile Include="Data\Word.cs" />
     <Compile Include="Data\VocabularySet.cs" />
     <Compile Include="GUI\Components\BackgroundRenderer.cs" />
-    <Compile Include="GUI\Components\LevelBuilder.cs" />
     <Compile Include="GUI\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Scenes\Content\LevelScene.cs" />
     <Compile Include="Scenes\Content\ThemeScene.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />

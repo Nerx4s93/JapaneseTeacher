@@ -5,16 +5,11 @@ using System.Windows.Forms;
 using JapaneseTeacher.Data;
 using JapaneseTeacher.UI;
 
-namespace JapaneseTeacher.GUI.Components
+namespace JapaneseTeacher.Scenes.Content
 {
-    internal class LevelBuilder
+    internal class LevelScene : Scene
     {
-        private readonly Form _form;
-
-        public LevelBuilder(Form form)
-        {
-            _form = form;
-        }
+        private Form _form;
 
         private Theme _theme;
         private string _levelId;
@@ -26,16 +21,17 @@ namespace JapaneseTeacher.GUI.Components
         private RoundedButton _roundedButton;
         private AnswerResultPanel _answerResultPanel;
 
-        public void LoadLevel(Theme theme, string levelId)
+        public override void Start(object[] args)
         {
-            _theme = theme;
-            _levelId = levelId;
-            _currentWord = theme.GetNextWord(levelId);
+            _form = args[0] as Form;
+            _theme = args[1] as Theme;
+            _levelId = args[2] as string;
+            _currentWord = _theme.GetNextWord(_levelId);
             AdjustControls();
             _form.Resize += Form_Resize;
         }
 
-        public void StopHandle()
+        public override void Stop()
         {
             _flatProgressBar.Dispose();
             _labelTask.Dispose();
@@ -79,9 +75,8 @@ namespace JapaneseTeacher.GUI.Components
 
                 if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
                 {
-                    MessageBox.Show("Уровень пройден!", "Победа", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     _theme.CompliteLevel(_levelId);
-                    CompleteLevel.Invoke(_theme, _levelId);
+                    SceneManager.LoadScene(new ThemeScene(), new object[2] { _form, _theme });
                 }
             }
             else
@@ -168,8 +163,5 @@ namespace JapaneseTeacher.GUI.Components
         }
 
         #endregion
-
-        public delegate void CompleteLevelEventHandler(Theme theme, string level);
-        public event CompleteLevelEventHandler CompleteLevel;
     }
 }

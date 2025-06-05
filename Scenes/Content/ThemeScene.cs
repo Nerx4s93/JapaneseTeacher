@@ -147,7 +147,9 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void Button_Click(object sender, EventArgs e)
         {
-            
+            var button = sender as ButtonLevel;
+            var level = button.Level;
+            SceneManager.LoadScene(new LevelScene(), new object[3] { _form, _theme, level });
         }
     }
 }
