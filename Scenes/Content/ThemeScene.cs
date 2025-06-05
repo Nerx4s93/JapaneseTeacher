@@ -147,7 +147,7 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void Button_Click(object sender, EventArgs e)
         {
-            //LevelButtonClick.Invoke(sender);
+            
         }
     }
 }

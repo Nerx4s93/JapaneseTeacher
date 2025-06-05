@@ -17,12 +17,18 @@ namespace JapaneseTeacher.GUI
             InitializeComponent();
             _globeData = globalData;
             _sceneManager = new SceneManager();
+            _sceneManager.OnGetMessage += SceneManager_OnGetMessage;
         }
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
             var theme = _globeData.GetThemeByName("Hiragana");
             _sceneManager.LoadScene(new ThemeScene(), new object[2] { this, theme });
+        }
+
+        private void SceneManager_OnGetMessage(object sendler, object[] args)
+        {
+
         }
     }
 }
