@@ -76,6 +76,13 @@ namespace JapaneseTeacher.GUI.Components
                 _flatProgressBar.Value += 1;
                 _answerResultPanel.WasCorrect = true;
                 _theme.UpdateWordStats(_currentWord, true);
+
+                if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
+                {
+                    MessageBox.Show("Уровень пройден!", "Победа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _theme.CompliteLevel(_levelId);
+                    CompleteLevel.Invoke(_theme, _levelId);
+                }
             }
             else
             {
@@ -161,5 +168,8 @@ namespace JapaneseTeacher.GUI.Components
         }
 
         #endregion
+
+        public delegate void CompleteLevelEventHandler(Theme theme, string level);
+        public event CompleteLevelEventHandler CompleteLevel;
     }
 }

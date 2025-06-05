@@ -19,9 +19,12 @@ namespace JapaneseTeacher.GUI
         {
             InitializeComponent();
             _globeData = globalData;
+
             _themeBuilder = new ThemeBuilder(this);
             _themeBuilder.LevelButtonClick += ThemeBuilder_LevelButtonClick;
+
             _levelBuilder = new LevelBuilder(this);
+            _levelBuilder.CompleteLevel += LevelBuilder_CompleteLevel;
         }
 
         private void FormMain_Shown(object sender, EventArgs e)
@@ -37,6 +40,13 @@ namespace JapaneseTeacher.GUI
             var theme = _globeData.GetThemeByName("Hiragana");
             var level = (sender as ButtonLevel).Level;
             _levelBuilder.LoadLevel(theme, level);
+        }
+
+        private void LevelBuilder_CompleteLevel(Theme theme, string level)
+        {
+            CurrentSceneId = 1;
+            _levelBuilder.StopHandle();
+            _themeBuilder.Build(theme);
         }
     }
 }
