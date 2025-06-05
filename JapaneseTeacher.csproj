@@ -52,7 +52,6 @@
     <Compile Include="Data\Module.cs" />
     <Compile Include="Data\Word.cs" />
     <Compile Include="Data\VocabularySet.cs" />
-    <Compile Include="GUI\Components\BackgroundRenderer.cs" />
     <Compile Include="GUI\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,7 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\MainFon.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
