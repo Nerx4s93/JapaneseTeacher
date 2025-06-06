@@ -37,9 +37,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelBody.Location = new System.Drawing.Point(149, 12);
+            this.panelBody.Location = new System.Drawing.Point(204, 12);
             this.panelBody.Name = "panelBody";
-            this.panelBody.Size = new System.Drawing.Size(725, 478);
+            this.panelBody.Size = new System.Drawing.Size(742, 527);
             this.panelBody.TabIndex = 0;
             // 
             // FormMain
@@ -47,7 +47,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(886, 502);
+            this.ClientSize = new System.Drawing.Size(958, 551);
             this.Controls.Add(this.panelBody);
             this.Name = "FormMain";
             this.Text = "FormMain";
