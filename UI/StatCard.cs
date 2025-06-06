@@ -7,9 +7,10 @@ namespace JapaneseTeacher.UI
 {
     internal class StatCard : Control
     {
+        private readonly Brush _whiteBrush;
+
         private Color _bodyColor;
         private Brush _bodyBrush;
-        private Brush _whiteBrush;
 
         public Color BodyColor
         {
