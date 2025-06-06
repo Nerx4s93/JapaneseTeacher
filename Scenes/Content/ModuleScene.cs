@@ -55,7 +55,6 @@ namespace JapaneseTeacher.Scenes.Content
 
             _moduleHeader = new ModuleHeader();
             _moduleHeader.Size = new Size(700, 110);
-            _moduleHeader.Tag = 1;
             _moduleHeader.Theme = theme.Name;
             _moduleHeader.Description = theme.Description;
             _mainControl.Controls.Add(_moduleHeader);
@@ -66,7 +65,6 @@ namespace JapaneseTeacher.Scenes.Content
             {
                 var button = new ButtonLevel();
                 button.ComplitePercent = (float)level.CompletedSublevels / (float)level.TotalSublevels * 100f;
-                button.Tag = 1;
                 button.Active = active;
                 button.Level = level.LevelId;
                 button.Click += Button_Click;

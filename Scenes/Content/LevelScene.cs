@@ -108,30 +108,25 @@ namespace JapaneseTeacher.Scenes.Content
         private void AdjustControls()
         {
             _flatProgressBar = new FlatProgressBar();
-            _flatProgressBar.Tag = 2;
             _flatProgressBar.MaxValue = 5;
 
             _labelTask = new Label();
-            _labelTask.Tag = 2;
             _labelTask.Font = new Font("Microsoft Sans Serif", 28f);
             _labelTask.AutoSize = true;
             _labelTask.Text = $"Напишите перевод: {_currentWord.Text}";
 
             _textBoxAnswer = new TextBox();
-            _textBoxAnswer.Tag = 2;
             _textBoxAnswer.Font = new Font("Microsoft Sans Serif", 24f);
             _textBoxAnswer.AutoSize = true;
             _textBoxAnswer.Width = 400;
             _textBoxAnswer.KeyDown += TextBoxAnswer_KeyDown;
 
             _roundedButton = new RoundedButton();
-            _roundedButton.Tag = 2;
             _roundedButton.Font = new Font("Microsoft Sans Serif", 18f);
             _roundedButton.Text = "Проверить";
             _roundedButton.Click += RoundedButton_Click;
 
             _answerResultPanel = new AnswerResultPanel();
-            _answerResultPanel.Tag = 2;
             _answerResultPanel.Visible = false;
 
             _mainControl.Controls.Add(_flatProgressBar);
