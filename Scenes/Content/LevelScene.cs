@@ -79,7 +79,7 @@ namespace JapaneseTeacher.Scenes.Content
                 if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
                 {
                     _theme.CompliteLevel(_levelId);
-                    SceneManager.LoadScene(new ModuleScene(), new object[2] { _mainControl, _theme });
+                    SceneManager.LoadScene(new LevelResultScene(), new object[3] { _mainControl, _totalAnswers, _wrongAnswers });
                 }
             }
             else
