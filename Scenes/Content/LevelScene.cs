@@ -107,7 +107,7 @@ namespace JapaneseTeacher.Scenes.Content
         {
             _flatProgressBar = new FlatProgressBar();
             _flatProgressBar.Tag = 2;
-            _flatProgressBar.MaxValue = 30;
+            _flatProgressBar.MaxValue = 5;
 
             _labelTask = new Label();
             _labelTask.Tag = 2;
