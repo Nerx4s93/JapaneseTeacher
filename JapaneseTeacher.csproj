@@ -82,6 +82,9 @@
     <Compile Include="UI\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI\StatCard.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="GUI\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
