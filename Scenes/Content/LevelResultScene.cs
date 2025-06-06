@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+using JapaneseTeacher.Data;
 using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.Scenes.Content
@@ -31,6 +32,7 @@ namespace JapaneseTeacher.Scenes.Content
 
         private Control _mainControl;
 
+        private Module _theme;
         private int _totalAnswers;
         private int _wrongAnswers;
 
@@ -39,12 +41,14 @@ namespace JapaneseTeacher.Scenes.Content
         private StatCard _correctCard;
         private StatCard _mistakeCard;
         private StatCard _accuracyCard;
+        private RoundedButton _roundedButton;
 
         public override void Start(object[] args)
         {
             _mainControl = args[0] as Control;
-            _totalAnswers = (int)args[1];
-            _wrongAnswers = (int)args[2];
+            _theme = args[1] as Module;
+            _totalAnswers = (int)args[2];
+            _wrongAnswers = (int)args[3];
 
             AdjustControls();
             _mainControl.Resize += Form_Resize;
@@ -57,6 +61,12 @@ namespace JapaneseTeacher.Scenes.Content
             _correctCard.Dispose();
             _mistakeCard.Dispose();
             _accuracyCard.Dispose();
+            _roundedButton.Dispose();
+        }
+
+        private void RoundedButton_Click(object sender, EventArgs e)
+        {
+            SceneManager.LoadScene(new ModuleScene(), new object[2] { _mainControl, _theme });
         }
 
         #region Настройка элементов управления
@@ -115,12 +125,17 @@ namespace JapaneseTeacher.Scenes.Content
             };
 
             #endregion
+            _roundedButton = new RoundedButton();
+            _roundedButton.Font = new Font("Microsoft Sans Serif", 18f);
+            _roundedButton.Text = "Далее";
+            _roundedButton.Click += RoundedButton_Click;
 
             _mainControl.Controls.Add(_titleLabel);
             _mainControl.Controls.Add(_subtitleLabel);
             _mainControl.Controls.Add(_correctCard);
             _mainControl.Controls.Add(_mistakeCard);
             _mainControl.Controls.Add(_accuracyCard);
+            _mainControl.Controls.Add(_roundedButton);
 
             Form_Resize(null, null);
         }
@@ -153,6 +168,13 @@ namespace JapaneseTeacher.Scenes.Content
                 (clientSize.Width - _subtitleLabel.Width) / 2,
                 _titleLabel.Bottom + 5
             );
+
+            // Кнопка далее
+            int buttonMargin = 20;
+            _roundedButton.Location = new Point(
+                clientSize.Width - _roundedButton.Width - buttonMargin,
+                clientSize.Height - _roundedButton.Height - buttonMargin
+            );
         }
 
 
@@ -164,4 +186,3 @@ namespace JapaneseTeacher.Scenes.Content
         #endregion
     }
 }
-//SceneManager.LoadScene(new ModuleScene(), new object[2] { _mainControl, _theme });
