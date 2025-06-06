@@ -71,7 +71,7 @@ namespace JapaneseTeacher.Scenes.Content
                 button.Level = level.LevelId;
                 button.Click += Button_Click;
 
-                if (level.CompletedSublevels != level.TotalSublevels)
+                if (level.CompletedSublevels < level.TotalSublevels)
                 {
                     active = false;
                 }
