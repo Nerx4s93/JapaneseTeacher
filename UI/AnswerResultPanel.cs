@@ -67,7 +67,10 @@ namespace JapaneseTeacher.UI
             int iconY = (Height - iconDiameter) / 3;
 
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            graphics.FillEllipse(Brushes.White, iconX, iconY, iconDiameter, iconDiameter);
+            using (var brush = new SolidBrush(Color.White))
+            {
+                graphics.FillEllipse(brush, iconX, iconY, iconDiameter, iconDiameter);
+            }
 
             var iconSymbol = WasCorrect ? "✓" : "✗";
             var iconBrush = WasCorrect ? BrushTitleTextCorrect : BrushTitleTextNoCorrect;
