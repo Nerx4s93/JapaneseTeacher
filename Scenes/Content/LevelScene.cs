@@ -60,9 +60,17 @@ namespace JapaneseTeacher.Scenes.Content
             }
             else if (_answerResultPanel.Visible == true)
             {
-                _answerResultPanel.Visible = false;
-                _textBoxAnswer.Clear();
-                LoadNewWord();
+                if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
+                {
+                    _theme.CompliteLevel(_levelId);
+                    SceneManager.LoadScene(new LevelResultScene(), new object[3] { _mainControl, _totalAnswers, _wrongAnswers });
+                }
+                else
+                {
+                    _answerResultPanel.Visible = false;
+                    _textBoxAnswer.Clear();
+                    LoadNewWord();
+                }
             }
         }
 
@@ -75,12 +83,6 @@ namespace JapaneseTeacher.Scenes.Content
                 _flatProgressBar.Value += 1;
                 _answerResultPanel.WasCorrect = true;
                 _theme.UpdateWordStats(_currentWord, true);
-
-                if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
-                {
-                    _theme.CompliteLevel(_levelId);
-                    SceneManager.LoadScene(new LevelResultScene(), new object[3] { _mainControl, _totalAnswers, _wrongAnswers });
-                }
             }
             else
             {
