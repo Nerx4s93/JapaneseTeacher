@@ -128,6 +128,7 @@ namespace JapaneseTeacher.Scenes.Content
             _roundedButton = new RoundedButton();
             _roundedButton.Font = new Font("Microsoft Sans Serif", 18f);
             _roundedButton.Text = "Далее";
+            _roundedButton.Size = new Size(133, 42);
             _roundedButton.Click += RoundedButton_Click;
 
             _mainControl.Controls.Add(_titleLabel);
