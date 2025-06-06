@@ -129,25 +129,32 @@ namespace JapaneseTeacher.Scenes.Content
         {
             var clientSize = _mainControl.ClientSize;
 
+            int spacing = 20;
+            int cardWidth = _correctCard.Width;
+            int cardsTotalWidth = cardWidth * 3 + spacing * 2;
+
+            int centerY = clientSize.Height / 2;
+
+            // Статистика
+            int cardsTop = centerY + 30;
+            int cardsStartX = (clientSize.Width - cardsTotalWidth) / 2;
+
+            _correctCard.Location = new Point(cardsStartX, cardsTop);
+            _mistakeCard.Location = new Point(cardsStartX + cardWidth + spacing, cardsTop);
+            _accuracyCard.Location = new Point(cardsStartX + (cardWidth + spacing) * 2, cardsTop);
+
+            // Заголовки
             _titleLabel.Location = new Point(
                 (clientSize.Width - _titleLabel.Width) / 2,
-                30
+                cardsTop - _subtitleLabel.Height - _titleLabel.Height - 20
             );
 
             _subtitleLabel.Location = new Point(
                 (clientSize.Width - _subtitleLabel.Width) / 2,
-                _titleLabel.Bottom + 10
+                _titleLabel.Bottom + 5
             );
-
-            int spacing = 20;
-            int totalWidth = _correctCard.Width * 3 + spacing * 2;
-            int startX = (clientSize.Width - totalWidth) / 2;
-            int y = clientSize.Height - _correctCard.Height - 30;
-
-            _correctCard.Location = new Point(startX, y);
-            _mistakeCard.Location = new Point(startX + _correctCard.Width + spacing, y);
-            _accuracyCard.Location = new Point(startX + (_correctCard.Width + spacing) * 2, y);
         }
+
 
         private void Form_Resize(object sender, EventArgs e)
         {
