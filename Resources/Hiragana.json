@@ -1,1 +1,545 @@
-{ "Name": "Hiragana", "Description":  "Изучение алфавита Хирагана", "Color":  "Orange", "Levels": [ { "LevelId": "1", "CompletedSublevels": 0, "TotalSublevels": 5 }, { "LevelId": "2", "CompletedSublevels": 0, "TotalSublevels": 5 }, { "LevelId": "3", "CompletedSublevels": 0, "TotalSublevels": 5 }, { "LevelId": "4", "CompletedSublevels": 0, "TotalSublevels": 5 }, { "LevelId": "5", "CompletedSublevels": 0, "TotalSublevels": 5 }, { "LevelId": "6", "CompletedSublevels": 0, "TotalSublevels": 5 } ], "VocabularySet": { "Words": [{"Level":"1","Text":"あ","Translation":"a","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"1","Text":"か","Translation":"ka","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"1","Text":"し","Translation":"shi","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"1","Text":"つ","Translation":"tsu","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"1","Text":"ね","Translation":"ne","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"1","Text":"ほ","Translation":"ho","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"1","Text":"む","Translation":"mu","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"1","Text":"を","Translation":"wo","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"2","Text":"い","Translation":"i","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"2","Text":"き","Translation":"ki","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"2","Text":"す","Translation":"su","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"2","Text":"て","Translation":"te","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"2","Text":"の","Translation":"no","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"2","Text":"ひ","Translation":"hi","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"2","Text":"め","Translation":"me","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"2","Text":"ん","Translation":"n","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"3","Text":"う","Translation":"u","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"3","Text":"く","Translation":"ku","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"3","Text":"せ","Translation":"se","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"3","Text":"と","Translation":"to","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"3","Text":"に","Translation":"ni","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"3","Text":"ふ","Translation":"fu","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"3","Text":"も","Translation":"mo","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"3","Text":"や","Translation":"ya","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"4","Text":"え","Translation":"e","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"4","Text":"け","Translation":"ke","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"4","Text":"そ","Translation":"so","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"4","Text":"ち","Translation":"chi","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"4","Text":"ぬ","Translation":"nu","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"4","Text":"ま","Translation":"ma","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"4","Text":"ゆ","Translation":"yu","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"4","Text":"ら","Translation":"ra","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"5","Text":"お","Translation":"o","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"5","Text":"こ","Translation":"ko","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"5","Text":"た","Translation":"ta","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"5","Text":"な","Translation":"na","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"5","Text":"は","Translation":"ha","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"5","Text":"み","Translation":"mi","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"5","Text":"れ","Translation":"re","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"6","Text":"さ","Translation":"sa","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"6","Text":"り","Translation":"ri","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"6","Text":"る","Translation":"ru","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"6","Text":"ろ","Translation":"ro","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"6","Text":"わ","Translation":"wa","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"6","Text":"が","Translation":"ga","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0},{"Level":"6","Text":"ぱ","Translation":"pa","Encounters":0,"Mistakes":0,"StreakForMistakes":0,"Streak":0,"TimesNotSeen":0}]} }
+{
+  "Name": "Hiragana",
+  "Description": "Изучение алфавита Хирагана",
+  "Color": "Orange",
+  "Levels": [
+    {
+      "LevelId": "1",
+      "CompletedSublevels": 0,
+      "TotalSublevels": 5
+    },
+    {
+      "LevelId": "2",
+      "CompletedSublevels": 0,
+      "TotalSublevels": 5
+    },
+    {
+      "LevelId": "3",
+      "CompletedSublevels": 0,
+      "TotalSublevels": 5
+    },
+    {
+      "LevelId": "4",
+      "CompletedSublevels": 0,
+      "TotalSublevels": 5
+    },
+    {
+      "LevelId": "5",
+      "CompletedSublevels": 0,
+      "TotalSublevels": 5
+    },
+    {
+      "LevelId": "6",
+      "CompletedSublevels": 0,
+      "TotalSublevels": 5
+    }
+  ],
+  "VocabularySet": {
+    "Words": [
+      {
+        "Level": "1",
+        "Text": "あ",
+        "Reading": "a",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "1",
+        "Text": "か",
+        "Reading": "ka",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "1",
+        "Text": "し",
+        "Translation": "shi",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "1",
+        "Text": "つ",
+        "Reading": "tsu",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "1",
+        "Text": "ね",
+        "Reading": "ne",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "1",
+        "Text": "ほ",
+        "Translation": "ho",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "1",
+        "Text": "む",
+        "Reading": "mu",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "1",
+        "Text": "を",
+        "Reading": "wo",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "2",
+        "Text": "い",
+        "Reading": "i",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "2",
+        "Text": "き",
+        "Reading": "ki",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "2",
+        "Text": "す",
+        "Reading": "su",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "2",
+        "Text": "て",
+        "Reading": "te",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "2",
+        "Text": "の",
+        "Reading": "no",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "2",
+        "Text": "ひ",
+        "Reading": "hi",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "2",
+        "Text": "め",
+        "Reading": "me",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "2",
+        "Text": "ん",
+        "Reading": "n",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "3",
+        "Text": "う",
+        "Reading": "u",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "3",
+        "Text": "く",
+        "Reading": "ku",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "3",
+        "Text": "せ",
+        "Reading": "se",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "3",
+        "Text": "と",
+        "Reading": "to",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "3",
+        "Text": "に",
+        "Reading": "ni",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "3",
+        "Text": "ふ",
+        "Reading": "fu",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "3",
+        "Text": "も",
+        "Reading": "mo",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "3",
+        "Text": "や",
+        "Reading": "ya",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "4",
+        "Text": "え",
+        "Reading": "e",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "4",
+        "Text": "け",
+        "Reading": "ke",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "4",
+        "Text": "そ",
+        "Reading": "so",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "4",
+        "Text": "ち",
+        "Reading": "chi",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "4",
+        "Text": "ぬ",
+        "Reading": "nu",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "4",
+        "Text": "ま",
+        "Reading": "ma",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "4",
+        "Text": "ゆ",
+        "Reading": "yu",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "4",
+        "Text": "ら",
+        "Reading": "ra",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "5",
+        "Text": "お",
+        "Reading": "o",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "5",
+        "Text": "こ",
+        "Reading": "ko",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "5",
+        "Text": "た",
+        "Reading": "ta",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "5",
+        "Text": "な",
+        "Reading": "na",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "5",
+        "Text": "は",
+        "Reading": "ha",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "5",
+        "Text": "み",
+        "Reading": "mi",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "5",
+        "Text": "れ",
+        "Reading": "re",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "6",
+        "Text": "さ",
+        "Reading": "sa",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "6",
+        "Text": "り",
+        "Reading": "ri",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "6",
+        "Text": "る",
+        "Reading": "ru",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "6",
+        "Text": "ろ",
+        "Reading": "ro",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "6",
+        "Text": "わ",
+        "Reading": "wa",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "6",
+        "Text": "が",
+        "Reading": "ga",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      },
+      {
+        "Level": "6",
+        "Text": "ぱ",
+        "Reading": "pa",
+        "Translation": "",
+        "Encounters": 0,
+        "Mistakes": 0,
+        "StreakForMistakes": 0,
+        "Streak": 0,
+        "TimesNotSeen": 0
+      }
+    ]
+  }
+}
