@@ -6,7 +6,7 @@ namespace JapaneseTeacher.Data
 {
     internal class GlobalData
     {
-        private List<Module> themes;
+        private List<Theme> themes;
         
         public void LoadData()
         {
@@ -17,13 +17,13 @@ namespace JapaneseTeacher.Data
 
             #region Загрузка тем
 
-            themes = new List<Module>();
+            themes = new List<Theme>();
 
             var files = Directory.GetFiles("Themes");
             foreach (string file in files)
             {
                 var themeName = Path.GetFileNameWithoutExtension(file);
-                var theme = Module.LoadFromFile(themeName);
+                var theme = Theme.LoadFromFile(themeName);
 
                 themes.Add(theme);
             }
@@ -31,7 +31,7 @@ namespace JapaneseTeacher.Data
             #endregion
         }
 
-        public Module GetThemeByName(string name)
+        public Theme GetThemeByName(string name)
         {
             return themes.First(t => t.Name == name);
         }

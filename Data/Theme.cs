@@ -10,7 +10,7 @@ using System;
 
 namespace JapaneseTeacher.Data
 {
-    internal class Module
+    internal class Theme
     {
         public string Name;
         public string Description;
@@ -21,12 +21,12 @@ namespace JapaneseTeacher.Data
         [JsonProperty("VocabularySet")]
         private VocabularySet _vocabularySet;
 
-        public Module(string name)
+        public Theme(string name)
         {
             Name = name;
         }
 
-        public static Module LoadFromFile(string name)
+        public static Theme LoadFromFile(string name)
         {
             var path = Path.Combine("Themes", $"{name}.json");
 
@@ -35,13 +35,13 @@ namespace JapaneseTeacher.Data
                 if (Resources.ResourceManager.GetObject(name) is string defaultJson)
                 {
                     File.WriteAllText(path, defaultJson);
-                    return JsonConvert.DeserializeObject<Module>(defaultJson);
+                    return JsonConvert.DeserializeObject<Theme>(defaultJson);
                 }
                 throw new FileNotFoundException($"Файл {path} не найден");
             }
 
             var stringJson = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<Module>(stringJson);
+            return JsonConvert.DeserializeObject<Theme>(stringJson);
         }
 
         public void SaveToFile()

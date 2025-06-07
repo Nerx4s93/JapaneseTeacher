@@ -32,7 +32,7 @@ namespace JapaneseTeacher.Scenes.Content
 
         private Control _mainControl;
 
-        private Module _theme;
+        private Theme _theme;
         private int _totalAnswers;
         private int _wrongAnswers;
 
@@ -46,7 +46,7 @@ namespace JapaneseTeacher.Scenes.Content
         public override void Start(object[] args)
         {
             _mainControl = args[0] as Control;
-            _theme = args[1] as Module;
+            _theme = args[1] as Theme;
             _totalAnswers = (int)args[2];
             _wrongAnswers = (int)args[3];
 
