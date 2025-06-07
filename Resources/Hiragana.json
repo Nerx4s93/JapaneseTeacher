@@ -61,7 +61,8 @@
       {
         "Level": "1",
         "Text": "し",
-        "Translation": "shi",
+        "Reading": "shi",
+        "Translation": "",
         "Encounters": 0,
         "Mistakes": 0,
         "StreakForMistakes": 0,
@@ -93,7 +94,8 @@
       {
         "Level": "1",
         "Text": "ほ",
-        "Translation": "ho",
+        "Reading": "ho",
+        "Translation": "",
         "Encounters": 0,
         "Mistakes": 0,
         "StreakForMistakes": 0,
