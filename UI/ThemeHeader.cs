@@ -5,7 +5,7 @@ using JapaneseTeacher.Tools;
 
 namespace JapaneseTeacher.UI
 {
-    internal class ModuleHeader : Control
+    internal class ThemeHeader : Control
     {
         private const int _radius = 8;
 
@@ -16,7 +16,7 @@ namespace JapaneseTeacher.UI
         public string Description { get; set; }
         public Color DescriptionColor { get; set; }
 
-        public ModuleHeader()
+        public ThemeHeader()
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);

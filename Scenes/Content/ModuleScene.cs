@@ -17,7 +17,7 @@ namespace JapaneseTeacher.Scenes.Content
         private Control _mainControl;
         private Theme _theme;
 
-        private ModuleHeader _moduleHeader = new ModuleHeader();
+        private ThemeHeader _moduleHeader = new ThemeHeader();
         private List<ButtonLevel> _buttonLevels = new List<ButtonLevel>();
 
         private int _scrollPosition = 0;
@@ -53,7 +53,7 @@ namespace JapaneseTeacher.Scenes.Content
             }
             _buttonLevels.Clear();
 
-            _moduleHeader = new ModuleHeader();
+            _moduleHeader = new ThemeHeader();
             _moduleHeader.Size = new Size(700, 110);
             _moduleHeader.Theme = theme.Name;
             _moduleHeader.Description = theme.Description;
