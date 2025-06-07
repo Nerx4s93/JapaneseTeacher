@@ -13,6 +13,7 @@ namespace JapaneseTeacher.Scenes.Content
 
         private Control _mainControl;
 
+        private Module _module;
         private Theme _theme;
         private string _levelId;
         private Word _currentWord;
@@ -29,8 +30,9 @@ namespace JapaneseTeacher.Scenes.Content
         public override void Start(object[] args)
         {
             _mainControl = args[0] as Control;
-            _theme = args[1] as Theme;
-            _levelId = args[2] as string;
+            _module = args[1] as Module;
+            _theme = args[2] as Theme;
+            _levelId = args[3] as string;
             _currentWord = _theme.GetNextWord(_levelId);
             AdjustControls();
             _mainControl.Resize += Form_Resize;
@@ -65,7 +67,7 @@ namespace JapaneseTeacher.Scenes.Content
                 if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
                 {
                     _theme.CompliteLevel(_levelId);
-                    SceneManager.LoadScene(new LevelResultScene(), new object[4] { _mainControl, _theme, _totalAnswers, _wrongAnswers });
+                    SceneManager.LoadScene(new LevelResultScene(), new object[4] { _mainControl, _module, _totalAnswers, _wrongAnswers });
                 }
                 else
                 {
@@ -80,7 +82,7 @@ namespace JapaneseTeacher.Scenes.Content
         {
             string userAnswer = _textBoxAnswer.Text.Trim();
 
-            if (userAnswer.Equals(_currentWord.Translation, StringComparison.OrdinalIgnoreCase))
+            if (userAnswer.Equals(_currentWord.Reading, StringComparison.OrdinalIgnoreCase))
             {
                 _flatProgressBar.Value += 1;
                 _answerResultPanel.WasCorrect = true;

@@ -109,7 +109,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Hiragana.json" />
+    <None Include="Resources\Alphabets.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -32,7 +32,7 @@ namespace JapaneseTeacher.Scenes.Content
 
         private Control _mainControl;
 
-        private Theme _theme;
+        private Module _module;
         private int _totalAnswers;
         private int _wrongAnswers;
 
@@ -46,7 +46,7 @@ namespace JapaneseTeacher.Scenes.Content
         public override void Start(object[] args)
         {
             _mainControl = args[0] as Control;
-            _theme = args[1] as Theme;
+            _module = args[1] as Module;
             _totalAnswers = (int)args[2];
             _wrongAnswers = (int)args[3];
 
@@ -66,7 +66,7 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void RoundedButton_Click(object sender, EventArgs e)
         {
-            SceneManager.LoadScene(new ModuleScene(), new object[2] { _mainControl, _theme });
+            SceneManager.LoadScene(new ModuleScene(), new object[2] { _mainControl, _module });
         }
 
         #region Настройка элементов управления

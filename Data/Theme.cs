@@ -21,30 +21,6 @@ namespace JapaneseTeacher.Data
         [JsonProperty("VocabularySet")]
         private VocabularySet _vocabularySet;
 
-        public static Theme LoadFromFile(string name)
-        {
-            var path = Path.Combine("Themes", $"{name}.json");
-
-            if (!File.Exists(path))
-            {
-                if (Resources.ResourceManager.GetObject(name) is string defaultJson)
-                {
-                    File.WriteAllText(path, defaultJson);
-                    return JsonConvert.DeserializeObject<Theme>(defaultJson);
-                }
-                throw new FileNotFoundException($"Файл {path} не найден");
-            }
-
-            var stringJson = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<Theme>(stringJson);
-        }
-
-        public void SaveToFile()
-        {
-            var path = Path.Combine("Themes", $"{Name}.json");
-            File.WriteAllText(path, JsonConvert.SerializeObject(this, Formatting.Indented));
-        }
-
         public List<Level> GetLevels()
         {
             return _levels.ToList();
@@ -54,7 +30,6 @@ namespace JapaneseTeacher.Data
         {
             var level = _levels.First(x => x.LevelId == levelId);
             level.CompletedSublevels += 1;
-            SaveToFile();
         }
 
         public Word GetNextWord() => _vocabularySet.GetNextWord();

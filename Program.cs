@@ -16,15 +16,8 @@ namespace JapaneseTeacher
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            try
-            {
-                _globalData.LoadData();
-                Application.Run(new FormMain(_globalData));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            _globalData.LoadData();
+            Application.Run(new FormMain(_globalData));
         }
     }
 }

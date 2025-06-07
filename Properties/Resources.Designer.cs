@@ -59,14 +59,5 @@ namespace JapaneseTeacher.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на { &quot;Name&quot;: &quot;Hiragana&quot;, &quot;Description&quot;:  &quot;Изучение алфавита Хирагана&quot;, &quot;Color&quot;:  &quot;Orange&quot;, &quot;Levels&quot;: [ { &quot;LevelId&quot;: &quot;1&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 }, { &quot;LevelId&quot;: &quot;2&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 }, { &quot;LevelId&quot;: &quot;3&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 }, { &quot;LevelId&quot;: &quot;4&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 }, { &quot;LevelId&quot;: &quot;5&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 }, { &quot;LevelId&quot;: &quot;6&quot;, &quot;CompletedSublevels&quot;: 0, &quot;TotalSublevels&quot;: 5 } ], &quot;VocabularySet [остаток строки не уместился]&quot;;.
-        /// </summary>
-        internal static string Hiragana {
-            get {
-                return ResourceManager.GetString("Hiragana", resourceCulture);
-            }
-        }
     }
 }

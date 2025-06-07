@@ -6,34 +6,34 @@ namespace JapaneseTeacher.Data
 {
     internal class GlobalData
     {
-        private List<Theme> themes;
+        private List<Module> _modules;
         
         public void LoadData()
         {
-            if (!Directory.Exists("Themes"))
+            if (!Directory.Exists("Modules"))
             {
-                Directory.CreateDirectory("Themes");
+                Directory.CreateDirectory("Modules");
             }
 
-            #region Загрузка тем
+            #region Загрузка модулей
 
-            themes = new List<Theme>();
+            _modules = new List<Module>();
 
-            var files = Directory.GetFiles("Themes");
+            var files = Directory.GetFiles("Modules");
             foreach (string file in files)
             {
                 var themeName = Path.GetFileNameWithoutExtension(file);
-                var theme = Theme.LoadFromFile(themeName);
+                var module = Module.LoadFromFile(themeName);
 
-                themes.Add(theme);
+                _modules.Add(module);
             }
 
             #endregion
         }
 
-        public Theme GetThemeByName(string name)
+        public Module GetModuleByName(string name)
         {
-            return themes.First(t => t.Name == name);
+            return _modules.First(t => t.Name == name);
         }
     }
 }

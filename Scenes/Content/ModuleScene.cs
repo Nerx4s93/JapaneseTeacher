@@ -15,7 +15,7 @@ namespace JapaneseTeacher.Scenes.Content
         private const int ButtonSpacing = 110;
 
         private Control _mainControl;
-        private Theme _theme;
+        private Module _module;
 
         private ThemeHeader _moduleHeader = new ThemeHeader();
         private List<ButtonLevel> _buttonLevels = new List<ButtonLevel>();
@@ -26,9 +26,9 @@ namespace JapaneseTeacher.Scenes.Content
         public override void Start(object[] args)
         {
             _mainControl = args[0] as Control;
-            _theme = args[1] as Theme;
+            _module = args[1] as Module;
 
-            AdjustControls(_theme);
+            AdjustControls(_module.Themes[0]);
             _mainControl.Resize += Form_Resize;
             _mainControl.MouseWheel += Form_MouseWheel;
         }
@@ -65,6 +65,7 @@ namespace JapaneseTeacher.Scenes.Content
             {
                 var button = new ButtonLevel();
                 button.ComplitePercent = (float)level.CompletedSublevels / (float)level.TotalSublevels * 100f;
+                button.Tag = theme;
                 button.Active = active;
                 button.Level = level.LevelId;
                 button.Click += Button_Click;
@@ -150,7 +151,7 @@ namespace JapaneseTeacher.Scenes.Content
             if (button.Active)
             {
                 var level = button.Level;
-                SceneManager.LoadScene(new LevelScene(), new object[3] { _mainControl, _theme, level });
+                SceneManager.LoadScene(new LevelScene(), new object[4] { _mainControl, _module, button.Tag, level });
             }
         }
     }
