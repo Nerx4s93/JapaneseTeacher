@@ -108,7 +108,7 @@ namespace JapaneseTeacher.Scenes.Content
         private void AdjustControls()
         {
             _flatProgressBar = new FlatProgressBar();
-            _flatProgressBar.MaxValue = 5;
+            _flatProgressBar.MaxValue = 30;
 
             _labelTask = new Label();
             _labelTask.Font = new Font("Microsoft Sans Serif", 28f);
