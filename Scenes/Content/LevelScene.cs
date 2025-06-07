@@ -89,7 +89,7 @@ namespace JapaneseTeacher.Scenes.Content
             else
             {
                 _wrongAnswers += 1;
-                _flatProgressBar.MaxValue += _random.Next(4);
+                _flatProgressBar.MaxValue += _random.Next(2);
                 _answerResultPanel.WasCorrect = false;
                 _answerResultPanel.Text = $"Неверно. Правильный ответ: {_currentWord.Translation}";
                 _theme.UpdateWordStats(_currentWord, false);
