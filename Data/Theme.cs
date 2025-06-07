@@ -21,11 +21,6 @@ namespace JapaneseTeacher.Data
         [JsonProperty("VocabularySet")]
         private VocabularySet _vocabularySet;
 
-        public Theme(string name)
-        {
-            Name = name;
-        }
-
         public static Theme LoadFromFile(string name)
         {
             var path = Path.Combine("Themes", $"{name}.json");
