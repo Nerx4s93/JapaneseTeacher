@@ -78,13 +78,11 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void AdjustControls()
         {
-            /*_moduleHeader = new ThemeHeader
+            _moduleHeader = new ThemeHeader
             {
-                Size = new Size(700, 110),
-                Theme = theme.Name,
-                Description = theme.Description
+                Size = new Size(700, 110)
             };
-            _mainControl.Controls.Add(_moduleHeader);*/
+            _mainControl.Controls.Add(_moduleHeader);
 
             for (var i = 0; i < _module.Themes.Count; i++)
             {
@@ -154,7 +152,7 @@ namespace JapaneseTeacher.Scenes.Content
             var dx = 50;
 
             var xOffsets = new int[4]{ 0, dx, 2 * dx, dx };
-
+            var findTheme = true;
             for (int i = 0; i < _buttonLevels.Count; i++)
             {
                 var control = _buttonLevels[i];
@@ -170,6 +168,16 @@ namespace JapaneseTeacher.Scenes.Content
                     var x = (_mainControl.Size.Width - control.Width) / 2;
                     var y = bodyStartY + ButtonSpacing * i + _scrollPosition + 40;
                     control.Location = new Point(x, y);
+                }
+
+                if (findTheme && control.Location.Y > 0)
+                {
+                    var theme = control.Tag as Theme;
+                    _moduleHeader.Theme = theme.Name;
+                    _moduleHeader.Description = theme.Description;
+                    _moduleHeader.BackgroundColor = theme.Color;
+                    _moduleHeader.Invalidate();
+                    findTheme = !findTheme;
                 }
             }
         }
