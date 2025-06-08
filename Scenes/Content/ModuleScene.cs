@@ -18,7 +18,7 @@ namespace JapaneseTeacher.Scenes.Content
         private Module _module;
 
         private ThemeHeader _moduleHeader = new ThemeHeader();
-        private List<ButtonLevel> _buttonLevels = new List<ButtonLevel>();
+        private List<Control> _buttonLevels = new List<Control>();
 
         private int _scrollPosition = 0;
         private int _maxScrollPosition = 0;
@@ -27,8 +27,7 @@ namespace JapaneseTeacher.Scenes.Content
         {
             _mainControl = args[0] as Control;
             _module = args[1] as Module;
-
-            AdjustControls(_module.Themes[0]);
+            AdjustControls();
             _mainControl.Resize += Form_Resize;
             _mainControl.MouseWheel += Form_MouseWheel;
         }
@@ -77,36 +76,55 @@ namespace JapaneseTeacher.Scenes.Content
 
         #region Настройка элементов управления
 
-        private void AdjustControls(Theme theme)
+        private void AdjustControls()
         {
-            _moduleHeader = new ThemeHeader
+            /*_moduleHeader = new ThemeHeader
             {
                 Size = new Size(700, 110),
                 Theme = theme.Name,
                 Description = theme.Description
             };
-            _mainControl.Controls.Add(_moduleHeader);
+            _mainControl.Controls.Add(_moduleHeader);*/
 
-            var levels = theme.GetLevels();
-            bool active = true;
-            foreach (var level in levels)
+            for (var i = 0; i < _module.Themes.Count; i++)
             {
-                var button = new ButtonLevel
-                {
-                    ComplitePercent = (float)level.CompletedSublevels / (float)level.TotalSublevels * 100f,
-                    Tag = theme,
-                    Active = active,
-                    Level = level.LevelId
-                };
-                button.Click += Button_Click;
+                var theme = _module.Themes[i];
 
-                if (level.CompletedSublevels < level.TotalSublevels)
+                var levels = theme.GetLevels();
+                bool active = true;
+                foreach (var level in levels)
                 {
-                    active = false;
+                    var button = new ButtonLevel
+                    {
+                        ComplitePercent = (float)level.CompletedSublevels / (float)level.TotalSublevels * 100f,
+                        Tag = theme,
+                        Active = active,
+                        Level = level.LevelId
+                    };
+                    button.Click += Button_Click;
+
+                    if (level.CompletedSublevels < level.TotalSublevels)
+                    {
+                        active = false;
+                    }
+
+                    _buttonLevels.Add(button);
+                    _mainControl.Controls.Add(button);
                 }
 
-                _buttonLevels.Add(button);
-                _mainControl.Controls.Add(button);
+                if (i < _module.Themes.Count - 1)
+                {
+                    var width = _mainControl.ClientSize.Width * 4 / 5;
+                    var contentDivider = new ContentDivider
+                    {
+                        Text = _module.Themes[i + 1].Description,
+                        Size = new Size(width, 25),
+                        Tag = theme
+                    };
+
+                    _buttonLevels.Add(contentDivider);
+                    _mainControl.Controls.Add(contentDivider);
+                }
             }
 
             _scrollPosition = 0;
@@ -122,7 +140,7 @@ namespace JapaneseTeacher.Scenes.Content
                 return;
             }
 
-            var totalHeight = HeaderHeight + (_buttonLevels.Count * ButtonSpacing);
+            var totalHeight = HeaderHeight + _buttonLevels.Count * ButtonSpacing;
             _maxScrollPosition = Math.Min(0, _mainControl.ClientSize.Height - totalHeight);
         }
 
@@ -139,10 +157,20 @@ namespace JapaneseTeacher.Scenes.Content
 
             for (int i = 0; i < _buttonLevels.Count; i++)
             {
-                var button = _buttonLevels[i];
-                var x = bodyStartX + xOffsets[i % 4];
-                var y = bodyStartY + ButtonSpacing * i + _scrollPosition;
-                button.Location = new Point(x, y);
+                var control = _buttonLevels[i];
+
+                if (_buttonLevels[i] is ButtonLevel)
+                {
+                    var x = bodyStartX + xOffsets[i % 4];
+                    var y = bodyStartY + ButtonSpacing * i + _scrollPosition;
+                    control.Location = new Point(x, y);
+                }
+                else if (_buttonLevels[i] is ContentDivider)
+                {
+                    var x = (_mainControl.Size.Width - control.Width) / 2;
+                    var y = bodyStartY + ButtonSpacing * i + _scrollPosition + 40;
+                    control.Location = new Point(x, y);
+                }
             }
         }
 
