@@ -74,6 +74,9 @@
     <Compile Include="UI\ButtonLevel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI\ContentDivider.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\ThemeHeader.cs">
       <SubType>Component</SubType>
     </Compile>
