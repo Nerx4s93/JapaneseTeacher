@@ -10,7 +10,7 @@ namespace JapaneseTeacher.Scenes.Content
 {
     internal class ModuleScene : Scene
     {
-        private const int ScrollStep = 50;
+        private const int ScrollStep = 65;
         private const int HeaderHeight = 150;
         private const int ButtonSpacing = 110;
 
