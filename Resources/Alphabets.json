@@ -547,6 +547,79 @@
           }
         ]
       }
+    },
+    {
+      "Name": "Test",
+      "Description": "Test desctiption",
+      "Color": "Lime",
+      "Levels": [
+        {
+          "LevelId": "1",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "2",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "1",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "2",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "1",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "2",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "1",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "2",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        }
+      ],
+      "VocabularySet": {
+        "Words": [
+          {
+            "Level": "1",
+            "Text": "あ",
+            "Reading": "a",
+            "Translation": "",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "1",
+            "Text": "か",
+            "Reading": "ka",
+            "Translation": "",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          }
+        ]
+      }
     }
   ]
 }
