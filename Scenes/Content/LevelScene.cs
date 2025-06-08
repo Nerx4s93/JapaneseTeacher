@@ -111,33 +111,44 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void AdjustControls()
         {
-            _flatProgressBar = new FlatProgressBar();
-            _flatProgressBar.MaxValue = 30;
+            _flatProgressBar = new FlatProgressBar
+            {
+                MaxValue = 30
+            };
 
-            _labelTask = new Label();
-            _labelTask.Font = new Font("Microsoft Sans Serif", 28f);
-            _labelTask.AutoSize = true;
-            _labelTask.Text = $"Напишите перевод: {_currentWord.Text}";
+            _labelTask = new Label
+            {
+                Font = new Font("Microsoft Sans Serif", 28f),
+                AutoSize = true,
+                Text = $"Напишите перевод: {_currentWord.Text}"
+            };
 
-            _textBoxAnswer = new TextBox();
-            _textBoxAnswer.Font = new Font("Microsoft Sans Serif", 24f);
-            _textBoxAnswer.AutoSize = true;
-            _textBoxAnswer.Width = 400;
+            _textBoxAnswer = new TextBox
+            {
+                Font = new Font("Microsoft Sans Serif", 24f),
+                AutoSize = true,
+                Width = 400
+            };
             _textBoxAnswer.KeyDown += TextBoxAnswer_KeyDown;
 
-            _roundedButton = new RoundedButton();
-            _roundedButton.Font = new Font("Microsoft Sans Serif", 18f);
-            _roundedButton.Text = "Проверить";
+            _roundedButton = new RoundedButton
+            {
+                Font = new Font("Microsoft Sans Serif", 18f),
+                Text = "Проверить"
+            };
             _roundedButton.Click += RoundedButton_Click;
 
-            _answerResultPanel = new AnswerResultPanel();
-            _answerResultPanel.Visible = false;
+            _answerResultPanel = new AnswerResultPanel
+            {
+                Visible = false
+            };
 
             _mainControl.Controls.Add(_flatProgressBar);
             _mainControl.Controls.Add(_labelTask);
             _mainControl.Controls.Add(_textBoxAnswer);
             _mainControl.Controls.Add(_roundedButton);
             _mainControl.Controls.Add(_answerResultPanel);
+
             Form_Resize(null, null);
         }
 

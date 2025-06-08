@@ -44,6 +44,39 @@ namespace JapaneseTeacher.Scenes.Content
             _mainControl.MouseWheel -= Form_MouseWheel;
         }
 
+        private void Form_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (_buttonLevels.Count == 0)
+            {
+                return;
+            }
+
+            var delta = e.Delta > 0 ? ScrollStep : -ScrollStep;
+            var newPosition = _scrollPosition + delta;
+
+            newPosition = Math.Max(_maxScrollPosition, newPosition);
+            newPosition = Math.Min(0, newPosition);
+
+            if (newPosition != _scrollPosition)
+            {
+                _scrollPosition = newPosition;
+                MoveControls();
+            }
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            var button = sender as ButtonLevel;
+
+            if (button.Active)
+            {
+                var level = button.Level;
+                SceneManager.LoadScene(new LevelScene(), new object[4] { _mainControl, _module, button.Tag, level });
+            }
+        }
+
+        #region Настройка элементов управления
+
         private void AdjustControls(Theme theme)
         {
             _moduleHeader.Dispose();
@@ -53,21 +86,25 @@ namespace JapaneseTeacher.Scenes.Content
             }
             _buttonLevels.Clear();
 
-            _moduleHeader = new ThemeHeader();
-            _moduleHeader.Size = new Size(700, 110);
-            _moduleHeader.Theme = theme.Name;
-            _moduleHeader.Description = theme.Description;
+            _moduleHeader = new ThemeHeader
+            {
+                Size = new Size(700, 110),
+                Theme = theme.Name,
+                Description = theme.Description
+            };
             _mainControl.Controls.Add(_moduleHeader);
 
             var levels = theme.GetLevels();
             bool active = true;
             foreach (var level in levels)
             {
-                var button = new ButtonLevel();
-                button.ComplitePercent = (float)level.CompletedSublevels / (float)level.TotalSublevels * 100f;
-                button.Tag = theme;
-                button.Active = active;
-                button.Level = level.LevelId;
+                var button = new ButtonLevel
+                {
+                    ComplitePercent = (float)level.CompletedSublevels / (float)level.TotalSublevels * 100f,
+                    Tag = theme,
+                    Active = active,
+                    Level = level.LevelId
+                };
                 button.Click += Button_Click;
 
                 if (level.CompletedSublevels < level.TotalSublevels)
@@ -81,6 +118,7 @@ namespace JapaneseTeacher.Scenes.Content
 
             _scrollPosition = 0;
             CalculateMaxScrollPosition();
+
             Form_Resize(null, null);
         }
 
@@ -123,36 +161,6 @@ namespace JapaneseTeacher.Scenes.Content
             MoveControls();
         }
 
-        private void Form_MouseWheel(object sender, MouseEventArgs e)
-        {
-            if (_buttonLevels.Count == 0)
-            {
-                return;
-            }
-
-            var delta = e.Delta > 0 ? ScrollStep : -ScrollStep;
-            var newPosition = _scrollPosition + delta;
-
-            newPosition = Math.Max(_maxScrollPosition, newPosition);
-            newPosition = Math.Min(0, newPosition);
-
-            if (newPosition != _scrollPosition)
-            {
-                _scrollPosition = newPosition;
-                MoveControls();
-            }
-        }
-
-
-        private void Button_Click(object sender, EventArgs e)
-        {
-            var button = sender as ButtonLevel;
-
-            if (button.Active)
-            {
-                var level = button.Level;
-                SceneManager.LoadScene(new LevelScene(), new object[4] { _mainControl, _module, button.Tag, level });
-            }
-        }
+        #endregion
     }
 }

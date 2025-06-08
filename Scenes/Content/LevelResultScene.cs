@@ -73,8 +73,6 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void AdjustControls()
         {
-            #region Текст
-
             _titleLabel = new Label
             {
                 Font = new Font("Segoe UI", 24, FontStyle.Bold),
@@ -90,9 +88,6 @@ namespace JapaneseTeacher.Scenes.Content
                 AutoSize = true,
                 Text = Subtitle[new Random().Next(Subtitle.Count)],
             };
-
-            #endregion
-            #region StatCard
 
             _correctCard = new StatCard
             {
@@ -124,11 +119,12 @@ namespace JapaneseTeacher.Scenes.Content
                 Location = new Point(440, 10)
             };
 
-            #endregion
-            _roundedButton = new RoundedButton();
-            _roundedButton.Font = new Font("Microsoft Sans Serif", 18f);
-            _roundedButton.Text = "Далее";
-            _roundedButton.Size = new Size(133, 42);
+            _roundedButton = new RoundedButton
+            {
+                Font = new Font("Microsoft Sans Serif", 18f),
+                Text = "Далее",
+                Size = new Size(133, 42)
+            };
             _roundedButton.Click += RoundedButton_Click;
 
             _mainControl.Controls.Add(_titleLabel);
