@@ -13,29 +13,6 @@ namespace JapaneseTeacher.Data
         [JsonProperty("Words")]
         private List<Word> _words;
 
-        public bool AddWord(Word word)
-        {
-            if (_words.Any(w => w.Text == word.Text))
-            {
-                return false;
-            }
-
-            _words.Add(word);
-            return true;
-        }
-
-        public bool DeleteWord(Word word)
-        {
-            var wordToRemove = _words.FirstOrDefault(w => w.Text == word.Text);
-            if (wordToRemove == null)
-            {
-                return false;
-            }
-
-            _words.Remove(wordToRemove);
-            return true;
-        }
-
         public Word GetNextWord()
         {
             return GetNextWord(null);
@@ -69,7 +46,7 @@ namespace JapaneseTeacher.Data
 
             var totalEncounters = filteredWords.Sum(w => w.Encounters);
             var wordWeights = new Dictionary<Word, double>();
-            double totalWeight = 0;
+            var totalWeight = 0d;
 
             // Предварительно вычисляем веса для всех слов
             foreach (var word in filteredWords)
@@ -81,7 +58,7 @@ namespace JapaneseTeacher.Data
 
             // Нормализуем веса и создаем взвешенный список
             var weightedList = new List<(Word Word, double CumulativeWeight)>();
-            double cumulative = 0;
+            var cumulative = 0d;
             foreach (var kvp in wordWeights)
             {
                 cumulative += kvp.Value / totalWeight;
@@ -89,7 +66,7 @@ namespace JapaneseTeacher.Data
             }
 
             // Выбираем случайное слово с учетом весов
-            double randomValue = _random.NextDouble();
+            var randomValue = _random.NextDouble();
             foreach (var item in weightedList)
             {
                 if (randomValue <= item.CumulativeWeight)

@@ -26,6 +26,7 @@ namespace JapaneseTeacher.UI
                 Invalidate();
             }
         }
+
         public int Value
         {
             get
@@ -52,6 +53,7 @@ namespace JapaneseTeacher.UI
                 Invalidate();
             }
         }
+
         public Color UnfilledColor
         {
             get
@@ -79,7 +81,7 @@ namespace JapaneseTeacher.UI
         {
             var graphics = e.Graphics;
 
-            float ratio = (MaxValue == 0 || Value <= 0) ? 0 : Math.Min(1, (float)Value / MaxValue);
+            var ratio = (MaxValue == 0 || Value <= 0) ? 0 : Math.Min(1, (float)Value / MaxValue);
 
             var filledWidth = Width * ratio;
             var unfilledWidth = Width - filledWidth;

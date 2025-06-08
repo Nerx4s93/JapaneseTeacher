@@ -89,7 +89,7 @@ namespace JapaneseTeacher.UI
             graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
             graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-            int x = PercentToPixels(3);
+            var x = PercentToPixels(3);
             if (Active)
             {
                 graphics.DrawEllipse(_pen2, x, x, Width - 2 * x, Height - 2 * x);
@@ -117,7 +117,7 @@ namespace JapaneseTeacher.UI
         {
             var brush = Active ? _starBrush : _noActiveIconBodyColor;
 
-            int x = PercentToPixels(30);
+            var x = PercentToPixels(30);
             var point = new PointF(x, x + deltaY);
             var size = new Size(Width - 2 * x, Width - 2 * x);
             DrawingTool.FillStar(graphics, point, size, brush);

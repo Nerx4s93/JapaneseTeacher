@@ -80,7 +80,7 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void CheckAnswer()
         {
-            string userAnswer = _textBoxAnswer.Text.Trim();
+            var userAnswer = _textBoxAnswer.Text.Trim();
 
             if (userAnswer.Equals(_currentWord.Reading, StringComparison.OrdinalIgnoreCase))
             {
@@ -146,19 +146,19 @@ namespace JapaneseTeacher.Scenes.Content
             _flatProgressBar.Size = new Size(_mainControl.Width * 8 / 10, 20);
             _flatProgressBar.Location = new Point((_mainControl.Size.Width - _flatProgressBar.Width) / 2, 20);
 
-            using (Graphics graphics = _mainControl.CreateGraphics())
+            using (var graphics = _mainControl.CreateGraphics())
             {
                 var labelTextSize = graphics.MeasureString(_labelTask.Text, _labelTask.Font);
-                int labelX = (_mainControl.Width - (int)labelTextSize.Width) / 2;
-                int labelY = (_mainControl.Height / 2) - 100;
+                var labelX = (_mainControl.Width - (int)labelTextSize.Width) / 2;
+                var labelY = (_mainControl.Height / 2) - 100;
                 _labelTask.Location = new Point(labelX, labelY);
 
-                int textBoxX = (_mainControl.Width - _textBoxAnswer.Width) / 2;
-                int textBoxY = labelY + (int)labelTextSize.Height + 20;
+                var textBoxX = (_mainControl.Width - _textBoxAnswer.Width) / 2;
+                var textBoxY = labelY + (int)labelTextSize.Height + 20;
                 _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
 
-                int buttonX = _textBoxAnswer.Right - _roundedButton.Width;
-                int buttonY = _textBoxAnswer.Bottom + 20;
+                var buttonX = _textBoxAnswer.Right - _roundedButton.Width;
+                var buttonY = _textBoxAnswer.Bottom + 20;
                 _roundedButton.Location = new Point(buttonX, buttonY);
             }
         }

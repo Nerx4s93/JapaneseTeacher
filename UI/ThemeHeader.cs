@@ -12,8 +12,11 @@ namespace JapaneseTeacher.UI
         public Color BackgroundColor { get; set; }
 
         public string Theme { get; set; }
+
         public Color ThemeColor { get; set; }
+
         public string Description { get; set; }
+
         public Color DescriptionColor { get; set; }
 
         public ThemeHeader()
@@ -67,8 +70,8 @@ namespace JapaneseTeacher.UI
 
         private Point PercentToPixels(int percentX, int percentY)
         {
-            int x = Width * percentX / 100;
-            int y = Height * percentY / 100;
+            var x = Width * percentX / 100;
+            var y = Height * percentY / 100;
             return new Point(x, y);
         }
     }

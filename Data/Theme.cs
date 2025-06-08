@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 
 using Newtonsoft.Json;
-
-using JapaneseTeacher.Properties;
-using System;
 
 namespace JapaneseTeacher.Data
 {

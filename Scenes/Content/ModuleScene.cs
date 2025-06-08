@@ -91,7 +91,7 @@ namespace JapaneseTeacher.Scenes.Content
                 return;
             }
 
-            int totalHeight = HeaderHeight + (_buttonLevels.Count * ButtonSpacing);
+            var totalHeight = HeaderHeight + (_buttonLevels.Count * ButtonSpacing);
             _maxScrollPosition = Math.Min(0, _mainControl.ClientSize.Height - totalHeight);
         }
 
@@ -104,7 +104,7 @@ namespace JapaneseTeacher.Scenes.Content
             var bodyStartY = HeaderHeight;
             var dx = 50;
 
-            int[] xOffsets = { 0, dx, 2 * dx, dx };
+            var xOffsets = new int[4]{ 0, dx, 2 * dx, dx };
 
             for (int i = 0; i < _buttonLevels.Count; i++)
             {
@@ -130,8 +130,8 @@ namespace JapaneseTeacher.Scenes.Content
                 return;
             }
 
-            int delta = e.Delta > 0 ? ScrollStep : -ScrollStep;
-            int newPosition = _scrollPosition + delta;
+            var delta = e.Delta > 0 ? ScrollStep : -ScrollStep;
+            var newPosition = _scrollPosition + delta;
 
             newPosition = Math.Max(_maxScrollPosition, newPosition);
             newPosition = Math.Min(0, newPosition);

@@ -20,13 +20,13 @@ namespace JapaneseTeacher.Tools
 
         private static PointF[] BuildStar(PointF topLeft, SizeF size)
         {
-            float width = size.Width;
-            float height = size.Height;
-            float centerX = topLeft.X + width / 2;
-            float centerY = topLeft.Y + height / 2;
+            var width = size.Width;
+            var height = size.Height;
+            var centerX = topLeft.X + width / 2;
+            var centerY = topLeft.Y + height / 2;
 
-            float radiusOuter = Math.Min(width, height) / 2;
-            float radiusInner = radiusOuter * 0.5f;
+            var radiusOuter = Math.Min(width, height) / 2;
+            var radiusInner = radiusOuter * 0.5f;
 
             var points = new PointF[10];
 

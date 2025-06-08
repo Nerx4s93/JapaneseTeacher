@@ -145,15 +145,15 @@ namespace JapaneseTeacher.Scenes.Content
         {
             var clientSize = _mainControl.ClientSize;
 
-            int spacing = 20;
-            int cardWidth = _correctCard.Width;
-            int cardsTotalWidth = cardWidth * 3 + spacing * 2;
+            var spacing = 20;
+            var cardWidth = _correctCard.Width;
+            var cardsTotalWidth = cardWidth * 3 + spacing * 2;
 
-            int centerY = clientSize.Height / 2;
+            var centerY = clientSize.Height / 2;
 
             // Статистика
-            int cardsTop = centerY + 30;
-            int cardsStartX = (clientSize.Width - cardsTotalWidth) / 2;
+            var cardsTop = centerY + 30;
+            var cardsStartX = (clientSize.Width - cardsTotalWidth) / 2;
 
             _correctCard.Location = new Point(cardsStartX, cardsTop);
             _mistakeCard.Location = new Point(cardsStartX + cardWidth + spacing, cardsTop);
@@ -171,7 +171,7 @@ namespace JapaneseTeacher.Scenes.Content
             );
 
             // Кнопка далее
-            int buttonMargin = 20;
+            var buttonMargin = 20;
             _roundedButton.Location = new Point(
                 clientSize.Width - _roundedButton.Width - buttonMargin,
                 clientSize.Height - _roundedButton.Height - buttonMargin

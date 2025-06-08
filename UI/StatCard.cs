@@ -31,8 +31,8 @@ namespace JapaneseTeacher.UI
         {
             Font = new Font("Segoe UI Emoji", 12f);
 
-            BodyColor = Color.Lime;
             _whiteBrush = new SolidBrush(Color.White);
+            BodyColor = Color.Lime;
             Title = "Заголовок";
         }
 
