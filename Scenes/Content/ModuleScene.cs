@@ -79,13 +79,6 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void AdjustControls(Theme theme)
         {
-            _moduleHeader.Dispose();
-            foreach (var buttonLevel in _buttonLevels)
-            {
-                buttonLevel.Dispose();
-            }
-            _buttonLevels.Clear();
-
             _moduleHeader = new ThemeHeader
             {
                 Size = new Size(700, 110),
