@@ -27,7 +27,7 @@ namespace JapaneseTeacher.UI
 
         private bool _mouseDown;
 
-        private ButtonLevelInformation _buttonLevelInformation;
+        private LevelInformation _buttonLevelInformation;
 
         public Color DefaultColor
         {
@@ -147,7 +147,7 @@ namespace JapaneseTeacher.UI
             DefaultBottomColor = Color.Green;
             StartColor = Color.Cornsilk;
 
-            _buttonLevelInformation = new ButtonLevelInformation
+            _buttonLevelInformation = new LevelInformation
             {
                 Visible = false,
                 Size = new Size(360, 175)

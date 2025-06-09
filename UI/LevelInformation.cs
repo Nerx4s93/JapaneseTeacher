@@ -6,7 +6,7 @@ using JapaneseTeacher.Tools;
 
 namespace JapaneseTeacher.UI
 {
-    internal class ButtonLevelInformation : Control
+    internal class LevelInformation : Control
     {
         private const int _radius = 8;
         private const string _noActiveText = "Пройдите все уровни выше,\nчтобы открыть доступ!";
@@ -77,7 +77,7 @@ namespace JapaneseTeacher.UI
             }
         }
 
-        public ButtonLevelInformation()
+        public LevelInformation()
         {
             ForeColor = Color.White;
             Font = new Font("Segoe UI Emoji", 16);

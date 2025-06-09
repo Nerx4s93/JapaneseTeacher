@@ -77,7 +77,7 @@
     <Compile Include="UI\ButtonLevel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UI\ButtonLevelInformation.cs">
+    <Compile Include="UI\LevelInformation.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\ContentDivider.cs">
