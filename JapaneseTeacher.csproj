@@ -113,6 +113,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\Alphabets.json" />
+    <None Include="Resources\Street.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

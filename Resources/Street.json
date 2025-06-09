@@ -1,0 +1,774 @@
+﻿{
+  "Name": "Улица",
+  "Themes": [
+    {
+      "Name": "Модуль 2, раздел 1",
+      "Description": "Опишите природу",
+      "Color": "Orange",
+      "Levels": [
+        {
+          "LevelId": "1",
+          "Description": "🌿 Уровень 1 — Основы природы",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "2",
+          "Description": "🌱 Уровень 2 — Растения и их части",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "3",
+          "Description": "💧 Уровень 3 — Вода и её формы",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "4",
+          "Description": "🌾 Уровень 4 — Ландшафт и рельеф",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "5",
+          "Description": "🍂 Уровень 5 — Природные явления",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "6",
+          "Description": "🌲 Уровень 6 — Лес и природные зоны",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "7",
+          "Description": "🌺 Уровень 7 — Цветы и растения",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        },
+        {
+          "LevelId": "8",
+          "Description": "🌍 Уровень 8 — Общие природные слова и состояния",
+          "CompletedSublevels": 0,
+          "TotalSublevels": 5
+        }
+      ],
+      "VocabularySet": {
+        "Words": [
+          {
+            "Level": "1",
+            "Text": "くさ",
+            "Reading": "kusa",
+            "Translation": "трава",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "1",
+            "Text": "き",
+            "Reading": "ki",
+            "Translation": "дерево",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "1",
+            "Text": "はな",
+            "Reading": "hana",
+            "Translation": "цветок",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "1",
+            "Text": "つち",
+            "Reading": "tsuchi",
+            "Translation": "земля",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "1",
+            "Text": "いし",
+            "Reading": "ishi",
+            "Translation": "камень",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "1",
+            "Text": "かわ",
+            "Reading": "kawa",
+            "Translation": "река",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "1",
+            "Text": "やま",
+            "Reading": "yama",
+            "Translation": "гора",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "1",
+            "Text": "そら",
+            "Reading": "sora",
+            "Translation": "небо",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+
+          {
+            "Level": "2",
+            "Text": "はっぱ",
+            "Reading": "happa",
+            "Translation": "лист",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "2",
+            "Text": "ねっこ",
+            "Reading": "nekko",
+            "Translation": "корень",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "2",
+            "Text": "くき",
+            "Reading": "kuki",
+            "Translation": "стебель",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "2",
+            "Text": "えだ",
+            "Reading": "eda",
+            "Translation": "ветка",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "2",
+            "Text": "み",
+            "Reading": "mi",
+            "Translation": "плод, ягода",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "2",
+            "Text": "たね",
+            "Reading": "tane",
+            "Translation": "семя",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "2",
+            "Text": "しょくぶつ",
+            "Reading": "shokubutsu",
+            "Translation": "растение",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "2",
+            "Text": "もくせい",
+            "Reading": "mokusei",
+            "Translation": "древесный",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+
+          {
+            "Level": "3",
+            "Text": "みず",
+            "Reading": "mizu",
+            "Translation": "вода",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "3",
+            "Text": "みずうみ",
+            "Reading": "mizuumi",
+            "Translation": "озеро",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "3",
+            "Text": "うみ",
+            "Reading": "umi",
+            "Translation": "море",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "3",
+            "Text": "ながれ",
+            "Reading": "nagare",
+            "Translation": "течение",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "3",
+            "Text": "しずく",
+            "Reading": "shizuku",
+            "Translation": "капля",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "3",
+            "Text": "いけ",
+            "Reading": "ike",
+            "Translation": "пруд",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "3",
+            "Text": "たき",
+            "Reading": "taki",
+            "Translation": "водопад",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "3",
+            "Text": "すいめん",
+            "Reading": "suimen",
+            "Translation": "поверхность воды",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+
+          {
+            "Level": "4",
+            "Text": "たに",
+            "Reading": "tani",
+            "Translation": "долина",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "4",
+            "Text": "おか",
+            "Reading": "oka",
+            "Translation": "холм",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "4",
+            "Text": "けしき",
+            "Reading": "keshiki",
+            "Translation": "пейзаж",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "4",
+            "Text": "そげき",
+            "Reading": "sogeki",
+            "Translation": "обрыв",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "4",
+            "Text": "こやま",
+            "Reading": "koyama",
+            "Translation": "возвышенность",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "4",
+            "Text": "のはら",
+            "Reading": "nohara",
+            "Translation": "поле",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "4",
+            "Text": "いわば",
+            "Reading": "iwaba",
+            "Translation": "скала",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "4",
+            "Text": "ちけい",
+            "Reading": "chikei",
+            "Translation": "рельеф",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "5",
+            "Text": "かぜ",
+            "Reading": "kaze",
+            "Translation": "ветер",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "5",
+            "Text": "あめ",
+            "Reading": "ame",
+            "Translation": "дождь",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "5",
+            "Text": "ゆき",
+            "Reading": "yuki",
+            "Translation": "снег",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "5",
+            "Text": "かみなり",
+            "Reading": "kaminari",
+            "Translation": "гром, молния",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "5",
+            "Text": "たいよう",
+            "Reading": "taiyō",
+            "Translation": "солнце",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "5",
+            "Text": "くも",
+            "Reading": "kumo",
+            "Translation": "облако",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "5",
+            "Text": "にじ",
+            "Reading": "niji",
+            "Translation": "радуга",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "5",
+            "Text": "しも",
+            "Reading": "shimo",
+            "Translation": "иней",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+
+          {
+            "Level": "6",
+            "Text": "もり",
+            "Reading": "mori",
+            "Translation": "лес",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "6",
+            "Text": "はやし",
+            "Reading": "hayashi",
+            "Translation": "роща",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "6",
+            "Text": "たけやぶ",
+            "Reading": "takeyabu",
+            "Translation": "бамбуковая роща",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "6",
+            "Text": "しんりん",
+            "Reading": "shinrin",
+            "Translation": "лесная зона",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "6",
+            "Text": "そうげん",
+            "Reading": "sōgen",
+            "Translation": "степь, саванна",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "6",
+            "Text": "ぬま",
+            "Reading": "numa",
+            "Translation": "болото",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "6",
+            "Text": "じゃりち",
+            "Reading": "jarichi",
+            "Translation": "гравийная почва",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "6",
+            "Text": "きり",
+            "Reading": "kiri",
+            "Translation": "туман",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+
+          {
+            "Level": "7",
+            "Text": "さくら",
+            "Reading": "sakura",
+            "Translation": "сакура",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "7",
+            "Text": "たんぽぽ",
+            "Reading": "tanpopo",
+            "Translation": "одуванчик",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "7",
+            "Text": "ひまわり",
+            "Reading": "himawari",
+            "Translation": "подсолнух",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "7",
+            "Text": "あじさい",
+            "Reading": "ajisai",
+            "Translation": "гортензия",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "7",
+            "Text": "まつ",
+            "Reading": "matsu",
+            "Translation": "сосна",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "7",
+            "Text": "たけ",
+            "Reading": "take",
+            "Translation": "бамбук",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "7",
+            "Text": "うめ",
+            "Reading": "ume",
+            "Translation": "слива",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "7",
+            "Text": "もみじ",
+            "Reading": "momiji",
+            "Translation": "клён (осенний лист)",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+
+          {
+            "Level": "8",
+            "Text": "しぜん",
+            "Reading": "shizen",
+            "Translation": "природа",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "8",
+            "Text": "かんきょう",
+            "Reading": "kankyō",
+            "Translation": "окружающая среда",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "8",
+            "Text": "しぜんのなか",
+            "Reading": "shizen no naka",
+            "Translation": "среди природы",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "8",
+            "Text": "いのち",
+            "Reading": "inochi",
+            "Translation": "жизнь",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "8",
+            "Text": "せいぶつ",
+            "Reading": "seibutsu",
+            "Translation": "живое существо",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "8",
+            "Text": "てんねん",
+            "Reading": "tennen",
+            "Translation": "природный, натуральный",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "8",
+            "Text": "きせつ",
+            "Reading": "kisetsu",
+            "Translation": "сезон",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          },
+          {
+            "Level": "8",
+            "Text": "しずか（な）",
+            "Reading": "shizuka (na)",
+            "Translation": "тихий",
+            "Encounters": 0,
+            "Mistakes": 0,
+            "StreakForMistakes": 0,
+            "Streak": 0,
+            "TimesNotSeen": 0
+          }
+        ]
+      }
+    }
+  ]
+}

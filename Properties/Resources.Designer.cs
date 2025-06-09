@@ -59,5 +59,25 @@ namespace JapaneseTeacher.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Alphabets {
+            get {
+                object obj = ResourceManager.GetObject("Alphabets", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Street {
+            get {
+                object obj = ResourceManager.GetObject("Street", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
