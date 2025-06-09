@@ -21,7 +21,7 @@ namespace JapaneseTeacher.Scenes.Content
         private FlatProgressBar _flatProgressBar;
         private Label _labelTask;
         private TextBox _textBoxAnswer;
-        private RoundedButton _roundedButton;
+        private AnimatedPressButton _animatedPressButton;
         private AnswerResultPanel _answerResultPanel;
 
         private int _totalAnswers;
@@ -43,7 +43,7 @@ namespace JapaneseTeacher.Scenes.Content
             _flatProgressBar.Dispose();
             _labelTask.Dispose();
             _textBoxAnswer.Dispose();
-            _roundedButton.Dispose();
+            _animatedPressButton.Dispose();
             _answerResultPanel.Dispose();
             _mainControl.Resize -= Form_Resize;
         }
@@ -131,12 +131,11 @@ namespace JapaneseTeacher.Scenes.Content
             };
             _textBoxAnswer.KeyDown += TextBoxAnswer_KeyDown;
 
-            _roundedButton = new RoundedButton
+            _animatedPressButton = new AnimatedPressButton
             {
-                Font = new Font("Microsoft Sans Serif", 18f),
                 Text = "Проверить"
             };
-            _roundedButton.Click += RoundedButton_Click;
+            _animatedPressButton.Click += RoundedButton_Click;
 
             _answerResultPanel = new AnswerResultPanel
             {
@@ -146,7 +145,7 @@ namespace JapaneseTeacher.Scenes.Content
             _mainControl.Controls.Add(_flatProgressBar);
             _mainControl.Controls.Add(_labelTask);
             _mainControl.Controls.Add(_textBoxAnswer);
-            _mainControl.Controls.Add(_roundedButton);
+            _mainControl.Controls.Add(_animatedPressButton);
             _mainControl.Controls.Add(_answerResultPanel);
 
             Form_Resize(null, null);
@@ -168,9 +167,9 @@ namespace JapaneseTeacher.Scenes.Content
                 var textBoxY = labelY + (int)labelTextSize.Height + 20;
                 _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
 
-                var buttonX = _textBoxAnswer.Right - _roundedButton.Width;
+                var buttonX = _textBoxAnswer.Right - _animatedPressButton.Width;
                 var buttonY = _textBoxAnswer.Bottom + 20;
-                _roundedButton.Location = new Point(buttonX, buttonY);
+                _animatedPressButton.Location = new Point(buttonX, buttonY);
             }
         }
 

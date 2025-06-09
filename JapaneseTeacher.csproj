@@ -89,9 +89,6 @@
     <Compile Include="UI\FlatProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UI\RoundedButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UI\StatCard.cs">
       <SubType>Component</SubType>
     </Compile>

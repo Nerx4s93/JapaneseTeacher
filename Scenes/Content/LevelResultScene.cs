@@ -41,7 +41,7 @@ namespace JapaneseTeacher.Scenes.Content
         private StatCard _correctCard;
         private StatCard _mistakeCard;
         private StatCard _accuracyCard;
-        private RoundedButton _roundedButton;
+        private AnimatedPressButton _animatedPressButton;
 
         public override void Start(object[] args)
         {
@@ -61,7 +61,7 @@ namespace JapaneseTeacher.Scenes.Content
             _correctCard.Dispose();
             _mistakeCard.Dispose();
             _accuracyCard.Dispose();
-            _roundedButton.Dispose();
+            _animatedPressButton.Dispose();
         }
 
         private void RoundedButton_Click(object sender, EventArgs e)
@@ -119,20 +119,19 @@ namespace JapaneseTeacher.Scenes.Content
                 Location = new Point(440, 10)
             };
 
-            _roundedButton = new RoundedButton
+            _animatedPressButton = new AnimatedPressButton
             {
-                Font = new Font("Microsoft Sans Serif", 18f),
                 Text = "Далее",
                 Size = new Size(133, 42)
             };
-            _roundedButton.Click += RoundedButton_Click;
+            _animatedPressButton.Click += RoundedButton_Click;
 
             _mainControl.Controls.Add(_titleLabel);
             _mainControl.Controls.Add(_subtitleLabel);
             _mainControl.Controls.Add(_correctCard);
             _mainControl.Controls.Add(_mistakeCard);
             _mainControl.Controls.Add(_accuracyCard);
-            _mainControl.Controls.Add(_roundedButton);
+            _mainControl.Controls.Add(_animatedPressButton);
 
             Form_Resize(null, null);
         }
@@ -168,9 +167,9 @@ namespace JapaneseTeacher.Scenes.Content
 
             // Кнопка далее
             var buttonMargin = 20;
-            _roundedButton.Location = new Point(
-                clientSize.Width - _roundedButton.Width - buttonMargin,
-                clientSize.Height - _roundedButton.Height - buttonMargin
+            _animatedPressButton.Location = new Point(
+                clientSize.Width - _animatedPressButton.Width - buttonMargin,
+                clientSize.Height - _animatedPressButton.Height - buttonMargin
             );
         }
 
