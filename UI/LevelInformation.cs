@@ -1,9 +1,9 @@
-﻿using System;
+﻿using JapaneseTeacher.Tools;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-
-using JapaneseTeacher.Tools;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace JapaneseTeacher.UI
 {
@@ -89,6 +89,7 @@ namespace JapaneseTeacher.UI
 
         public LevelInformation()
         {
+            DoubleBuffered = true;
             ForeColor = Color.White;
             Font = new Font("Segoe UI Emoji", 16);
 
@@ -131,6 +132,7 @@ namespace JapaneseTeacher.UI
             DrawBackground(graphics);
             DrawTitle(graphics);
             DrawText(graphics);
+            UpdateAnimatedButtonPosition();
         }
 
         private void DrawBackground(Graphics graphics)
@@ -153,20 +155,34 @@ namespace JapaneseTeacher.UI
 
         private void DrawTitle(Graphics graphics)
         {
-            var font = new Font(Font, FontStyle.Bold);
-            var brush = _active ? new SolidBrush(ForeColor) : _noActiveTextBrush;
-            var point = new Point(_padingX, _padingY);
+            using (var font = new Font(Font, FontStyle.Bold))
+            {
+                var brush = _active ? new SolidBrush(ForeColor) : _noActiveTextBrush;
+                var point = new Point(_padingX, _padingY);
 
-            graphics.DrawString(Text, font, brush, point);
+                graphics.DrawString(Text, font, brush, point);
+
+                if (_active)
+                {
+                    brush.Dispose();
+                }
+            }
         }
 
         private void DrawText(Graphics graphics)
         {
+            var titleHeight = TextRenderer.MeasureText(Text, new Font(Font, FontStyle.Bold)).Height;
+
             var text = _active ? GetActiveText() : _noActiveText;
             var brush = _active ? new SolidBrush(ForeColor) : _noActiveTextBrush;
-            var point = new Point(_padingX, _padingY + 35);
+            var point = new Point(_padingX, _padingY + titleHeight + _padingY / 2);
 
             graphics.DrawString(text, Font, brush, point);
+
+            if (_active)
+            {
+                brush.Dispose();
+            }
         }
 
         private string GetActiveText()
@@ -185,11 +201,17 @@ namespace JapaneseTeacher.UI
                 return;
             }
 
-            int buttonY = _padingY + 35 + 60;
+            var titleHeight = TextRenderer.MeasureText(Text, new Font(Font, FontStyle.Bold)).Height;
+            var text = _active ? GetActiveText() : _noActiveText;
+            var textHeight = TextRenderer.MeasureText(text, Font, new Size(Width - 2 * _padingX, 0), TextFormatFlags.WordBreak).Height;
+
+            var buttonY = _padingY + titleHeight + _padingY / 2 + textHeight + _padingY / 2;
 
             _animatedPressButton.Width = Width - 2 * _padingX;
             _animatedPressButton.Height = 50;
             _animatedPressButton.Location = new Point(_padingX, buttonY);
+
+            Height = _padingY * 5 / 2 + titleHeight + textHeight + _animatedPressButton.Height;
         }
 
         public void SetParent(ButtonLevel parent)
