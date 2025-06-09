@@ -136,18 +136,20 @@ namespace JapaneseTeacher.UI
         {
             var textSize = graphics.MeasureString(Text, Font);
             var x = (Width - textSize.Width) / 2;
-            var y = (Height - textSize.Height) / 2 - 3;
+            var y = (Height - textSize.Height) / 2;
+
+            var dy = _mouseDown ? 0 : -3;
 
             if (_active)
             {
                 using (var brush = new SolidBrush(ForeColor))
                 {
-                    graphics.DrawString(Text, Font, brush, x, y);
+                    graphics.DrawString(Text, Font, brush, x, y + dy);
                 }
             }
             else
             {
-                graphics.DrawString(Text, Font, _noActiveTextBrush, x, y);
+                graphics.DrawString(Text, Font, _noActiveTextBrush, x, y + dy);
             }
         }
 
