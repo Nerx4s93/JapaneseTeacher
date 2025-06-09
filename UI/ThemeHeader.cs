@@ -10,15 +10,76 @@ namespace JapaneseTeacher.UI
     {
         private const int _radius = 8;
 
-        public Color BackgroundColor { get; set; }
+        private Color _backgroundColor;
+        private string _theme;
+        private Color _themeColor;
+        private string _description;
+        private Color _descriptionColor;
 
-        public string Theme { get; set; }
+        public Color BackgroundColor
+        {
+            get
+            {
+                return _backgroundColor;
+            }
+            set
+            {
+                _backgroundColor = value;
+                Invalidate();
+            }
+        }
 
-        public Color ThemeColor { get; set; }
+        public string Theme
+        {
+            get
+            {
+                return _theme;
+            }
+            set
+            {
+                _theme = value;
+                Invalidate();
+            }
+        }
 
-        public string Description { get; set; }
+        public Color ThemeColor
+        {
+            get
+            {
+                return _themeColor;
+            }
+            set
+            {
+                _themeColor = value;
+                Invalidate();
+            }
+        }
 
-        public Color DescriptionColor { get; set; }
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                _description = value;
+                Invalidate();
+            }
+        }
+
+        public Color DescriptionColor
+        {
+            get
+            {
+                return _descriptionColor;
+            }
+            set
+            {
+                _descriptionColor = value;
+                Invalidate();
+            }
+        }
 
         public ThemeHeader()
         {
