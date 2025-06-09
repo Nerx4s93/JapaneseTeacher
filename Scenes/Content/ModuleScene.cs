@@ -65,13 +65,13 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void Button_Click(object sender, EventArgs e)
         {
-            var button = sender as ButtonLevel;
+            /*var button = sender as ButtonLevel;
 
             if (button.Active)
             {
                 var level = button.Level;
                 SceneManager.LoadScene(new LevelScene(), new object[4] { _mainControl, _module, button.Tag, level });
-            }
+            }*/
         }
 
         #region Настройка элементов управления
@@ -97,7 +97,10 @@ namespace JapaneseTeacher.Scenes.Content
                         ComplitePercent = (float)level.CompletedSublevels / (float)level.TotalSublevels * 100f,
                         Tag = theme,
                         Active = active,
-                        Level = level.LevelId
+                        Level = level.LevelId,
+                        CompliteSublevels = level.CompletedSublevels,
+                        TotalSublevels = level.TotalSublevels,
+                        Description = level.Description
                     };
                     button.Click += Button_Click;
 

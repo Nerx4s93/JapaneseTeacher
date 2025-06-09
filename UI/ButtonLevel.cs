@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
@@ -12,6 +13,8 @@ namespace JapaneseTeacher.UI
         private readonly Brush _noActiveBottomBodyColor = new SolidBrush(Color.FromArgb(183, 183, 183));
         private readonly Brush _noActiveIconBodyColor = new SolidBrush(Color.FromArgb(175, 175, 175));
 
+        private bool _active = false;
+
         private Pen _pen1;
         private Pen _pen2;
         private Brush _brush1;
@@ -23,6 +26,8 @@ namespace JapaneseTeacher.UI
         private Color _iconColor;
 
         private bool _mouseDown;
+
+        private ButtonLevelInformation _buttonLevelInformation;
 
         public Color DefaultColor
         {
@@ -67,9 +72,59 @@ namespace JapaneseTeacher.UI
 
         public float ComplitePercent { get; set; }
 
-        public bool Active { get; set; }
+        public bool Active
+        {
+            get
+            {
+                return _active;
+            }
+            set
+            {
+                _active = value;
+                _buttonLevelInformation.Active = value;
+            }
+        }
 
         public string Level { get; set; }
+
+        public int CompliteSublevels
+        {
+            get
+            {
+                return _buttonLevelInformation.CompliteSublevels;
+            }
+            set
+            {
+                _buttonLevelInformation.CompliteSublevels = value;
+                Invalidate();
+            }
+        }
+
+        public int TotalSublevels
+        {
+            get
+            {
+                return _buttonLevelInformation.TotalSublevels;
+            }
+            set
+            {
+                _buttonLevelInformation.TotalSublevels = value;
+                Invalidate();
+            }
+        }
+
+
+        public string Description
+        {
+            get
+            {
+                return _buttonLevelInformation.Text;
+            }
+            set
+            {
+                _buttonLevelInformation.Text = value;
+            }
+        }
 
         public ButtonLevel()
         {
@@ -79,6 +134,51 @@ namespace JapaneseTeacher.UI
             DefaultColor = Color.Lime;
             DefaultBottomColor = Color.Green;
             StartColor = Color.Cornsilk;
+
+            _buttonLevelInformation = new ButtonLevelInformation
+            {
+                Visible = false,
+                Size = new Size(360, 175)
+            };
+            _buttonLevelInformation.SetParent(this);
+        }
+
+        #region ButtonLevelInformation
+
+        protected override void CreateHandle()
+        {
+            base.CreateHandle();
+            Parent.Controls.Add(_buttonLevelInformation);
+
+            Parent.MouseDown += Control_MouseDown;
+            var controls = Parent.Controls;
+            foreach (Control control in controls)
+            {
+                control.MouseDown += Control_MouseDown;
+            }
+            MouseDown -= Control_MouseDown;
+        }
+
+        protected override void DestroyHandle()
+        {
+            base.DestroyHandle();
+            _buttonLevelInformation.Dispose();
+        }
+
+        private void Control_MouseDown(object sender, MouseEventArgs e)
+        {
+            _buttonLevelInformation.Visible = false;
+        }
+
+        #endregion
+
+        protected override void OnLocationChanged(EventArgs e)
+        {
+            base.OnLocationChanged(e);
+
+            var x = (Location.X + Width) / 2;
+            var y = Location.Y + Height + 10;
+            _buttonLevelInformation.Location = new Point(x, y);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -133,11 +233,15 @@ namespace JapaneseTeacher.UI
         {
             _mouseDown = false;
             Invalidate();
+            _buttonLevelInformation.Visible = !_buttonLevelInformation.Visible;
         }
 
         private int PercentToPixels(int percent)
         {
             return Width * percent / 100;
         }
+
+        public delegate void LoadLevel(object sendler);
+        public event LoadLevel OnLoadLevel;
     }
 }

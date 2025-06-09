@@ -15,6 +15,8 @@ namespace JapaneseTeacher.UI
         private readonly Brush _noActiveOverlayBrush = new SolidBrush(Color.FromArgb(229, 229, 229));
         private readonly Brush _noActiveTextBrush = new SolidBrush(Color.FromArgb(175, 175, 175));
 
+        private ButtonLevel _parent;
+
         private bool _active;
         private Color _activeBackgroundColor;
         private Brush _activeBackgroundBrush;
@@ -140,6 +142,11 @@ namespace JapaneseTeacher.UI
                 return "Вы уже прошли этот уровень!";
             }
             return $"Урок {_compliteSublevels + 1} из {_totalSublevels}";
+        }
+
+        public void SetParent(ButtonLevel parent)
+        {
+            _parent = parent;
         }
     }
 }
