@@ -1,9 +1,9 @@
-﻿using JapaneseTeacher.Tools;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
+
+using JapaneseTeacher.Tools;
 
 namespace JapaneseTeacher.UI
 {
