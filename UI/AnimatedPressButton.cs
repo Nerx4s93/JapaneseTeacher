@@ -1,9 +1,9 @@
-﻿using System;
+﻿using JapaneseTeacher.Tools;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Windows.Forms;
-
-using JapaneseTeacher.Tools;
 
 namespace JapaneseTeacher.UI
 {
@@ -12,6 +12,9 @@ namespace JapaneseTeacher.UI
         private const int _radius = 8;
         private const int _paddingX = 13;
         private const int _paddingY = 25;
+
+        private readonly Brush _noActiveBackgroundBrush = new SolidBrush(Color.FromArgb(229, 229, 229));
+        private readonly Brush _noActiveTextBrush = new SolidBrush(Color.FromArgb(175, 175, 175));
 
         private bool _customAutoSize;
 
@@ -34,7 +37,7 @@ namespace JapaneseTeacher.UI
             }
         }
 
-        public bool Acrive
+        public bool Active
         {
             get
             {
@@ -95,19 +98,28 @@ namespace JapaneseTeacher.UI
             rectangle.Y = 6;
             rectangle.Height -= 6;
 
-            if (_mouseDown)
+            if (_active)
             {
-                var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
-                graphics.FillPath(_acriveBackgroundBrush, path);
+                if (_mouseDown)
+                {
+                    var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
+                    graphics.FillPath(_acriveBackgroundBrush, path);
+                }
+                else
+                {
+                    var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
+                    graphics.FillPath(_acriveBottomBackgroundBrush, path);
+
+                    rectangle.Y = 0;
+                    path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
+                    graphics.FillPath(_acriveBackgroundBrush, path);
+                }
             }
             else
             {
-                var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
-                graphics.FillPath(_acriveBottomBackgroundBrush, path);
-
                 rectangle.Y = 0;
-                path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
-                graphics.FillPath(_acriveBackgroundBrush, path);
+                var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
+                graphics.FillPath(_noActiveBackgroundBrush, path);
             }
         }
 
@@ -117,9 +129,16 @@ namespace JapaneseTeacher.UI
             var x = (Width - textSize.Width) / 2;
             var y = (Height - textSize.Height) / 2 - 3;
 
-            using (var brush = new SolidBrush(ForeColor))
+            if (_active)
             {
-                graphics.DrawString(Text, Font, brush, x, y);
+                using (var brush = new SolidBrush(ForeColor))
+                {
+                    graphics.DrawString(Text, Font, brush, x, y);
+                }
+            }
+            else
+            {
+                graphics.DrawString(Text, Font, _noActiveTextBrush, x, y);
             }
         }
 
