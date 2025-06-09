@@ -49,6 +49,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(958, 551);
             this.Controls.Add(this.panelBody);
+            this.DoubleBuffered = true;
             this.Name = "FormMain";
             this.Text = "FormMain";
             this.Shown += new System.EventHandler(this.FormMain_Shown);
