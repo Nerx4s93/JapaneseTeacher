@@ -80,7 +80,7 @@ namespace JapaneseTeacher.UI
         public ButtonLevelInformation()
         {
             ForeColor = Color.White;
-            Font = new Font("Microsoft Sans Serif", 16);
+            Font = new Font("Segoe UI Emoji", 16);
 
             ActiveBackgroundColor = Color.Orange;
         }
