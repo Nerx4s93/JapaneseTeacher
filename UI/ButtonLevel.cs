@@ -253,7 +253,12 @@ namespace JapaneseTeacher.UI
             return Width * percent / 100;
         }
 
-        public delegate void LoadLevel(object sendler);
+        public void MessageLoadLevel()
+        {
+            OnLoadLevel?.Invoke(this);
+        }
+
+        public delegate void LoadLevel(object sender);
         public event LoadLevel OnLoadLevel;
     }
 }

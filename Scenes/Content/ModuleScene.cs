@@ -63,15 +63,15 @@ namespace JapaneseTeacher.Scenes.Content
             }
         }
 
-        private void Button_Click(object sender, EventArgs e)
+        private void Button_OnLoadLevel(object sender)
         {
-            /*var button = sender as ButtonLevel;
+            var button = sender as ButtonLevel;
 
             if (button.Active)
             {
                 var level = button.Level;
                 SceneManager.LoadScene(new LevelScene(), new object[4] { _mainControl, _module, button.Tag, level });
-            }*/
+            }
         }
 
         #region Настройка элементов управления
@@ -103,7 +103,7 @@ namespace JapaneseTeacher.Scenes.Content
                         TotalSublevels = level.TotalSublevels,
                         Description = level.Description
                     };
-                    button.Click += Button_Click;
+                    button.OnLoadLevel += Button_OnLoadLevel;
 
                     if (level.CompletedSublevels < level.TotalSublevels)
                     {
