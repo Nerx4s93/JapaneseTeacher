@@ -17,18 +17,12 @@ namespace JapaneseTeacher.GUI
             InitializeComponent();
             _globeData = globalData;
             _sceneManager = new SceneManager();
-            _sceneManager.OnGetMessage += SceneManager_OnGetMessage;
         }
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
-            var module = _globeData.GetModuleByName("Алфавиты");
+            var module = _globeData.GetModuleByName("Улица");
             _sceneManager.LoadScene(new ModuleScene(), new object[2] { panelBody, module });
-        }
-
-        private void SceneManager_OnGetMessage(object sendler, object[] args)
-        {
-
         }
     }
 }
