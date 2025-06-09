@@ -8,31 +8,37 @@
       "Levels": [
         {
           "LevelId": "1",
+          "Description": "",
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "2",
+          "Description": "",
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "3",
+          "Description": "",
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "4",
+          "Description": "",
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "5",
+          "Description": "",
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "6",
+          "Description": "",
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         }
@@ -538,79 +544,6 @@
             "Level": "6",
             "Text": "ぱ",
             "Reading": "pa",
-            "Translation": "",
-            "Encounters": 0,
-            "Mistakes": 0,
-            "StreakForMistakes": 0,
-            "Streak": 0,
-            "TimesNotSeen": 0
-          }
-        ]
-      }
-    },
-    {
-      "Name": "Test",
-      "Description": "Test desctiption",
-      "Color": "Lime",
-      "Levels": [
-        {
-          "LevelId": "1",
-          "CompletedSublevels": 0,
-          "TotalSublevels": 5
-        },
-        {
-          "LevelId": "2",
-          "CompletedSublevels": 0,
-          "TotalSublevels": 5
-        },
-        {
-          "LevelId": "1",
-          "CompletedSublevels": 0,
-          "TotalSublevels": 5
-        },
-        {
-          "LevelId": "2",
-          "CompletedSublevels": 0,
-          "TotalSublevels": 5
-        },
-        {
-          "LevelId": "1",
-          "CompletedSublevels": 0,
-          "TotalSublevels": 5
-        },
-        {
-          "LevelId": "2",
-          "CompletedSublevels": 0,
-          "TotalSublevels": 5
-        },
-        {
-          "LevelId": "1",
-          "CompletedSublevels": 0,
-          "TotalSublevels": 5
-        },
-        {
-          "LevelId": "2",
-          "CompletedSublevels": 0,
-          "TotalSublevels": 5
-        }
-      ],
-      "VocabularySet": {
-        "Words": [
-          {
-            "Level": "1",
-            "Text": "あ",
-            "Reading": "a",
-            "Translation": "",
-            "Encounters": 0,
-            "Mistakes": 0,
-            "StreakForMistakes": 0,
-            "Streak": 0,
-            "TimesNotSeen": 0
-          },
-          {
-            "Level": "1",
-            "Text": "か",
-            "Reading": "ka",
             "Translation": "",
             "Encounters": 0,
             "Mistakes": 0,
