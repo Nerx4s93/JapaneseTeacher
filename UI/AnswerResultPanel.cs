@@ -52,6 +52,10 @@ namespace JapaneseTeacher.UI
         {
             var graphics = e.Graphics;
 
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
             DrawBackground(graphics);
             DrawIcon(graphics);
             DrawTitle(graphics);

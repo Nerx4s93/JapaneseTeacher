@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 using JapaneseTeacher.Tools;
@@ -38,8 +39,14 @@ namespace JapaneseTeacher.UI
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            DrawBackground(e.Graphics);
-            DrawText(e.Graphics);
+            var graphics = e.Graphics;
+
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+            DrawBackground(graphics);
+            DrawText(graphics);
         }
 
         private void DrawBackground(Graphics graphics)
