@@ -98,28 +98,33 @@ namespace JapaneseTeacher.UI
             rectangle.Y = 6;
             rectangle.Height -= 6;
 
-            if (_active)
+            using (var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius))
             {
-                if (_mouseDown)
+                if (_active)
                 {
-                    var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
-                    graphics.FillPath(_acriveBackgroundBrush, path);
+                    if (_mouseDown)
+                    {
+                        graphics.FillPath(_acriveBackgroundBrush, path);
+                    }
+                    else
+                    {
+                        graphics.FillPath(_acriveBottomBackgroundBrush, path);
+
+                        rectangle.Y = 0;
+                        using (var topPath = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius))
+                        {
+                            graphics.FillPath(_acriveBackgroundBrush, topPath);
+                        }
+                    }
                 }
                 else
                 {
-                    var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
-                    graphics.FillPath(_acriveBottomBackgroundBrush, path);
-
                     rectangle.Y = 0;
-                    path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
-                    graphics.FillPath(_acriveBackgroundBrush, path);
+                    using (var topPath = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius))
+                    {
+                        graphics.FillPath(_noActiveBackgroundBrush, topPath);
+                    }
                 }
-            }
-            else
-            {
-                rectangle.Y = 0;
-                var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius);
-                graphics.FillPath(_noActiveBackgroundBrush, path);
             }
         }
 
@@ -160,16 +165,12 @@ namespace JapaneseTeacher.UI
 
             if (CustomAutoSize && !string.IsNullOrEmpty(Text))
             {
-                using (var graphics = CreateGraphics())
-                {
-                    var textSize = graphics.MeasureString(Text, Font);
+                var size = TextRenderer.MeasureText(Text, Font);
 
+                int width = size.Width + _paddingX * 2;
+                int height = size.Height + _paddingY;
 
-                    int width = (int)Math.Ceiling(textSize.Width) + _paddingX * 2;
-                    int height = (int)Math.Ceiling(textSize.Height) + _paddingY;
-
-                    Size = new Size(width, height);
-                }
+                Size = new Size(width, height);
             }
         }
     }
