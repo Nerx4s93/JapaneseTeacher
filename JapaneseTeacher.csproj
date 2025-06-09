@@ -68,6 +68,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\DrawingTool.cs" />
+    <Compile Include="UI\AnimatedPressButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\AnswerResultPanel.cs">
       <SubType>Component</SubType>
     </Compile>
