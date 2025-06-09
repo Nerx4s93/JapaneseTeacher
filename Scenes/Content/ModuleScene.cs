@@ -98,6 +98,7 @@ namespace JapaneseTeacher.Scenes.Content
                         Tag = theme,
                         Active = active,
                         Level = level.LevelId,
+                        DescriptionActiveBackgroundColor = theme.Color,
                         CompliteSublevels = level.CompletedSublevels,
                         TotalSublevels = level.TotalSublevels,
                         Description = level.Description

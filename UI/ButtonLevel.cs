@@ -86,6 +86,18 @@ namespace JapaneseTeacher.UI
         }
 
         public string Level { get; set; }
+        
+        public Color DescriptionActiveBackgroundColor
+        {
+            get
+            {
+                return _buttonLevelInformation.ActiveBackgroundColor;
+            }
+            set
+            {
+                _buttonLevelInformation.ActiveBackgroundColor = value;
+            }
+        }
 
         public int CompliteSublevels
         {
