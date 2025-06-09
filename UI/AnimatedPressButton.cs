@@ -71,6 +71,10 @@ namespace JapaneseTeacher.UI
 
         public AnimatedPressButton()
         {
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            BackColor = Color.Transparent;
+
             DoubleBuffered = true;
             Font = new Font("Microsoft Sans Serif", 16);
             ForeColor = Color.White;
