@@ -10,6 +10,8 @@ namespace JapaneseTeacher.UI
     internal class AnimatedPressButton : Control
     {
         private const int _radius = 8;
+        private const int _paddingX = 13;
+        private const int _paddingY = 25;
 
         private bool _customAutoSize;
 
@@ -67,7 +69,7 @@ namespace JapaneseTeacher.UI
         public AnimatedPressButton()
         {
             DoubleBuffered = true;
-            Font = new Font("Microsoft Sans Serif", 14);
+            Font = new Font("Microsoft Sans Serif", 16);
             ForeColor = Color.White;
             CustomAutoSize = true;
             ActiveBackgroundColor = Color.Lime;
@@ -133,16 +135,21 @@ namespace JapaneseTeacher.UI
             Invalidate();
         }
 
-        protected override void OnSizeChanged(EventArgs e)
+        protected override void OnInvalidated(InvalidateEventArgs e)
         {
-            base.OnSizeChanged(e);
+            base.OnInvalidated(e);
 
-            if (_customAutoSize)
+            if (CustomAutoSize && !string.IsNullOrEmpty(Text))
             {
                 using (var graphics = CreateGraphics())
                 {
                     var textSize = graphics.MeasureString(Text, Font);
-                    Size = new Size((int)textSize.Width + 20, (int)textSize.Height + 30);
+
+
+                    int width = (int)Math.Ceiling(textSize.Width) + _paddingX * 2;
+                    int height = (int)Math.Ceiling(textSize.Height) + _paddingY;
+
+                    Size = new Size(width, height);
                 }
             }
         }
