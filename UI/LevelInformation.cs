@@ -1,9 +1,9 @@
-﻿using System;
+﻿using JapaneseTeacher.Tools;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-
-using JapaneseTeacher.Tools;
 
 namespace JapaneseTeacher.UI
 {
@@ -103,7 +103,9 @@ namespace JapaneseTeacher.UI
             base.CreateHandle();
             _animatedPressButton = new AnimatedPressButton
             {
-                CustomAutoSize = false
+                CustomAutoSize = false,
+                Active = _active,
+                Text = _active ? "Начать" : "НЕДОСТУПНО"
             };
             Controls.Add(_animatedPressButton);
         }
