@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
@@ -9,6 +10,8 @@ namespace JapaneseTeacher.UI
     internal class LevelInformation : Control
     {
         private const int _radius = 8;
+        private const int _padingX = 10;
+        private const int _padingY = 10;
         private const string _noActiveText = "Пройдите все уровни выше,\nчтобы открыть доступ!";
 
         private readonly Brush _noActiveBackgroundBrush = new SolidBrush(Color.FromArgb(247, 247, 247));
@@ -16,6 +19,7 @@ namespace JapaneseTeacher.UI
         private readonly Brush _noActiveTextBrush = new SolidBrush(Color.FromArgb(175, 175, 175));
 
         private ButtonLevel _parent;
+        private AnimatedPressButton _animatedPressButton;
 
         private bool _active;
         private Color _activeBackgroundColor;
@@ -31,6 +35,12 @@ namespace JapaneseTeacher.UI
             }
             set
             {
+                if (_animatedPressButton != null)
+                {
+                    _animatedPressButton.Active = value;
+                    _animatedPressButton.Text = value ? "Начать" : "НЕДОСТУПНО";
+                }
+
                 _active = value;
                 Invalidate();
             }
@@ -83,6 +93,30 @@ namespace JapaneseTeacher.UI
             Font = new Font("Segoe UI Emoji", 16);
 
             ActiveBackgroundColor = Color.Orange;
+
+            UpdateAnimatedButtonPosition();
+        }
+
+        protected override void CreateHandle()
+        {
+            base.CreateHandle();
+            _animatedPressButton = new AnimatedPressButton
+            {
+                CustomAutoSize = false
+            };
+            Controls.Add(_animatedPressButton);
+        }
+
+        protected override void DestroyHandle()
+        {
+            base.DestroyHandle();
+            _animatedPressButton.Dispose();
+        }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+            UpdateAnimatedButtonPosition();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -121,7 +155,7 @@ namespace JapaneseTeacher.UI
         {
             var font = new Font(Font, FontStyle.Bold);
             var brush = _active ? new SolidBrush(ForeColor) : _noActiveTextBrush;
-            var point = new Point(10, 10);
+            var point = new Point(_padingX, _padingY);
 
             graphics.DrawString(Text, font, brush, point);
         }
@@ -130,7 +164,7 @@ namespace JapaneseTeacher.UI
         {
             var text = _active ? GetActiveText() : _noActiveText;
             var brush = _active ? new SolidBrush(ForeColor) : _noActiveTextBrush;
-            var point = new Point(10, 45);
+            var point = new Point(_padingX, _padingY + 35);
 
             graphics.DrawString(text, Font, brush, point);
         }
@@ -142,6 +176,20 @@ namespace JapaneseTeacher.UI
                 return "Вы уже прошли этот уровень!";
             }
             return $"Урок {_compliteSublevels + 1} из {_totalSublevels}";
+        }
+
+        private void UpdateAnimatedButtonPosition()
+        {
+            if (_animatedPressButton == null)
+            {
+                return;
+            }
+
+            int buttonY = _padingY + 35 + 60;
+
+            _animatedPressButton.Width = Width - 2 * _padingX;
+            _animatedPressButton.Height = 50;
+            _animatedPressButton.Location = new Point(_padingX, buttonY);
         }
 
         public void SetParent(ButtonLevel parent)
