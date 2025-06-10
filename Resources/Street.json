@@ -9,48 +9,56 @@
         {
           "LevelId": "1",
           "Description": "🌿 Основы природы",
+          "LevelTypes": [ 1, 2 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "2",
           "Description": "🌱 Растения и их части",
+          "LevelTypes": [ 1, 2 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "3",
           "Description": "💧 Вода и её формы",
+          "LevelTypes": [ 1, 2 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "4",
           "Description": "🌾 Ландшафт и рельеф",
+          "LevelTypes": [ 1, 2 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "5",
           "Description": "🍂 Природные явления",
+          "LevelTypes": [ 1, 2 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "6",
           "Description": "🌲 Лес и природные зоны",
+          "LevelTypes": [ 1, 2 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "7",
           "Description": "🌺 Цветы и растения",
+          "LevelTypes": [ 1, 2 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "8",
           "Description": "🌍 Общие природные слова и состояния",
+          "LevelTypes": [ 1, 2 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         }

@@ -9,36 +9,42 @@
         {
           "LevelId": "1",
           "Description": "",
+          "LevelTypes": [ 0 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "2",
           "Description": "",
+          "LevelTypes": [ 0 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "3",
           "Description": "",
+          "LevelTypes": [ 0 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "4",
           "Description": "",
+          "LevelTypes": [ 0 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "5",
           "Description": "",
+          "LevelTypes": [ 0 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "6",
           "Description": "",
+          "LevelTypes": [ 0 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         }
