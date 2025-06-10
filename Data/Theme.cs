@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-
+using System.Windows.Forms;
 using Newtonsoft.Json;
 
 namespace JapaneseTeacher.Data
@@ -26,6 +27,13 @@ namespace JapaneseTeacher.Data
         {
             var level = _levels.First(x => x.LevelId == levelId);
             level.CompletedSublevels += 1;
+        }
+
+        public LevelType GetLevelType(string levelId)
+        {
+            var level = _levels.First(x => x.LevelId == levelId);
+            var random = new Random();
+            return level.LevelTypes[random.Next(level.LevelTypes.Count)];
         }
 
         public Word GetNextWord() => _vocabularySet.GetNextWord();

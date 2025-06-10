@@ -17,6 +17,8 @@ namespace JapaneseTeacher.Scenes.Content
         private Theme _theme;
         private string _levelId;
         private Word _currentWord;
+        private string _task;   
+        private string _answer;
 
         private FlatProgressBar _flatProgressBar;
         private Label _labelTask;
@@ -33,7 +35,7 @@ namespace JapaneseTeacher.Scenes.Content
             _module = args[1] as Module;
             _theme = args[2] as Theme;
             _levelId = args[3] as string;
-            _currentWord = _theme.GetNextWord(_levelId);
+            LoadNewWord();
             AdjustControls();
             _mainControl.Resize += Form_Resize;
         }
@@ -82,7 +84,7 @@ namespace JapaneseTeacher.Scenes.Content
         {
             var userAnswer = _textBoxAnswer.Text.Trim();
 
-            if (userAnswer.Equals(_currentWord.Reading, StringComparison.OrdinalIgnoreCase))
+            if (userAnswer.Equals(_answer, StringComparison.OrdinalIgnoreCase))
             {
                 _flatProgressBar.Value += 1;
                 _answerResultPanel.WasCorrect = true;
@@ -93,7 +95,7 @@ namespace JapaneseTeacher.Scenes.Content
                 _wrongAnswers += 1;
                 _flatProgressBar.MaxValue += _random.Next(2);
                 _answerResultPanel.WasCorrect = false;
-                _answerResultPanel.Text = $"Неверно. Правильный ответ: {_currentWord.Translation}";
+                _answerResultPanel.Text = $"Неверно. Правильный ответ: {_answer}";
                 _theme.UpdateWordStats(_currentWord, false);
             }
             _totalAnswers += 1;
@@ -102,8 +104,32 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void LoadNewWord()
         {
+            var levelType = _theme.GetLevelType(_levelId);
             _currentWord = _theme.GetNextWord(_levelId);
-            _labelTask.Text = $"Напишите перевод: {_currentWord.Text}";
+
+            switch (levelType)
+            {
+                case LevelType.JapaneseToReading:
+                    {
+                        _task = $"Напишите на ромадзи: {_currentWord.Text}";
+                        _answer = _currentWord.Reading;
+                        break;
+                    }
+                case LevelType.TranslationToReading:
+                    {
+                        _task = $"Напишите на ромадзи: {_currentWord.Translation}";
+                        _answer = _currentWord.Reading;
+                        break;
+                    }
+                case LevelType.ReadingToTranslate:
+                    {
+                        _task = $"Напишите первод: {_currentWord.Reading}";
+                        _answer = _currentWord.Translation;
+                        break;
+                    }
+            }
+
+            _labelTask?.Text = _task;
         }
 
         #endregion
@@ -119,8 +145,8 @@ namespace JapaneseTeacher.Scenes.Content
             _labelTask = new Label
             {
                 Font = new Font("Microsoft Sans Serif", 28f),
+                Text = _task,
                 AutoSize = true,
-                Text = $"Напишите перевод: {_currentWord.Text}"
             };
 
             _textBoxAnswer = new TextBox
