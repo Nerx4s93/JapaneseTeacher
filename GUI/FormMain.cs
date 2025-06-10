@@ -21,7 +21,7 @@ namespace JapaneseTeacher.GUI
 
         private void FormMain_Shown(object sender, EventArgs e)
         {
-            var module = _globeData.GetModuleByName("Алфавиты");
+            var module = _globeData.GetModuleByName("Улица");
             _sceneManager.LoadScene(new ModuleScene(), new object[2] { panelBody, module });
         }
     }

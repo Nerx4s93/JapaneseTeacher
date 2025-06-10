@@ -127,6 +127,12 @@ namespace JapaneseTeacher.Scenes.Content
                         _answer = _currentWord.Translation;
                         break;
                     }
+                case LevelType.JapaneseToTranslate:
+                    {
+                        _task = $"Напишите первод: {_currentWord.Text}";
+                        _answer = _currentWord.Translation;
+                        break;
+                    }
             }
 
             _labelTask?.Text = _task;
