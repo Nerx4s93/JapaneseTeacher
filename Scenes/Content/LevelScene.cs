@@ -62,6 +62,7 @@ namespace JapaneseTeacher.Scenes.Content
             if (e.KeyCode == Keys.Enter && _answerResultPanel.Visible == false)
             {
                 CheckAnswer();
+                e.SuppressKeyPress = true;
             }
             else if (_answerResultPanel.Visible == true)
             {
@@ -76,8 +77,8 @@ namespace JapaneseTeacher.Scenes.Content
                     _textBoxAnswer.Clear();
                     LoadNewWord();
                 }
+                e.SuppressKeyPress = true;
             }
-            e.SuppressKeyPress = true;
         }
 
         private void CheckAnswer()
