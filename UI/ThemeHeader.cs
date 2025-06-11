@@ -14,7 +14,6 @@ namespace JapaneseTeacher.UI
         private string _description;
 
         private Color _backgroundColor;
-        private Color _themeColor;
         private Color _descriptionColor;
 
         private Brush _backgroundBrush;
@@ -57,21 +56,10 @@ namespace JapaneseTeacher.UI
             {
                 _backgroundColor = value;
                 _backgroundBrush = new SolidBrush(value);
-                Invalidate();
-            }
-        }
 
-        public Color ThemeTextColor
-        {
-            get
-            {
-                return _themeColor;
-            }
-            set
-            {
-                _themeColor = value;
                 _themeTextBrush?.Dispose();
-                _themeTextBrush = new SolidBrush(value);
+                _themeTextBrush = new SolidBrush(ControlPaint.Light(value, 1.5f));
+
                 Invalidate();
             }
         }
@@ -102,7 +90,6 @@ namespace JapaneseTeacher.UI
 
             BackgroundColor = Color.Orange;
             Theme = "Тема";
-            ThemeTextColor = Color.FromArgb(255, 224, 179);
             Description = "Описание";
             DescriptionTextColor = Color.FromArgb(255, 255, 255);
         }
