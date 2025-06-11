@@ -73,11 +73,13 @@ namespace JapaneseTeacher.UI
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            BackColor = Color.Transparent;
 
+            BackColor = Color.Transparent;
             DoubleBuffered = true;
             Font = new Font("Microsoft Sans Serif", 16);
             ForeColor = Color.White;
+
+            Active = true;
             CustomAutoSize = true;
             ActiveBackgroundColor = Color.Lime;
         }
