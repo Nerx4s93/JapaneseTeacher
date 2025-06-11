@@ -12,7 +12,6 @@ namespace JapaneseTeacher.UI
         private const int _radius = 8;
         private const int _padingX = 10;
         private const int _padingY = 10;
-        private const string _noActiveText = "Пройдите все уровни выше,\nчтобы открыть доступ!";
 
         private readonly Brush _noActiveBackgroundBrush = new SolidBrush(Color.FromArgb(247, 247, 247));
         private readonly Brush _noActiveOverlayBrush = new SolidBrush(Color.FromArgb(229, 229, 229));
@@ -26,6 +25,9 @@ namespace JapaneseTeacher.UI
         private Brush _activeBackgroundBrush;
         private int _compliteSublevels;
         private int _totalSublevels;
+
+        private Size _titleSize;
+        private Size _textSize;
 
         public bool Active
         {
@@ -108,6 +110,7 @@ namespace JapaneseTeacher.UI
             _animatedPressButton.Click += AnimatedPressButton_Click;
             Controls.Add(_animatedPressButton);
 
+            CalculateTextsSize();
             UpdateAnimatedButtonPosition();
         }
 
@@ -121,6 +124,12 @@ namespace JapaneseTeacher.UI
         {
             base.OnSizeChanged(e);
             UpdateAnimatedButtonPosition();
+        }
+
+        protected override void OnInvalidated(InvalidateEventArgs e)
+        {
+            base.OnInvalidated(e);
+            CalculateTextsSize();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -174,11 +183,9 @@ namespace JapaneseTeacher.UI
 
         private void DrawText(Graphics graphics)
         {
-            var titleHeight = TextRenderer.MeasureText(Text, new Font(Font, FontStyle.Bold)).Height;
-
-            var text = _active ? GetActiveText() : _noActiveText;
+            var text = GetButtonText();
             var brush = _active ? new SolidBrush(ForeColor) : _noActiveTextBrush;
-            var point = new Point(_padingX, _padingY + titleHeight + _padingY / 2);
+            var point = new Point(_padingX, _padingY + _titleSize.Height + _padingY / 2);
 
             graphics.DrawString(text, Font, brush, point);
 
@@ -188,15 +195,6 @@ namespace JapaneseTeacher.UI
             }
         }
 
-        private string GetActiveText()
-        {
-            if (_compliteSublevels == _totalSublevels)
-            {
-                return "Вы уже прошли этот уровень!";
-            }
-            return $"Урок {_compliteSublevels + 1} из {_totalSublevels}";
-        }
-
         private void UpdateAnimatedButtonPosition()
         {
             if (_animatedPressButton == null)
@@ -204,17 +202,36 @@ namespace JapaneseTeacher.UI
                 return;
             }
 
-            var titleHeight = TextRenderer.MeasureText(Text, new Font(Font, FontStyle.Bold)).Height;
-            var text = _active ? GetActiveText() : _noActiveText;
-            var textHeight = TextRenderer.MeasureText(text, Font, new Size(Width - 2 * _padingX, 0), TextFormatFlags.WordBreak).Height;
-
-            var buttonY = _padingY + titleHeight + _padingY / 2 + textHeight + _padingY / 2;
+            var buttonY = _padingY + _titleSize.Height + _padingY / 2 + _textSize.Height + _padingY / 2;
 
             _animatedPressButton.Width = Width - 2 * _padingX;
             _animatedPressButton.Height = 50;
             _animatedPressButton.Location = new Point(_padingX, buttonY);
 
-            Height = _padingY * 5 / 2 + titleHeight + textHeight + _animatedPressButton.Height;
+            Height = _padingY * 5 / 2 + _titleSize.Height + _textSize.Height + _animatedPressButton.Height;
+        }
+
+        private void CalculateTextsSize()
+        {
+            _titleSize = TextRenderer.MeasureText(Text, new Font(Font, FontStyle.Bold));
+            var text = GetButtonText();
+            _textSize = TextRenderer.MeasureText(text, Font, new Size(Width - 2 * _padingX, 0), TextFormatFlags.WordBreak);
+        }
+
+        private string GetButtonText()
+        {
+            if (_active)
+            {
+                if (_compliteSublevels == _totalSublevels)
+                {
+                    return "Вы уже прошли этот уровень!";
+                }
+                return $"Урок {_compliteSublevels + 1} из {_totalSublevels}";
+            }
+            else
+            {
+                return "Пройдите все уровни выше,\nчтобы открыть доступ!";
+            }
         }
 
         private void AnimatedPressButton_Click(object sender, EventArgs e)
