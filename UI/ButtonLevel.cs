@@ -140,6 +140,8 @@ namespace JapaneseTeacher.UI
 
         public ButtonLevel()
         {
+            SetStyle(ControlStyles.StandardDoubleClick, false);
+
             DoubleBuffered = true;
             Size = new Size(100, 100);
 
