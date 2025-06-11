@@ -94,8 +94,6 @@ namespace JapaneseTeacher.UI
             Font = new Font("Segoe UI Emoji", 16);
 
             ActiveBackgroundColor = Color.Orange;
-
-            UpdateAnimatedButtonPosition();
         }
 
         protected override void CreateHandle()
@@ -109,6 +107,8 @@ namespace JapaneseTeacher.UI
             };
             _animatedPressButton.Click += AnimatedPressButton_Click;
             Controls.Add(_animatedPressButton);
+
+            UpdateAnimatedButtonPosition();
         }
 
         protected override void DestroyHandle()
