@@ -10,8 +10,24 @@ namespace JapaneseTeacher.UI
     {
         private readonly Brush _whiteBrush;
 
+        private string _title;
+
         private Color _bodyColor;
+
         private Brush _bodyBrush;
+
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                _title = value;
+                Invalidate();
+            }
+        }
 
         public Color BodyColor
         {
@@ -26,13 +42,12 @@ namespace JapaneseTeacher.UI
             }
         }
 
-        public string Title { get; set; }
-
         public StatCard()
         {
             Font = new Font("Segoe UI Emoji", 12f);
 
             _whiteBrush = new SolidBrush(Color.White);
+
             BodyColor = Color.Lime;
             Title = "Заголовок";
         }

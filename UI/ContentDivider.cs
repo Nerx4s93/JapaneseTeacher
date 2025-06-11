@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace JapaneseTeacher.UI
@@ -16,21 +17,21 @@ namespace JapaneseTeacher.UI
             base.OnPaint(e);
 
             var graphics = e.Graphics;
-            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            using (var brush = new SolidBrush(ForeColor))
-            using (var pen = new Pen(ForeColor, 2))
-            {
-                var textSize = graphics.MeasureString(Text, Font);
-                var textX = (Width - textSize.Width) / 2;
-                var textY = (Height - textSize.Height) / 2;
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-                var lineY = Height / 2;
+            using var brush = new SolidBrush(ForeColor);
+            using var pen = new Pen(ForeColor, 2);
 
-                graphics.DrawLine(pen, 0, lineY, textX - 10, lineY);
-                graphics.DrawLine(pen, textX + textSize.Width + 10, lineY, Width, lineY);
-                graphics.DrawString(Text, Font, brush, textX, textY);
-            }
+            var textSize = graphics.MeasureString(Text, Font);
+            var textX = (Width - textSize.Width) / 2;
+            var textY = (Height - textSize.Height) / 2;
+
+            var lineY = Height / 2;
+
+            graphics.DrawLine(pen, 0, lineY, textX - 10, lineY);
+            graphics.DrawLine(pen, textX + textSize.Width + 10, lineY, Width, lineY);
+            graphics.DrawString(Text, Font, brush, textX, textY);
         }
     }
 }

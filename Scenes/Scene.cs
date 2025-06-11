@@ -7,7 +7,7 @@
         public virtual void Start(object[] args) { }
         public virtual void Stop() { }
         
-        public void SendMessage(object[] args)
+        protected void SendMessage(object[] args)
         {
             SceneManager.SendMessage(this, args);
         }

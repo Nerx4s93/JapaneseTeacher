@@ -27,7 +27,7 @@ namespace JapaneseTeacher.UI
 
         private bool _mouseDown;
 
-        private LevelInformation _buttonLevelInformation;
+        private LevelInformation _levelInformation;
 
         public Color DefaultColor
         {
@@ -81,7 +81,7 @@ namespace JapaneseTeacher.UI
             set
             {
                 _active = value;
-                _buttonLevelInformation.Active = value;
+                _levelInformation.Active = value;
             }
         }
 
@@ -91,11 +91,11 @@ namespace JapaneseTeacher.UI
         {
             get
             {
-                return _buttonLevelInformation.ActiveBackgroundColor;
+                return _levelInformation.ActiveBackgroundColor;
             }
             set
             {
-                _buttonLevelInformation.ActiveBackgroundColor = value;
+                _levelInformation.ActiveBackgroundColor = value;
             }
         }
 
@@ -103,12 +103,12 @@ namespace JapaneseTeacher.UI
         {
             get
             {
-                return _buttonLevelInformation.CompliteSublevels;
+                return _levelInformation.CompliteSublevels;
             }
             set
             {
-                _buttonLevelInformation.CompliteSublevels = value;
-                Invalidate();
+                _levelInformation.CompliteSublevels = value;
+                _levelInformation.Invalidate();
             }
         }
 
@@ -116,25 +116,25 @@ namespace JapaneseTeacher.UI
         {
             get
             {
-                return _buttonLevelInformation.TotalSublevels;
+                return _levelInformation.TotalSublevels;
             }
             set
             {
-                _buttonLevelInformation.TotalSublevels = value;
-                Invalidate();
+                _levelInformation.TotalSublevels = value;
+                _levelInformation.Invalidate();
             }
         }
-
 
         public string Description
         {
             get
             {
-                return _buttonLevelInformation.Text;
+                return _levelInformation.Text;
             }
             set
             {
-                _buttonLevelInformation.Text = value;
+                _levelInformation.Text = value;
+                _levelInformation.Invalidate();
             }
         }
 
@@ -149,12 +149,12 @@ namespace JapaneseTeacher.UI
             DefaultBottomColor = Color.Green;
             StartColor = Color.Cornsilk;
 
-            _buttonLevelInformation = new LevelInformation
+            _levelInformation = new LevelInformation
             {
                 Visible = false,
                 Size = new Size(360, 175)
             };
-            _buttonLevelInformation.SetParent(this);
+            _levelInformation.SetParent(this);
         }
 
         #region ButtonLevelInformation
@@ -162,7 +162,7 @@ namespace JapaneseTeacher.UI
         protected override void CreateHandle()
         {
             base.CreateHandle();
-            Parent.Controls.Add(_buttonLevelInformation);
+            Parent.Controls.Add(_levelInformation);
 
             Parent.MouseDown += Control_MouseDown;
             var controls = Parent.Controls;
@@ -176,12 +176,12 @@ namespace JapaneseTeacher.UI
         protected override void DestroyHandle()
         {
             base.DestroyHandle();
-            _buttonLevelInformation.Dispose();
+            _levelInformation.Dispose();
         }
 
         private void Control_MouseDown(object sender, MouseEventArgs e)
         {
-            _buttonLevelInformation.Visible = false;
+            _levelInformation.Visible = false;
         }
 
         #endregion
@@ -192,7 +192,8 @@ namespace JapaneseTeacher.UI
 
             var x = (Location.X + Width) / 2;
             var y = Location.Y + Height + 10;
-            _buttonLevelInformation.Location = new Point(x, y);
+            _levelInformation.Location = new Point(x, y);
+            _levelInformation.Visible = false;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -251,7 +252,7 @@ namespace JapaneseTeacher.UI
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
-            _buttonLevelInformation.Visible = !_buttonLevelInformation.Visible;
+            _levelInformation.Visible = !_levelInformation.Visible;
         }
 
         private int PercentToPixels(int percent)

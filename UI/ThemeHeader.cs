@@ -10,24 +10,16 @@ namespace JapaneseTeacher.UI
     {
         private const int _radius = 8;
 
-        private Color _backgroundColor;
         private string _theme;
-        private Color _themeColor;
         private string _description;
+
+        private Color _backgroundColor;
+        private Color _themeColor;
         private Color _descriptionColor;
 
-        public Color BackgroundColor
-        {
-            get
-            {
-                return _backgroundColor;
-            }
-            set
-            {
-                _backgroundColor = value;
-                Invalidate();
-            }
-        }
+        private Brush _backgroundBrush;
+        private Brush _themeTextBrush;
+        private Brush _descriptionTextBrush;
 
         public string Theme
         {
@@ -38,19 +30,6 @@ namespace JapaneseTeacher.UI
             set
             {
                 _theme = value;
-                Invalidate();
-            }
-        }
-
-        public Color ThemeColor
-        {
-            get
-            {
-                return _themeColor;
-            }
-            set
-            {
-                _themeColor = value;
                 Invalidate();
             }
         }
@@ -68,7 +47,36 @@ namespace JapaneseTeacher.UI
             }
         }
 
-        public Color DescriptionColor
+        public Color BackgroundColor
+        {
+            get
+            {
+                return _backgroundColor;
+            }
+            set
+            {
+                _backgroundColor = value;
+                _backgroundBrush = new SolidBrush(value);
+                Invalidate();
+            }
+        }
+
+        public Color ThemeTextColor
+        {
+            get
+            {
+                return _themeColor;
+            }
+            set
+            {
+                _themeColor = value;
+                _themeTextBrush?.Dispose();
+                _themeTextBrush = new SolidBrush(value);
+                Invalidate();
+            }
+        }
+
+        public Color DescriptionTextColor
         {
             get
             {
@@ -77,6 +85,8 @@ namespace JapaneseTeacher.UI
             set
             {
                 _descriptionColor = value;
+                _descriptionTextBrush?.Dispose();
+                _descriptionTextBrush = new SolidBrush(value);
                 Invalidate();
             }
         }
@@ -85,16 +95,16 @@ namespace JapaneseTeacher.UI
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            BackColor = Color.Transparent;
 
+            BackColor = Color.Transparent;
             Font = new Font("Microsoft Sans Serif", 20, FontStyle.Bold);
             DoubleBuffered = true;
 
             BackgroundColor = Color.Orange;
             Theme = "Тема";
-            ThemeColor = Color.FromArgb(255, 224, 179);
+            ThemeTextColor = Color.FromArgb(255, 224, 179);
             Description = "Описание";
-            DescriptionColor = Color.FromArgb(255, 255, 255);
+            DescriptionTextColor = Color.FromArgb(255, 255, 255);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -115,25 +125,16 @@ namespace JapaneseTeacher.UI
             var rectangle = RoundedRectanglePathCreator.GetRecrangleWithSize(Size);
             var path = RoundedRectanglePathCreator.GetRoundRectanglePath(rectangle, _radius, _radius, 2);
 
-            using (var brush = new SolidBrush(BackgroundColor))
-            {
-                graphics.FillPath(brush, path);
-            }
+            graphics.FillPath(_backgroundBrush, path);
         }
 
         private void DrawText(Graphics graphics)
         {
             var point = PercentToPixels(5, 20);
-            using (var brush = new SolidBrush(ThemeColor))
-            {
-                graphics.DrawString(Theme, Font, brush, point);
-            }
+            graphics.DrawString(Theme, Font, _themeTextBrush, point);
 
             point = PercentToPixels(5, 50);
-            using (var brush = new SolidBrush(DescriptionColor))
-            {
-                graphics.DrawString(Description, Font, brush, point);
-            }
+            graphics.DrawString(Description, Font, _descriptionTextBrush, point);
         }
 
         private Point PercentToPixels(int percentX, int percentY)
