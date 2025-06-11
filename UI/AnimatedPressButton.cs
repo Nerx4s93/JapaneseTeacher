@@ -138,10 +138,9 @@ namespace JapaneseTeacher.UI
             var x = (Width - textSize.Width) / 2;
             var y = (Height - textSize.Height) / 2;
 
-            var dy = _mouseDown ? 0 : -3;
-
             if (_active)
             {
+                var dy = _mouseDown ? 0 : -3;
                 using (var brush = new SolidBrush(ForeColor))
                 {
                     graphics.DrawString(Text, Font, brush, x, y + dy);
@@ -149,7 +148,7 @@ namespace JapaneseTeacher.UI
             }
             else
             {
-                graphics.DrawString(Text, Font, _noActiveTextBrush, x, y + dy);
+                graphics.DrawString(Text, Font, _noActiveTextBrush, x, y);
             }
         }
 
