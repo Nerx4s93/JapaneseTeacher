@@ -77,6 +77,7 @@ namespace JapaneseTeacher.Scenes.Content
                     _textBoxAnswer.Clear();
                     LoadNewWord();
                 }
+                e.SuppressKeyPress = true;
             }
         }
 
