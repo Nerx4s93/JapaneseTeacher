@@ -245,6 +245,10 @@ namespace JapaneseTeacher.UI
         {
             _mouseDown = false;
             Invalidate();
+        }
+
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
             _buttonLevelInformation.Visible = !_buttonLevelInformation.Visible;
         }
 
