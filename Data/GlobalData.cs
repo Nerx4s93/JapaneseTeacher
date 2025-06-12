@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace JapaneseTeacher.Data
 {
@@ -29,6 +30,14 @@ namespace JapaneseTeacher.Data
             }
 
             #endregion
+        }
+
+        public void SaveData()
+        {
+            foreach (var module in _modules)
+            {
+                module.SaveToFile();
+            }
         }
 
         public Module GetModuleByName(string name)

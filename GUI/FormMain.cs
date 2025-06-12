@@ -36,5 +36,10 @@ namespace JapaneseTeacher.GUI
             var module = _globeData.GetModuleByName("Улица");
             _sceneManager.LoadScene(new ModuleScene(), new object[2] { panelBody, module });
         }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _globeData.SaveData();
+        }
     }
 }

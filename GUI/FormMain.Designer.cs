@@ -98,6 +98,7 @@
             this.DoubleBuffered = true;
             this.Name = "FormMain";
             this.Text = "FormMain";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
