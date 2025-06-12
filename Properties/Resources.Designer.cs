@@ -63,9 +63,9 @@ namespace JapaneseTeacher.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
-        internal static byte[] Alphabets {
+        internal static byte[] Алфавиты {
             get {
-                object obj = ResourceManager.GetObject("Alphabets", resourceCulture);
+                object obj = ResourceManager.GetObject("Алфавиты", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace JapaneseTeacher.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
-        internal static byte[] Street {
+        internal static byte[] Улица {
             get {
-                object obj = ResourceManager.GetObject("Street", resourceCulture);
+                object obj = ResourceManager.GetObject("Улица", resourceCulture);
                 return ((byte[])(obj));
             }
         }
