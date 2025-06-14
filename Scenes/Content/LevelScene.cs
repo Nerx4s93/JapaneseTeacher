@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using JapaneseTeacher.Data;
+using JapaneseTeacher.Scenes.Content.Levels;
 using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.Scenes.Content
@@ -10,6 +11,7 @@ namespace JapaneseTeacher.Scenes.Content
     internal class LevelScene : Scene
     {
         private readonly Random _random = new Random();
+        private readonly SceneManager _sceneManager = new SceneManager();
 
         private Control _mainControl;
 
@@ -17,14 +19,10 @@ namespace JapaneseTeacher.Scenes.Content
         private Theme _theme;
         private string _levelId;
         private Word _currentWord;
-        private string _task;   
+        private string _task;
         private string _answer;
 
         private FlatProgressBar _flatProgressBar;
-        private AnimatedPressButton _checkButton;
-
-        private Label _labelTask;
-        private TextBox _textBoxAnswer;
         private AnswerResultPanel _answerResultPanel;
 
         private int _totalAnswers;
@@ -39,69 +37,46 @@ namespace JapaneseTeacher.Scenes.Content
             LoadNewWord();
             AdjustControls();
             _mainControl.Resize += Form_Resize;
+            _sceneManager.OnGetMessage += SceneManager_OnGetMessage;
         }
 
         public override void Stop()
         {
             _flatProgressBar.Dispose();
-            _labelTask.Dispose();
-            _textBoxAnswer.Dispose();
-            _checkButton.Dispose();
             _answerResultPanel.Dispose();
             _mainControl.Resize -= Form_Resize;
         }
 
         #region Проверка ответа
 
-        private void CheckButton_Click(object sender, EventArgs e)
+        private void SceneManager_OnGetMessage(object sendler, object[] args)
         {
-            CheckAnswer();
-        }
+            if (!_answerResultPanel.Visible)
+            {
+                var userAnswer = args[0] as string;
 
-        private void TextBoxAnswer_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && _answerResultPanel.Visible == false)
-            {
-                CheckAnswer();
-                e.SuppressKeyPress = true;
-            }
-            else if (_answerResultPanel.Visible == true)
-            {
-                if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
+                if (userAnswer.Equals(_answer, StringComparison.OrdinalIgnoreCase))
                 {
-                    _theme.CompliteLevel(_levelId);
-                    SceneManager.LoadScene(new LevelResultScene(), new object[4] { _mainControl, _module, _totalAnswers, _wrongAnswers });
+                    _flatProgressBar.Value += 1;
+                    _answerResultPanel.WasCorrect = true;
+                    _theme.UpdateWordStats(_currentWord, true);
                 }
                 else
                 {
-                    _answerResultPanel.Visible = false;
-                    _textBoxAnswer.Clear();
-                    LoadNewWord();
+                    _wrongAnswers += 1;
+                    _flatProgressBar.MaxValue += _random.Next(2);
+                    _answerResultPanel.WasCorrect = false;
+                    _answerResultPanel.Text = $"Неверно. Правильный ответ: {_answer}";
+                    _theme.UpdateWordStats(_currentWord, false);
                 }
-                e.SuppressKeyPress = true;
-            }
-        }
-
-        private void CheckAnswer()
-        {
-            var userAnswer = _textBoxAnswer.Text.Trim();
-
-            if (userAnswer.Equals(_answer, StringComparison.OrdinalIgnoreCase))
-            {
-                _flatProgressBar.Value += 1;
-                _answerResultPanel.WasCorrect = true;
-                _theme.UpdateWordStats(_currentWord, true);
+                _totalAnswers += 1;
+                _answerResultPanel.Visible = true;
             }
             else
             {
-                _wrongAnswers += 1;
-                _flatProgressBar.MaxValue += _random.Next(2);
-                _answerResultPanel.WasCorrect = false;
-                _answerResultPanel.Text = $"Неверно. Правильный ответ: {_answer}";
-                _theme.UpdateWordStats(_currentWord, false);
+                _answerResultPanel.Visible = false;
+                LoadNewWord();
             }
-            _totalAnswers += 1;
-            _answerResultPanel.Visible = true;
         }
 
         private void LoadNewWord()
@@ -137,7 +112,7 @@ namespace JapaneseTeacher.Scenes.Content
                     }
             }
 
-            _labelTask?.Text = _task;
+            _sceneManager.LoadScene(new TextBoxTask(), new object[2] { _mainControl, _task });
         }
 
         #endregion
@@ -150,36 +125,12 @@ namespace JapaneseTeacher.Scenes.Content
                 MaxValue = 30
             };
 
-            _labelTask = new Label
-            {
-                Font = new Font("Microsoft Sans Serif", 28f),
-                Text = _task,
-                AutoSize = true,
-            };
-
-            _textBoxAnswer = new TextBox
-            {
-                Font = new Font("Microsoft Sans Serif", 24f),
-                AutoSize = true,
-                Width = 400
-            };
-            _textBoxAnswer.KeyDown += TextBoxAnswer_KeyDown;
-
-            _checkButton = new AnimatedPressButton
-            {
-                Text = "Проверить"
-            };
-            _checkButton.Click += CheckButton_Click;
-
             _answerResultPanel = new AnswerResultPanel
             {
                 Visible = false
             };
 
             _mainControl.Controls.Add(_flatProgressBar);
-            _mainControl.Controls.Add(_labelTask);
-            _mainControl.Controls.Add(_textBoxAnswer);
-            _mainControl.Controls.Add(_checkButton);
             _mainControl.Controls.Add(_answerResultPanel);
 
             Form_Resize(null, null);
@@ -189,25 +140,6 @@ namespace JapaneseTeacher.Scenes.Content
         {
             _flatProgressBar.Size = new Size(_mainControl.Width * 8 / 10, 20);
             _flatProgressBar.Location = new Point((_mainControl.Size.Width - _flatProgressBar.Width) / 2, 20);
-
-            using (var graphics = _mainControl.CreateGraphics())
-            {
-                var labelTextSize = graphics.MeasureString(_labelTask.Text, _labelTask.Font);
-                var labelX = (_mainControl.Width - (int)labelTextSize.Width) / 2;
-                var labelY = (_mainControl.Height / 2) - 100;
-                _labelTask.Location = new Point(labelX, labelY);
-
-                var textBoxX = (_mainControl.Width - _textBoxAnswer.Width) / 2;
-                var textBoxY = labelY + (int)labelTextSize.Height + 20;
-                _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
-
-                var clientSize = _mainControl.ClientSize;
-                var buttonMargin = 20;
-                _checkButton.Location = new Point(
-                    clientSize.Width - _checkButton.Width - buttonMargin,
-                    clientSize.Height - _checkButton.Height - buttonMargin
-                );
-            }
         }
 
         private void Form_Resize(object sender, EventArgs e)
