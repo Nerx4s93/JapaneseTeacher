@@ -21,6 +21,8 @@ namespace JapaneseTeacher.Scenes.Content.Levels
             _task = args[1] as string;
             AdjustControls();
             _mainControl.Resize += Form_Resize;
+
+            _textBoxAnswer.Focus();
         }
 
         public override void Stop()
