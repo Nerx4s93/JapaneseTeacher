@@ -201,9 +201,12 @@ namespace JapaneseTeacher.Scenes.Content
                 var textBoxY = labelY + (int)labelTextSize.Height + 20;
                 _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
 
-                var buttonX = _textBoxAnswer.Right - _checkButton.Width;
-                var buttonY = _textBoxAnswer.Bottom + 20;
-                _checkButton.Location = new Point(buttonX, buttonY);
+                var clientSize = _mainControl.ClientSize;
+                var buttonMargin = 20;
+                _checkButton.Location = new Point(
+                    clientSize.Width - _checkButton.Width - buttonMargin,
+                    clientSize.Height - _checkButton.Height - buttonMargin
+                );
             }
         }
 
