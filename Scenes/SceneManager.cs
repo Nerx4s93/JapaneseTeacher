@@ -2,18 +2,27 @@
 {
     internal class SceneManager
     {
-        private Scene _lastScene;
+        private Scene _currentScene;
 
         public void LoadScene(Scene scene, object[] args)
         {
-            if (_lastScene != null)
+            if (_currentScene != null)
             {
-                _lastScene.Stop();
+                _currentScene.Stop();
             }
 
             scene.SceneManager = this;
-            _lastScene = scene;
+            _currentScene = scene;
             scene.Start(args);
+        }
+
+        public void StopScene()
+        {
+            if (_currentScene != null)
+            {
+                _currentScene.Stop();
+            }
+            _currentScene = null;
         }
 
         public void SendMessage(object sendler, object[] args)

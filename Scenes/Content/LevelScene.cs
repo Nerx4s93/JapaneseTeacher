@@ -45,6 +45,7 @@ namespace JapaneseTeacher.Scenes.Content
             _flatProgressBar.Dispose();
             _answerResultPanel.Dispose();
             _mainControl.Resize -= Form_Resize;
+            _sceneManager.StopScene();
         }
 
         #region Проверка ответа
