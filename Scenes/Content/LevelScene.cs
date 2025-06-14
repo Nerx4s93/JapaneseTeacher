@@ -82,8 +82,10 @@ namespace JapaneseTeacher.Scenes.Content
                     _theme.CompliteLevel(_levelId);
                     SceneManager.LoadScene(new LevelResultScene(), new object[4] { _mainControl, _module, _totalAnswers, _wrongAnswers });
                 }
-
-                LoadNewWord();
+                else
+                {
+                    LoadNewWord();
+                }
             }
         }
 
@@ -130,7 +132,7 @@ namespace JapaneseTeacher.Scenes.Content
         {
             _flatProgressBar = new FlatProgressBar
             {
-                MaxValue = 30
+                MaxValue = 3
             };
 
             _answerResultPanel = new AnswerResultPanel
