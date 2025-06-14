@@ -75,6 +75,12 @@ namespace JapaneseTeacher.Scenes.Content
             else
             {
                 _answerResultPanel.Visible = false;
+
+                if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
+                {
+                    SceneManager.LoadScene(new LevelResultScene(), new object[4] { _mainControl, _module, _totalAnswers, _wrongAnswers });
+                }
+
                 LoadNewWord();
             }
         }
