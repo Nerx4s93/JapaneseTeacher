@@ -4,7 +4,7 @@ using System.Linq;
 
 using Newtonsoft.Json;
 
-namespace JapaneseTeacher.Data
+namespace JapaneseTeacher.СourseData
 {
     internal class VocabularySet
     {

@@ -49,13 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\DataLoader.cs" />
-    <Compile Include="Data\Level.cs" />
-    <Compile Include="Data\LevelType.cs" />
-    <Compile Include="Data\Module.cs" />
-    <Compile Include="Data\Theme.cs" />
-    <Compile Include="Data\Word.cs" />
-    <Compile Include="Data\VocabularySet.cs" />
+    <Compile Include="СourseData\DataLoader.cs" />
+    <Compile Include="СourseData\Level.cs" />
+    <Compile Include="СourseData\LevelType.cs" />
+    <Compile Include="СourseData\Module.cs" />
+    <Compile Include="СourseData\Theme.cs" />
+    <Compile Include="СourseData\Word.cs" />
+    <Compile Include="СourseData\VocabularySet.cs" />
     <Compile Include="GUI\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>

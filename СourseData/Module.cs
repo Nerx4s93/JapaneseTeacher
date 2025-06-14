@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 using JapaneseTeacher.Properties;
 
-namespace JapaneseTeacher.Data
+namespace JapaneseTeacher.СourseData
 {
     internal class Module
     {

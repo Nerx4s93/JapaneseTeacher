@@ -1,11 +1,10 @@
-﻿using JapaneseTeacher.Data;
-using JapaneseTeacher.UI;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
+
+using JapaneseTeacher.СourseData;
+using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.Scenes.Content
 {

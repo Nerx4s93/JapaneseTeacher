@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
 using Newtonsoft.Json;
 
-namespace JapaneseTeacher.Data
+namespace JapaneseTeacher.СourseData
 {
     internal class Theme
     {

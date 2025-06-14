@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using JapaneseTeacher.Data;
+using JapaneseTeacher.СourseData;
 using JapaneseTeacher.Scenes;
 using JapaneseTeacher.Scenes.Content;
 
