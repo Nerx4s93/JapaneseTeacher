@@ -1,10 +1,11 @@
-﻿using System;
+﻿using JapaneseTeacher.Data;
+using JapaneseTeacher.UI;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
-
-using JapaneseTeacher.Data;
-using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.Scenes.Content
 {
@@ -113,7 +114,7 @@ namespace JapaneseTeacher.Scenes.Content
                     _buttonLevels.Add(button);
                     _mainControl.Controls.Add(button);
                 }
-
+                 
                 if (i < _module.Themes.Count - 1)
                 {
                     var width = _mainControl.ClientSize.Width * 4 / 5;
@@ -128,6 +129,9 @@ namespace JapaneseTeacher.Scenes.Content
                     _mainControl.Controls.Add(contentDivider);
                 }
             }
+
+            (_buttonLevels[_buttonLevels.Count - 1] as ButtonLevel)?.LevelInfomationIsPositionTop = true;
+            (_buttonLevels[_buttonLevels.Count - 2] as ButtonLevel)?.LevelInfomationIsPositionTop = true;
 
             _scrollPosition = 0;
             CalculateMaxScrollPosition();

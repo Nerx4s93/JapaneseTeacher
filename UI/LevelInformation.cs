@@ -120,6 +120,11 @@ namespace JapaneseTeacher.UI
             _animatedPressButton.Dispose();
         }
 
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            BringToFront();
+        }
+
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);

@@ -28,6 +28,7 @@ namespace JapaneseTeacher.UI
         private bool _mouseDown;
 
         private LevelInformation _levelInformation;
+        private bool _levelInfomationIsPositionTop;
 
         public Color DefaultColor
         {
@@ -138,6 +139,19 @@ namespace JapaneseTeacher.UI
             }
         }
 
+        public bool LevelInfomationIsPositionTop
+        {
+            get
+            {
+                return _levelInfomationIsPositionTop;
+            }
+            set
+            {
+                _levelInfomationIsPositionTop = value;
+                OnLocationChanged(null);
+            }
+        }
+
         public ButtonLevel()
         {
             SetStyle(ControlStyles.StandardDoubleClick, false);
@@ -191,7 +205,8 @@ namespace JapaneseTeacher.UI
             base.OnLocationChanged(e);
 
             var x = (Location.X + Width) / 2;
-            var y = Location.Y + Height + 10;
+            var y = _levelInfomationIsPositionTop ? Location.Y - Size.Height * 3 / 2 - 15  : Location.Y + Height + 10;
+
             _levelInformation.Location = new Point(x, y);
             _levelInformation.Visible = false;
         }
