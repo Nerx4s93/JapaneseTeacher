@@ -132,7 +132,7 @@ namespace JapaneseTeacher.Scenes.Content
         {
             _flatProgressBar = new FlatProgressBar
             {
-                MaxValue = 3
+                MaxValue = 30
             };
 
             _answerResultPanel = new AnswerResultPanel
