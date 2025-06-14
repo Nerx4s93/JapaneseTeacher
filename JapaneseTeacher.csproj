@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\GlobalData.cs" />
+    <Compile Include="Data\DataLoader.cs" />
     <Compile Include="Data\Level.cs" />
     <Compile Include="Data\LevelType.cs" />
     <Compile Include="Data\Module.cs" />

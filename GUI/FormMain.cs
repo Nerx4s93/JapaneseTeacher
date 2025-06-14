@@ -9,10 +9,10 @@ namespace JapaneseTeacher.GUI
 {
     internal partial class FormMain : Form
     {
-        private readonly GlobalData _globeData;
+        private readonly DataLoader _globeData;
         private readonly SceneManager _sceneManager;
 
-        public FormMain(GlobalData globalData)
+        public FormMain(DataLoader globalData)
         {
             InitializeComponent();
             _globeData = globalData;

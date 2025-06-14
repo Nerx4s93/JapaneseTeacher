@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace JapaneseTeacher.Data
 {
-    internal class GlobalData
+    internal class DataLoader
     {
         private List<Module> _modules;
         

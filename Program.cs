@@ -8,7 +8,7 @@ namespace JapaneseTeacher
 {
     internal static class Program
     {
-        private static GlobalData _globalData = new GlobalData();
+        private static DataLoader _globalData = new DataLoader();
 
         [STAThread]
         static void Main()
