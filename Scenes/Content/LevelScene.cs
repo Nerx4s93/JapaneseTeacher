@@ -21,9 +21,10 @@ namespace JapaneseTeacher.Scenes.Content
         private string _answer;
 
         private FlatProgressBar _flatProgressBar;
+        private AnimatedPressButton _checkButton;
+
         private Label _labelTask;
         private TextBox _textBoxAnswer;
-        private AnimatedPressButton _animatedPressButton;
         private AnswerResultPanel _answerResultPanel;
 
         private int _totalAnswers;
@@ -45,14 +46,14 @@ namespace JapaneseTeacher.Scenes.Content
             _flatProgressBar.Dispose();
             _labelTask.Dispose();
             _textBoxAnswer.Dispose();
-            _animatedPressButton.Dispose();
+            _checkButton.Dispose();
             _answerResultPanel.Dispose();
             _mainControl.Resize -= Form_Resize;
         }
 
         #region Проверка ответа
 
-        private void RoundedButton_Click(object sender, EventArgs e)
+        private void CheckButton_Click(object sender, EventArgs e)
         {
             CheckAnswer();
         }
@@ -164,11 +165,11 @@ namespace JapaneseTeacher.Scenes.Content
             };
             _textBoxAnswer.KeyDown += TextBoxAnswer_KeyDown;
 
-            _animatedPressButton = new AnimatedPressButton
+            _checkButton = new AnimatedPressButton
             {
                 Text = "Проверить"
             };
-            _animatedPressButton.Click += RoundedButton_Click;
+            _checkButton.Click += CheckButton_Click;
 
             _answerResultPanel = new AnswerResultPanel
             {
@@ -178,7 +179,7 @@ namespace JapaneseTeacher.Scenes.Content
             _mainControl.Controls.Add(_flatProgressBar);
             _mainControl.Controls.Add(_labelTask);
             _mainControl.Controls.Add(_textBoxAnswer);
-            _mainControl.Controls.Add(_animatedPressButton);
+            _mainControl.Controls.Add(_checkButton);
             _mainControl.Controls.Add(_answerResultPanel);
 
             Form_Resize(null, null);
@@ -200,9 +201,9 @@ namespace JapaneseTeacher.Scenes.Content
                 var textBoxY = labelY + (int)labelTextSize.Height + 20;
                 _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
 
-                var buttonX = _textBoxAnswer.Right - _animatedPressButton.Width;
+                var buttonX = _textBoxAnswer.Right - _checkButton.Width;
                 var buttonY = _textBoxAnswer.Bottom + 20;
-                _animatedPressButton.Location = new Point(buttonX, buttonY);
+                _checkButton.Location = new Point(buttonX, buttonY);
             }
         }
 

@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Scenes\Content\LevelResultScene.cs" />
     <Compile Include="Scenes\Content\LevelScene.cs" />
+    <Compile Include="Scenes\Content\Levels\JapaneseToReading.cs" />
     <Compile Include="Scenes\Content\ModuleScene.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
