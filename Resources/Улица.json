@@ -57,7 +57,7 @@
         },
         {
           "LevelId": "8",
-          "Description": "🌍 Общие природные слова и состояния",
+          "Description": "🌍 Общие природные слова",
           "LevelTypes": [ 1, 2, 3 ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
