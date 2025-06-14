@@ -222,7 +222,7 @@ namespace JapaneseTeacher.UI
         {
             if (_active)
             {
-                if (_compliteSublevels == _totalSublevels)
+                if (_compliteSublevels >= _totalSublevels)
                 {
                     return "Вы уже прошли этот уровень!";
                 }
