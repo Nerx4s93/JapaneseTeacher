@@ -1,64 +1,96 @@
-﻿{
+{
   "Name": "Улица",
   "Themes": [
     {
       "Name": "Модуль 2, раздел 1",
       "Description": "Опишите природу",
-      "Color": "Lime",
+      "Color": "MediumBlue",
       "Levels": [
         {
           "LevelId": "1",
           "Description": "🌿 Основы природы",
-          "LevelTypes": [ 1, 2, 3 ],
+          "LevelTypes": [
+            1,
+            2,
+            3
+          ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "2",
           "Description": "🌱 Растения и их части",
-          "LevelTypes": [ 1, 2, 3 ],
+          "LevelTypes": [
+            1,
+            2,
+            3
+          ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "3",
           "Description": "💧 Вода и её формы",
-          "LevelTypes": [ 1, 2, 3 ],
+          "LevelTypes": [
+            1,
+            2,
+            3
+          ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "4",
           "Description": "🌾 Ландшафт и рельеф",
-          "LevelTypes": [ 1, 2, 3 ],
+          "LevelTypes": [
+            1,
+            2,
+            3
+          ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "5",
           "Description": "🍂 Природные явления",
-          "LevelTypes": [ 1, 2, 3 ],
+          "LevelTypes": [
+            1,
+            2,
+            3
+          ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "6",
           "Description": "🌲 Лес и природные зоны",
-          "LevelTypes": [ 1, 2, 3 ],
+          "LevelTypes": [
+            1,
+            2,
+            3
+          ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "7",
           "Description": "🌺 Цветы и растения",
-          "LevelTypes": [ 1, 2, 3 ],
+          "LevelTypes": [
+            1,
+            2,
+            3
+          ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         },
         {
           "LevelId": "8",
           "Description": "🌍 Общие природные слова",
-          "LevelTypes": [ 1, 2, 3 ],
+          "LevelTypes": [
+            1,
+            2,
+            3
+          ],
           "CompletedSublevels": 0,
           "TotalSublevels": 5
         }
@@ -153,7 +185,6 @@
             "Streak": 0,
             "TimesNotSeen": 0
           },
-
           {
             "Level": "2",
             "Text": "はっぱ",
@@ -242,7 +273,6 @@
             "Streak": 0,
             "TimesNotSeen": 0
           },
-
           {
             "Level": "3",
             "Text": "みず",
@@ -331,7 +361,6 @@
             "Streak": 0,
             "TimesNotSeen": 0
           },
-
           {
             "Level": "4",
             "Text": "たに",
@@ -508,7 +537,6 @@
             "Streak": 0,
             "TimesNotSeen": 0
           },
-
           {
             "Level": "6",
             "Text": "もり",
@@ -597,7 +625,6 @@
             "Streak": 0,
             "TimesNotSeen": 0
           },
-
           {
             "Level": "7",
             "Text": "さくら",
@@ -686,7 +713,6 @@
             "Streak": 0,
             "TimesNotSeen": 0
           },
-
           {
             "Level": "8",
             "Text": "しぜん",
