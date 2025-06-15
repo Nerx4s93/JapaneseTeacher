@@ -2,95 +2,82 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace JapaneseTeacher.UI
+namespace JapaneseTeacher.UI;
+
+internal sealed class FlatProgressBar : Control
 {
-    internal class FlatProgressBar : Control
+    private int _maxValue;
+    private int _value;
+
+    private Color _filledColor;
+    private Color _unfilledColor;
+    private Brush _filledBrush;
+    private Brush _unfilledBrush;
+
+    public int MaxValue
     {
-        private int _maxValue;
-        private int _value;
-
-        private Color _filledColor;
-        private Color _unfilledColor;
-        private Brush _filledBrush;
-        private Brush _unfilledBrush;
-
-        public int MaxValue
+        get => _maxValue;
+        set
         {
-            get
-            {
-                return _maxValue;
-            }
-            set
-            {
-                _maxValue = value;
-                Invalidate();
-            }
+            _maxValue = value;
+            Invalidate();
         }
+    }
 
-        public int Value
+    public int Value
+    {
+        get => _value;
+        set
         {
-            get
-            {
-                return _value;
-            }
-            set
-            {
-                _value = value;
-                Invalidate();
-            }
+            _value = value;
+            Invalidate();
         }
+    }
 
-        public Color FilledColor
+    public Color FilledColor
+    {
+        get => _filledColor;
+        set
         {
-            get
-            {
-                return _filledColor;
-            }
-            set
-            {
-                _filledColor = value;
-                _filledBrush = new SolidBrush(value);
-                Invalidate();
-            }
+            _filledColor = value;
+            _filledBrush = new SolidBrush(value);
+            Invalidate();
         }
+    }
 
-        public Color UnfilledColor
+    public Color UnfilledColor
+    {
+        get => _unfilledColor;
+        set
         {
-            get
-            {
-                return _unfilledColor;
-            }
-            set
-            {
-                _unfilledColor = value;
-                _unfilledBrush = new SolidBrush(value);
-                Invalidate();
-            }
+            _unfilledColor = value;
+            _unfilledBrush = new SolidBrush(value);
+            Invalidate();
         }
+    }
 
-        public FlatProgressBar()
+    public FlatProgressBar()
+    {
+        DoubleBuffered = true;
+
+        MaxValue = 100;
+        FilledColor = Color.FromArgb(88, 204, 2);
+        UnfilledColor = Color.FromArgb(229, 229, 229);
+    }
+
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        var graphics = e.Graphics;
+
+        var ratio = (MaxValue == 0 || Value <= 0) ? 0 : Math.Min(1, (float)Value / MaxValue);
+
+        var filledWidth = Width * ratio;
+        var unfilledWidth = Width - filledWidth;
+
+        if (_filledBrush != null && _unfilledBrush != null)
         {
-            DoubleBuffered = true;
-
-            MaxValue = 100;
-            FilledColor = Color.FromArgb(88, 204, 2);
-            UnfilledColor = Color.FromArgb(229, 229, 229);
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            var graphics = e.Graphics;
-
-            var ratio = (MaxValue == 0 || Value <= 0) ? 0 : Math.Min(1, (float)Value / MaxValue);
-
-            var filledWidth = Width * ratio;
-            var unfilledWidth = Width - filledWidth;
-
-            if (_filledBrush != null && _unfilledBrush != null)
-            {
-                graphics.FillRectangle(_filledBrush, 0, 0, filledWidth, Height);
-                graphics.FillRectangle(_unfilledBrush, filledWidth, 0, unfilledWidth, Height);
-            }
+            graphics.FillRectangle(_filledBrush, 0, 0, filledWidth, Height);
+            graphics.FillRectangle(_unfilledBrush, filledWidth, 0, unfilledWidth, Height);
         }
     }
 }

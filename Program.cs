@@ -4,20 +4,20 @@ using System.Windows.Forms;
 using JapaneseTeacher.СourseData;
 using JapaneseTeacher.GUI;
 
-namespace JapaneseTeacher
+namespace JapaneseTeacher;
+
+internal static class Program
 {
-    internal static class Program
+
+    private static readonly DataLoader GlobalData = new();
+
+    [STAThread]
+    private static void Main()
     {
-        private static DataLoader _globalData = new DataLoader();
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
 
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            _globalData.LoadData();
-            Application.Run(new FormMain(_globalData));
-        }
+        GlobalData.LoadData();
+        Application.Run(new FormMain(GlobalData));
     }
 }

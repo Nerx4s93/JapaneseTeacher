@@ -10,25 +10,25 @@ namespace JapaneseTeacher.Scenes.Content
 {
     internal class LevelResultScene : Scene
     {
-        private readonly List<string> Title = new List<string>()
-        {
+        private readonly List<string> _title =
+        [
             "🌟 Ты молодец!",
             "🏆 Превосходный результат!",
             "🎯 Метко как всегда!",
             "🔥 Ты в ударе!",
             "🎉 Так держать!",
             "🚀 Прогресс на высоте!"
-        };
+        ];
 
-        private readonly List<string> Subtitle = new List<string>()
-        {
+        private readonly List<string> _subtitle =
+        [
             "Ты уверенно движешься вперёд! 👍",
             "Продолжай в том же духе — успех не за горами! 🌈",
             "Каждый шаг делает тебя сильнее! 📚",
             "Знания накапливаются — и ты это доказываешь! 🎓",
             "Ты прокачал(а) свой мозг на славу! 🧠",
             "Вот это мощно! Следующий уровень ждёт! 💪"
-        };
+        ];
 
         private Control _mainControl;
 
@@ -78,7 +78,7 @@ namespace JapaneseTeacher.Scenes.Content
                 Font = new Font("Segoe UI", 24, FontStyle.Bold),
                 ForeColor = Color.YellowGreen,
                 AutoSize = true,
-                Text = Title[new Random().Next(Title.Count)],
+                Text = _title[new Random().Next(_title.Count)],
             };
 
             _subtitleLabel = new Label
@@ -86,14 +86,14 @@ namespace JapaneseTeacher.Scenes.Content
                 Font = new Font("Segoe UI", 16, FontStyle.Regular),
                 ForeColor = Color.Gray,
                 AutoSize = true,
-                Text = Subtitle[new Random().Next(Subtitle.Count)],
+                Text = _subtitle[new Random().Next(_subtitle.Count)],
             };
 
             _correctCard = new StatCard
             {
                 BodyColor = Color.Blue,
                 Title = "Дано ответов",
-                Text = $"{_totalAnswers}",
+                Text = $@"{_totalAnswers}",
                 Size = new Size(190, 100),
                 Location = new Point(10, 10)
             };
@@ -102,7 +102,7 @@ namespace JapaneseTeacher.Scenes.Content
             {
                 BodyColor = Color.Red,
                 Title = "Ошибок",
-                Text = $"{_wrongAnswers}",
+                Text = $@"{_wrongAnswers}",
                 Size = new Size(190, 100),
                 Location = new Point(220, 10)
             };
@@ -114,14 +114,14 @@ namespace JapaneseTeacher.Scenes.Content
             {
                 BodyColor = Color.Lime,
                 Title = "Точность",
-                Text = $"{accuracy}%",
+                Text = $@"{accuracy}%",
                 Size = new Size(190, 100),
                 Location = new Point(440, 10)
             };
 
             _animatedPressButton = new AnimatedPressButton
             {
-                Text = "Далее",
+                Text = @"Далее",
                 Size = new Size(133, 42)
             };
             _animatedPressButton.Click += RoundedButton_Click;

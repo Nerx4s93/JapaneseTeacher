@@ -2,46 +2,45 @@
 using System.IO;
 using System.Linq;
 
-namespace JapaneseTeacher.СourseData
+namespace JapaneseTeacher.СourseData;
+
+internal class DataLoader
 {
-    internal class DataLoader
+    private List<Module> _modules;
+
+    public void LoadData()
     {
-        private List<Module> _modules;
-        
-        public void LoadData()
+        if (!Directory.Exists("Modules"))
         {
-            if (!Directory.Exists("Modules"))
-            {
-                Directory.CreateDirectory("Modules");
-            }
-
-            #region Загрузка модулей
-
-            _modules = new List<Module>();
-
-            var files = Directory.GetFiles("Modules");
-            foreach (string file in files)
-            {
-                var themeName = Path.GetFileNameWithoutExtension(file);
-                var module = Module.LoadFromFile(themeName);
-
-                _modules.Add(module);
-            }
-
-            #endregion
+            Directory.CreateDirectory("Modules");
         }
 
-        public void SaveData()
+        #region Загрузка модулей
+
+        _modules = new List<Module>();
+
+        var files = Directory.GetFiles("Modules");
+        foreach (string file in files)
         {
-            foreach (var module in _modules)
-            {
-                module.SaveToFile();
-            }
+            var themeName = Path.GetFileNameWithoutExtension(file);
+            var module = Module.LoadFromFile(themeName);
+
+            _modules.Add(module);
         }
 
-        public Module GetModuleByName(string name)
+        #endregion
+    }
+
+    public void SaveData()
+    {
+        foreach (var module in _modules)
         {
-            return _modules.First(t => t.Name == name);
+            module.SaveToFile();
         }
+    }
+
+    public Module GetModuleByName(string name)
+    {
+        return _modules.First(t => t.Name == name);
     }
 }

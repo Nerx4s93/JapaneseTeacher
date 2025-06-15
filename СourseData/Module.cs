@@ -5,35 +5,35 @@ using Newtonsoft.Json;
 
 using JapaneseTeacher.Properties;
 
-namespace JapaneseTeacher.СourseData
+namespace JapaneseTeacher.СourseData;
+
+internal class Module
 {
-    internal class Module
+    public string Name { get; set; }
+    public List<Theme> Themes { get; set; }
+
+    public static Module LoadFromFile(string name)
     {
-        public string Name { get; set; }
-        public List<Theme> Themes { get; set; }
+        var path = Path.Combine("Modules", $"{name}.json");
 
-        public static Module LoadFromFile(string name)
+        if (!File.Exists(path))
         {
-            var path = Path.Combine("Modules", $"{name}.json");
-
-            if (!File.Exists(path))
+            if (Resources.ResourceManager.GetObject(name) is string defaultJson)
             {
-                if (Resources.ResourceManager.GetObject(name) is string defaultJson)
-                {
-                    File.WriteAllText(path, defaultJson);
-                    return JsonConvert.DeserializeObject<Module>(defaultJson);
-                }
-                throw new FileNotFoundException($"Файл {path} не найден");
+                File.WriteAllText(path, defaultJson);
+                return JsonConvert.DeserializeObject<Module>(defaultJson);
             }
 
-            var stringJson = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<Module>(stringJson);
+            throw new FileNotFoundException($"Файл {path} не найден");
         }
 
-        public void SaveToFile()
-        {
-            var path = Path.Combine("Modules", $"{Name}.json");
-            File.WriteAllText(path, JsonConvert.SerializeObject(this, Formatting.Indented));
-        }
+        var stringJson = File.ReadAllText(path);
+        return JsonConvert.DeserializeObject<Module>(stringJson);
+    }
+
+    public void SaveToFile()
+    {
+        var path = Path.Combine("Modules", $"{Name}.json");
+        File.WriteAllText(path, JsonConvert.SerializeObject(this, Formatting.Indented));
     }
 }
