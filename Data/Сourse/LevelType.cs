@@ -1,4 +1,4 @@
-﻿namespace JapaneseTeacher.СourseData;
+﻿namespace JapaneseTeacher.Data.Сourse;
 
 internal enum LevelType
 {

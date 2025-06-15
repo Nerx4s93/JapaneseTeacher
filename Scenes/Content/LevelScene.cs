@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using JapaneseTeacher.СourseData;
+using JapaneseTeacher.Data.Сourse;
 using JapaneseTeacher.Scenes.Content.Levels;
 using JapaneseTeacher.UI;
 

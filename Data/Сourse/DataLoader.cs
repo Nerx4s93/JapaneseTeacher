@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace JapaneseTeacher.СourseData;
+namespace JapaneseTeacher.Data.Сourse;
 
 internal class DataLoader
 {

@@ -5,7 +5,7 @@ using System.Linq;
 
 using Newtonsoft.Json;
 
-namespace JapaneseTeacher.СourseData;
+namespace JapaneseTeacher.Data.Сourse;
 
 internal class Theme
 {

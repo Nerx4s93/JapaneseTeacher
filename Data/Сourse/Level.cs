@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace JapaneseTeacher.СourseData;
+namespace JapaneseTeacher.Data.Сourse;
 
 internal class Level
 {

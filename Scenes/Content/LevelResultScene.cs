@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-using JapaneseTeacher.СourseData;
+using JapaneseTeacher.Data.Сourse;
 using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.Scenes.Content
