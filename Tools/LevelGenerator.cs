@@ -10,21 +10,26 @@ namespace JapaneseTeacher.Tools;
 
 internal class LevelGenerator
 {
+    private readonly Random _random = new Random();
+
     private readonly Theme _theme;
     private readonly string _levelId;
-    private readonly int _countOfTasks;
-
     private readonly Queue<LevelTask> _levelTasks;
 
+    private int _totalTasks;
+
+    public int TotalTasks => _totalTasks;
+    public int RemainingTasks => _levelTasks.Count;
+    public bool CompliteLevel => (_levelTasks.Count == 0);
     public string CurrentTask => _levelTasks.Peek().Task;
     public string CurrentAnswer => _levelTasks.Peek().Answer;
     public Scene CurrentScene => _levelTasks.Peek().Scene;
 
-    public LevelGenerator(Theme theme, string levelId, int countOfTasks)
+    public LevelGenerator(Theme theme, string levelId, int totalTasks)
     {
         _theme = theme;
         _levelId = levelId;
-        _countOfTasks = countOfTasks;
+        _totalTasks = totalTasks;
         _levelTasks = GenerateLevel();
     }
 
@@ -41,7 +46,20 @@ internal class LevelGenerator
         {
             _theme.UpdateWordStats(levelTask.Word, false);
             _levelTasks.Enqueue(levelTask);
+            AddTask();
             return false;
+        }
+    }
+
+    private void AddTask()
+    {
+        var countOfNewTasks = _random.Next(3);
+
+        _totalTasks += countOfNewTasks;
+        for (var i = 0; i < countOfNewTasks; i++)
+        {
+            var levelTask = GenerateLevelTask();
+            _levelTasks.Enqueue(levelTask);
         }
     }
 
@@ -49,7 +67,7 @@ internal class LevelGenerator
     {
         var levelTasks = new Queue<LevelTask>();
 
-        for (var i = 0; i < _countOfTasks; i++)
+        for (var i = 0; i < _totalTasks; i++)
         {
             var levelTask = GenerateLevelTask();
             levelTasks.Enqueue(levelTask);

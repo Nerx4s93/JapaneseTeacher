@@ -66,7 +66,6 @@ internal class LevelScene : Scene
 
             if (_levelGenerator.Check(userAnswer))
             {
-                _flatProgressBar.Value += 1;
                 _answerResultPanel.WasCorrect = true;
             }
             else
@@ -75,6 +74,9 @@ internal class LevelScene : Scene
                 _answerResultPanel.WasCorrect = false;
                 _answerResultPanel.Text = $"Неверно. Правильный ответ: {_levelGenerator.CurrentAnswer}";
             }
+
+            _flatProgressBar.Value = _levelGenerator.TotalTasks - _levelGenerator.RemainingTasks;
+            _flatProgressBar.MaxValue = _levelGenerator.TotalTasks;
             _totalAnswers += 1;
             _answerResultPanel.Visible = true;
         }
@@ -82,7 +84,7 @@ internal class LevelScene : Scene
         {
             _answerResultPanel.Visible = false;
 
-            if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
+            if (_levelGenerator.CompliteLevel)
             {
                 _theme.CompliteLevel(_levelId);
                 SceneManager.LoadScene(new LevelResultScene(), [_mainControl, _module, _totalAnswers, _wrongAnswers]);
@@ -108,7 +110,7 @@ internal class LevelScene : Scene
     {
         _flatProgressBar = new FlatProgressBar
         {
-            MaxValue = 30
+            MaxValue = _levelGenerator.TotalTasks
         };
 
         _answerResultPanel = new AnswerResultPanel
