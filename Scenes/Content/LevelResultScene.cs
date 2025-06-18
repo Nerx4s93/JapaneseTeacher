@@ -66,7 +66,7 @@ namespace JapaneseTeacher.Scenes.Content
 
         private void RoundedButton_Click(object sender, EventArgs e)
         {
-            SceneManager.LoadScene(new ModuleScene(), new object[2] { _mainControl, _module });
+            SceneManager.LoadScene(new ModuleScene(), [_mainControl, _module]);
         }
 
         #region Настройка элементов управления

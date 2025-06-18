@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using JapaneseTeacher.Data;
 using JapaneseTeacher.Data.Сourse;
+using JapaneseTeacher.Scenes;
 using JapaneseTeacher.Scenes.Content.Levels;
 
 namespace JapaneseTeacher.Tools;
@@ -31,6 +32,11 @@ internal class LevelGenerator
     public string GetAnswer()
     {
         return _levelTasks.Peek().Answer;
+    }
+
+    public Scene GetScene()
+    {
+        return _levelTasks.Peek().Scene;
     }
 
     public bool Check(string userAnswer)

@@ -70,7 +70,7 @@ internal class ModuleScene : Scene
         if (button.Active)
         {
             var level = button.Level;
-            SceneManager.LoadScene(new LevelScene(), new object[4] { _mainControl, _module, button.Tag, level });
+            SceneManager.LoadScene(new LevelScene(), [_mainControl, _module, button.Tag, level]);
         }
     }
 
@@ -167,7 +167,7 @@ internal class ModuleScene : Scene
 
         var xOffsets = new int[4] { 0, dx, 2 * dx, dx };
         var findTheme = true;
-        for (int i = 0; i < _buttonLevels.Count; i++)
+        for (var i = 0; i < _buttonLevels.Count; i++)
         {
             var control = _buttonLevels[i];
 

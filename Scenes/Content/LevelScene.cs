@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using JapaneseTeacher.Data.Сourse;
-using JapaneseTeacher.Scenes.Content.Levels;
 using JapaneseTeacher.Tools;
 using JapaneseTeacher.UI;
 
@@ -86,7 +85,7 @@ internal class LevelScene : Scene
             if (_flatProgressBar.Value == _flatProgressBar.MaxValue)
             {
                 _theme.CompliteLevel(_levelId);
-                SceneManager.LoadScene(new LevelResultScene(), new object[4] { _mainControl, _module, _totalAnswers, _wrongAnswers });
+                SceneManager.LoadScene(new LevelResultScene(), [_mainControl, _module, _totalAnswers, _wrongAnswers]);
             }
             else
             {
@@ -97,8 +96,9 @@ internal class LevelScene : Scene
 
     private void LoadNewWord()
     {
+        var scene = _levelGenerator.GetScene();
         var task = _levelGenerator.GetTask();
-        _sceneManager.LoadScene(new TextBoxTask(), new object[2] { _mainControl, task });
+        _sceneManager.LoadScene(scene, [_mainControl, task]);
     }
 
     #endregion
