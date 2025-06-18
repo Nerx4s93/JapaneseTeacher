@@ -16,27 +16,16 @@ internal class LevelGenerator
 
     private readonly Queue<LevelTask> _levelTasks;
 
+    public string CurrentTask => _levelTasks.Peek().Task;
+    public string CurrentAnswer => _levelTasks.Peek().Answer;
+    public Scene CurrentScene => _levelTasks.Peek().Scene;
+
     public LevelGenerator(Theme theme, string levelId, int countOfTasks)
     {
         _theme = theme;
         _levelId = levelId;
         _countOfTasks = countOfTasks;
         _levelTasks = GenerateLevel();
-    }
-
-    public string GetTask()
-    {
-        return _levelTasks.Peek().Task;
-    }
-
-    public string GetAnswer()
-    {
-        return _levelTasks.Peek().Answer;
-    }
-
-    public Scene GetScene()
-    {
-        return _levelTasks.Peek().Scene;
     }
 
     public bool Check(string userAnswer)

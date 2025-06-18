@@ -73,7 +73,7 @@ internal class LevelScene : Scene
             {
                 _wrongAnswers += 1;
                 _answerResultPanel.WasCorrect = false;
-                _answerResultPanel.Text = $"Неверно. Правильный ответ: {_levelGenerator.GetAnswer()}";
+                _answerResultPanel.Text = $"Неверно. Правильный ответ: {_levelGenerator.CurrentAnswer}";
             }
             _totalAnswers += 1;
             _answerResultPanel.Visible = true;
@@ -96,8 +96,8 @@ internal class LevelScene : Scene
 
     private void LoadNewWord()
     {
-        var scene = _levelGenerator.GetScene();
-        var task = _levelGenerator.GetTask();
+        var scene = _levelGenerator.CurrentScene;
+        var task = _levelGenerator.CurrentTask;
         _sceneManager.LoadScene(scene, [_mainControl, task]);
     }
 
