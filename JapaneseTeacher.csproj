@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\LevelTask.cs" />
     <Compile Include="Data\Сourse\DataLoader.cs" />
     <Compile Include="Data\Сourse\Level.cs" />
     <Compile Include="Data\Сourse\LevelType.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Scenes\Content\ModuleScene.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
+    <Compile Include="Tools\LevelGenerator.cs" />
     <Compile Include="Tools\RoundedRectanglePathCreator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

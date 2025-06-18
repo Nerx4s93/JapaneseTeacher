@@ -4,29 +4,34 @@ using System.Windows.Forms;
 
 using JapaneseTeacher.Data.Сourse;
 using JapaneseTeacher.Scenes.Content.Levels;
+using JapaneseTeacher.Tools;
 using JapaneseTeacher.UI;
 
 namespace JapaneseTeacher.Scenes.Content;
 
 internal class LevelScene : Scene
 {
-    private readonly Random _random = new();
-    private readonly SceneManager _sceneManager = new();
-
+    // Переменные загрузки сцены
+    //
     private Control _mainControl;
-
     private Module _module;
     private Theme _theme;
     private string _levelId;
-    private Word _currentWord;
-    private string _task;
-    private string _answer;
 
-    private FlatProgressBar _flatProgressBar;
-    private AnswerResultPanel _answerResultPanel;
+    // Инструменты для создания уровня
+    //
+    private LevelGenerator _levelGenerator;
+    private SceneManager _sceneManager;
 
+    // Счётчик ответов
+    //
     private int _totalAnswers;
     private int _wrongAnswers;
+
+    // Элементы управления на сцене
+    //
+    private FlatProgressBar _flatProgressBar;
+    private AnswerResultPanel _answerResultPanel;
 
     public override void Start(object[] args)
     {
@@ -34,6 +39,10 @@ internal class LevelScene : Scene
         _module = args[1] as Module;
         _theme = args[2] as Theme;
         _levelId = args[3] as string;
+
+        _levelGenerator = new LevelGenerator(_theme, _levelId, 30);
+        _sceneManager = new SceneManager();
+
         LoadNewWord();
         AdjustControls();
         _mainControl.Resize += Form_Resize;
@@ -56,19 +65,16 @@ internal class LevelScene : Scene
         {
             var userAnswer = args[0] as string;
 
-            if (userAnswer.Equals(_answer, StringComparison.OrdinalIgnoreCase))
+            if (_levelGenerator.Check(userAnswer))
             {
                 _flatProgressBar.Value += 1;
                 _answerResultPanel.WasCorrect = true;
-                _theme.UpdateWordStats(_currentWord, true);
             }
             else
             {
                 _wrongAnswers += 1;
-                _flatProgressBar.MaxValue += _random.Next(2);
                 _answerResultPanel.WasCorrect = false;
-                _answerResultPanel.Text = $"Неверно. Правильный ответ: {_answer}";
-                _theme.UpdateWordStats(_currentWord, false);
+                _answerResultPanel.Text = $"Неверно. Правильный ответ: {_levelGenerator.GetAnswer()}";
             }
             _totalAnswers += 1;
             _answerResultPanel.Visible = true;
@@ -91,38 +97,8 @@ internal class LevelScene : Scene
 
     private void LoadNewWord()
     {
-        var levelType = _theme.GetLevelType(_levelId);
-        _currentWord = _theme.GetNextWord(_levelId);
-
-        switch (levelType)
-        {
-            case LevelType.JapaneseToReading:
-                {
-                    _task = $"Напишите на ромадзи: {_currentWord.Text}";
-                    _answer = _currentWord.Reading;
-                    break;
-                }
-            case LevelType.TranslationToReading:
-                {
-                    _task = $"Напишите на ромадзи: {_currentWord.Translation}";
-                    _answer = _currentWord.Reading;
-                    break;
-                }
-            case LevelType.ReadingToTranslate:
-                {
-                    _task = $"Напишите первод: {_currentWord.Reading}";
-                    _answer = _currentWord.Translation;
-                    break;
-                }
-            case LevelType.JapaneseToTranslate:
-                {
-                    _task = $"Напишите первод: {_currentWord.Text}";
-                    _answer = _currentWord.Translation;
-                    break;
-                }
-        }
-
-        _sceneManager.LoadScene(new TextBoxTask(), new object[2] { _mainControl, _task });
+        var task = _levelGenerator.GetTask();
+        _sceneManager.LoadScene(new TextBoxTask(), new object[2] { _mainControl, task });
     }
 
     #endregion
