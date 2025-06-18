@@ -19,12 +19,12 @@ internal class SceneManager
         _currentScene = null;
     }
 
-    public void SendMessage(object sendler, object[] args)
+    public void SendMessage(object sender, object[] args)
     {
         OnGetMessage?.Invoke(this, args);
     }
 
-    public delegate void GetMessageEventHandler(object sendler, object[] args);
+    public delegate void GetMessageEventHandler(object sender, object[] args);
 
     public event GetMessageEventHandler OnGetMessage;
 }

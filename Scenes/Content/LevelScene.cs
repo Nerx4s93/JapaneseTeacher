@@ -59,7 +59,7 @@ internal class LevelScene : Scene
 
     #region Проверка ответа
 
-    private void SceneManager_OnGetMessage(object sendler, object[] args)
+    private void SceneManager_OnGetMessage(object sender, object[] args)
     {
         if (!_answerResultPanel.Visible)
         {
