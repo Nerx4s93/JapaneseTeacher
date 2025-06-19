@@ -10,6 +10,8 @@ namespace JapaneseTeacher.Scenes.Content;
 
 internal class LevelScene : Scene
 {
+    private const int ButtonMargin = 20;
+
     // Переменные загрузки сцены
     //
     private Control _mainControl;
@@ -30,6 +32,7 @@ internal class LevelScene : Scene
     // Элементы управления на сцене
     //
     private FlatProgressBar _flatProgressBar;
+    private AnimatedPressButton _checkButton;
     private AnswerResultPanel _answerResultPanel;
 
     public override void Start(object[] args)
@@ -51,7 +54,9 @@ internal class LevelScene : Scene
     public override void Stop()
     {
         _flatProgressBar.Dispose();
+        _checkButton.Dispose();
         _answerResultPanel.Dispose();
+
         _mainControl.Resize -= Form_Resize;
         _sceneManager.StopScene();
     }
@@ -114,12 +119,19 @@ internal class LevelScene : Scene
             MaxValue = _levelGenerator.TotalTasks
         };
 
+        _checkButton = new AnimatedPressButton
+        {
+            Text = "Проверить"
+        };
+        //_checkButton.Click += CheckButton_Click;
+
         _answerResultPanel = new AnswerResultPanel
         {
             Visible = false
         };
 
         _mainControl.Controls.Add(_flatProgressBar);
+        _mainControl.Controls.Add(_checkButton);
         _mainControl.Controls.Add(_answerResultPanel);
 
         Form_Resize(null, null);
@@ -129,6 +141,12 @@ internal class LevelScene : Scene
     {
         _flatProgressBar.Size = new Size(_mainControl.Width * 8 / 10, 20);
         _flatProgressBar.Location = new Point((_mainControl.Size.Width - _flatProgressBar.Width) / 2, 20);
+
+        var clientSize = _mainControl.ClientSize;
+        _checkButton.Location = new Point(
+            clientSize.Width - _checkButton.Width - ButtonMargin,
+            clientSize.Height - _checkButton.Height - ButtonMargin
+        );
     }
 
     private void Form_Resize(object sender, EventArgs e)

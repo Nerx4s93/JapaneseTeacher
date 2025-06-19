@@ -2,20 +2,15 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using JapaneseTeacher.UI;
-
 namespace JapaneseTeacher.Scenes.Content.Levels
 {
     internal class TextBoxTask : Scene
     {
-        private const int ButtonMargin = 20;
-
         private Control _mainControl;
         private string _task;
 
         private Label _labelTask;
         private TextBox _textBoxAnswer;
-        private AnimatedPressButton _checkButton;
 
         public override void Start(object[] args)
         {
@@ -30,15 +25,8 @@ namespace JapaneseTeacher.Scenes.Content.Levels
         {
             _labelTask.Dispose();
             _textBoxAnswer.Dispose();
-            _checkButton.Dispose();
 
             _mainControl.Resize -= MainControl_Resize;
-        }
-
-
-        private void CheckButton_Click(object sender, EventArgs e)
-        {
-            CheckAnswer();
         }
 
         private void TextBoxAnswer_KeyDown(object sender, KeyEventArgs e)
@@ -74,15 +62,8 @@ namespace JapaneseTeacher.Scenes.Content.Levels
             };
             _textBoxAnswer.KeyDown += TextBoxAnswer_KeyDown;
 
-            _checkButton = new AnimatedPressButton
-            {
-                Text = "Проверить"
-            };
-            _checkButton.Click += CheckButton_Click;
-
             _mainControl.Controls.Add(_labelTask);
             _mainControl.Controls.Add(_textBoxAnswer);
-            _mainControl.Controls.Add(_checkButton);
 
             _mainControl.Resize += MainControl_Resize;
             MoveControls();
@@ -91,23 +72,16 @@ namespace JapaneseTeacher.Scenes.Content.Levels
         private void MoveControls()
         {
             var clientSize = _mainControl.ClientSize;
+            using var graphics = _mainControl.CreateGraphics();
 
-            using (var graphics = _mainControl.CreateGraphics())
-            {
-                var labelTextSize = graphics.MeasureString(_labelTask.Text, _labelTask.Font);
-                var labelX = (clientSize.Width - (int)labelTextSize.Width) / 2;
-                var labelY = (clientSize.Height / 2) - 100;
-                _labelTask.Location = new Point(labelX, labelY);
+            var labelTextSize = graphics.MeasureString(_labelTask.Text, _labelTask.Font);
+            var labelX = (clientSize.Width - (int)labelTextSize.Width) / 2;
+            var labelY = (clientSize.Height / 2) - 100;
+            _labelTask.Location = new Point(labelX, labelY);
 
-                var textBoxX = (clientSize.Width - _textBoxAnswer.Width) / 2;
-                var textBoxY = labelY + (int)labelTextSize.Height + 20;
-                _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
-            }
-
-            _checkButton.Location = new Point(
-                    clientSize.Width - _checkButton.Width - ButtonMargin,
-                    clientSize.Height - _checkButton.Height - ButtonMargin
-            );
+            var textBoxX = (clientSize.Width - _textBoxAnswer.Width) / 2;
+            var textBoxY = labelY + (int)labelTextSize.Height + 20;
+            _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
         }
 
         private void MainControl_Resize(object sender, EventArgs e)
