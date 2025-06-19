@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace JapaneseTeacher.Scenes.Content.Levels
 {
-    internal class TextBoxTask : Scene
+    internal class TextBoxTask : SceneLevelContent
     {
         private Control _mainControl;
         private string _task;
@@ -38,7 +38,7 @@ namespace JapaneseTeacher.Scenes.Content.Levels
             }
         }
 
-        private void CheckAnswer()
+        internal override void CheckAnswer()
         {
             SendMessage([ _textBoxAnswer.Text ]);
         }
