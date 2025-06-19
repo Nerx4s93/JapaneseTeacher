@@ -64,7 +64,8 @@ internal class LevelScene : Scene
         {
             var userAnswer = args[0] as string;
 
-            if (_levelGenerator.Check(userAnswer))
+            var result = _levelGenerator.Check(userAnswer);
+            if (result.correct)
             {
                 _answerResultPanel.WasCorrect = true;
             }
@@ -72,7 +73,7 @@ internal class LevelScene : Scene
             {
                 _wrongAnswers += 1;
                 _answerResultPanel.WasCorrect = false;
-                _answerResultPanel.Text = $"Неверно. Правильный ответ: {_levelGenerator.CurrentAnswer}";
+                _answerResultPanel.Text = $"Неверно. Правильный ответ: {result.answer}";
             }
 
             _flatProgressBar.Value = _levelGenerator.TotalTasks - _levelGenerator.RemainingTasks;

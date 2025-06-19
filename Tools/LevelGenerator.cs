@@ -31,20 +31,20 @@ internal class LevelGenerator
         _levelTasks = GenerateLevel();
     }
 
-    public bool Check(string userAnswer)
+    public (bool correct, string answer) Check(string userAnswer)
     {
         var levelTask = _levelTasks.Dequeue();
 
         if (userAnswer.Equals(levelTask.Answer, StringComparison.OrdinalIgnoreCase))
         {
             _theme.UpdateWordStats(levelTask.Word, true);
-            return true;
+            return (true, levelTask.Answer);
         }
 
         _theme.UpdateWordStats(levelTask.Word, false);
         _levelTasks.Enqueue(levelTask);
         AddTask();
-        return false;
+        return (false, levelTask.Answer);
     }
 
     private void AddTask()
