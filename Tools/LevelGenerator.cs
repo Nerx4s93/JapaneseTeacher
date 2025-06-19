@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using JapaneseTeacher.Data;
 using JapaneseTeacher.Data.Сourse;
 using JapaneseTeacher.Scenes;
-using JapaneseTeacher.Scenes.Content.Levels;
+using JapaneseTeacher.Scenes.Content.Level;
 
 namespace JapaneseTeacher.Tools;
 

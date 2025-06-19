@@ -1,5 +1,5 @@
 ﻿using JapaneseTeacher.Data.Сourse;
-using JapaneseTeacher.Scenes.Content;
+using JapaneseTeacher.Scenes.Content.Level;
 
 namespace JapaneseTeacher.Data;
 

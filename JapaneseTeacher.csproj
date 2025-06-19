@@ -70,9 +70,9 @@
     </Compile>
     <Compile Include="Scenes\Content\LevelResultScene.cs" />
     <Compile Include="Scenes\Content\LevelScene.cs" />
-    <Compile Include="Scenes\Content\Levels\TextBoxTask.cs" />
+    <Compile Include="Scenes\Content\Level\TextBoxTask.cs" />
     <Compile Include="Scenes\Content\ModuleScene.cs" />
-    <Compile Include="Scenes\Content\Levels\SceneLevelContent.cs" />
+    <Compile Include="Scenes\Content\Level\SceneLevelContent.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Tools\LevelGenerator.cs" />
