@@ -32,8 +32,8 @@ internal class LevelScene : Scene
     // Элементы управления на сцене
     //
     private FlatProgressBar _flatProgressBar;
-    private AnimatedPressButton _checkButton;
     private AnswerResultPanel _answerResultPanel;
+    private AnimatedPressButton _checkButton;
 
     public override void Start(object[] args)
     {
@@ -119,20 +119,20 @@ internal class LevelScene : Scene
             MaxValue = _levelGenerator.TotalTasks
         };
 
+        _answerResultPanel = new AnswerResultPanel
+        {
+            Visible = false
+        };
+
         _checkButton = new AnimatedPressButton
         {
             Text = "Проверить"
         };
         //_checkButton.Click += CheckButton_Click;
 
-        _answerResultPanel = new AnswerResultPanel
-        {
-            Visible = false
-        };
-
         _mainControl.Controls.Add(_flatProgressBar);
-        _mainControl.Controls.Add(_checkButton);
         _mainControl.Controls.Add(_answerResultPanel);
+        _mainControl.Controls.Add(_checkButton);
 
         Form_Resize(null, null);
     }
