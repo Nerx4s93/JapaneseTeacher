@@ -8,6 +8,8 @@ namespace JapaneseTeacher.Scenes.Content.Levels
 {
     internal class TextBoxTask : Scene
     {
+        private const int ButtonMargin = 20;
+
         private Control _mainControl;
         private string _task;
 
@@ -19,9 +21,8 @@ namespace JapaneseTeacher.Scenes.Content.Levels
         {
             _mainControl = args[0] as Control;
             _task = args[1] as string;
-            AdjustControls();
-            _mainControl.Resize += Form_Resize;
 
+            AdjustControls();
             _textBoxAnswer.Focus();
         }
 
@@ -81,7 +82,8 @@ namespace JapaneseTeacher.Scenes.Content.Levels
             _mainControl.Controls.Add(_textBoxAnswer);
             _mainControl.Controls.Add(_checkButton);
 
-            Form_Resize(null, null);
+            _mainControl.Resize += Form_Resize;
+            _mainControl.Layout += (sender, args) => MoveControls();
         }
 
         private void MoveControls()
@@ -98,11 +100,10 @@ namespace JapaneseTeacher.Scenes.Content.Levels
                 _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
             }
 
-            var clientSize = _mainControl.ClientSize;
-            var buttonMargin = 20;
+            var clientSize = _mainControl.Size;
             _checkButton.Location = new Point(
-                clientSize.Width - _checkButton.Width - buttonMargin,
-                clientSize.Height - _checkButton.Height - buttonMargin
+                    clientSize.Width - _checkButton.Width - ButtonMargin,
+                    clientSize.Height - _checkButton.Height - ButtonMargin
             );
         }
 
