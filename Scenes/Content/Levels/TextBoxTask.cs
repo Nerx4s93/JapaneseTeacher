@@ -52,7 +52,7 @@ namespace JapaneseTeacher.Scenes.Content.Levels
 
         private void CheckAnswer()
         {
-            SendMessage(new object[1] { _textBoxAnswer.Text });
+            SendMessage([ _textBoxAnswer.Text ]);
         }
 
         #region Настройка элементов управления
