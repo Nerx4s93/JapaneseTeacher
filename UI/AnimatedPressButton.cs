@@ -61,6 +61,16 @@ internal sealed class AnimatedPressButton : Control
         }
     }
 
+    public override string Text
+    {
+        get => base.Text;
+        set
+        {
+            base.Text = value;
+            CustomResize();
+        }
+    }
+
     public AnimatedPressButton()
     {
         SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -138,6 +148,19 @@ internal sealed class AnimatedPressButton : Control
         }
     }
 
+    private void CustomResize()
+    {
+        if (CustomAutoSize && !string.IsNullOrEmpty(Text))
+        {
+            var size = TextRenderer.MeasureText(Text, Font);
+
+            var width = size.Width + PaddingX * 2;
+            var height = size.Height + PaddingY;
+
+            Size = new Size(width, height);
+        }
+    }
+
     protected override void OnMouseDown(MouseEventArgs e)
     {
         _mouseDown = true;
@@ -148,20 +171,5 @@ internal sealed class AnimatedPressButton : Control
     {
         _mouseDown = false;
         Invalidate();
-    }
-
-    protected override void OnInvalidated(InvalidateEventArgs e)
-    {
-        base.OnInvalidated(e);
-
-        if (CustomAutoSize && !string.IsNullOrEmpty(Text))
-        {
-            var size = TextRenderer.MeasureText(Text, Font);
-
-            var width = size.Width + PaddingX * 2;
-            var height = size.Height + PaddingY;
-
-            Size = new Size(width, height);
-        }
     }
 }

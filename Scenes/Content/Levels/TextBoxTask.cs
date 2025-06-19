@@ -31,8 +31,10 @@ namespace JapaneseTeacher.Scenes.Content.Levels
             _labelTask.Dispose();
             _textBoxAnswer.Dispose();
             _checkButton.Dispose();
-            _mainControl.Resize -= Form_Resize;
+
+            _mainControl.Resize -= MainControl_Resize;
         }
+
 
         private void CheckButton_Click(object sender, EventArgs e)
         {
@@ -82,32 +84,33 @@ namespace JapaneseTeacher.Scenes.Content.Levels
             _mainControl.Controls.Add(_textBoxAnswer);
             _mainControl.Controls.Add(_checkButton);
 
-            _mainControl.Resize += Form_Resize;
-            _mainControl.Layout += (sender, args) => MoveControls();
+            _mainControl.Resize += MainControl_Resize;
+            MoveControls();
         }
 
         private void MoveControls()
         {
+            var clientSize = _mainControl.ClientSize;
+
             using (var graphics = _mainControl.CreateGraphics())
             {
                 var labelTextSize = graphics.MeasureString(_labelTask.Text, _labelTask.Font);
-                var labelX = (_mainControl.Width - (int)labelTextSize.Width) / 2;
-                var labelY = (_mainControl.Height / 2) - 100;
+                var labelX = (clientSize.Width - (int)labelTextSize.Width) / 2;
+                var labelY = (clientSize.Height / 2) - 100;
                 _labelTask.Location = new Point(labelX, labelY);
 
-                var textBoxX = (_mainControl.Width - _textBoxAnswer.Width) / 2;
+                var textBoxX = (clientSize.Width - _textBoxAnswer.Width) / 2;
                 var textBoxY = labelY + (int)labelTextSize.Height + 20;
                 _textBoxAnswer.Location = new Point(textBoxX, textBoxY);
             }
 
-            var clientSize = _mainControl.Size;
             _checkButton.Location = new Point(
                     clientSize.Width - _checkButton.Width - ButtonMargin,
                     clientSize.Height - _checkButton.Height - ButtonMargin
             );
         }
 
-        private void Form_Resize(object sender, EventArgs e)
+        private void MainControl_Resize(object sender, EventArgs e)
         {
             MoveControls();
         }
